@@ -1,7 +1,7 @@
 Zumo Automation Project
 =======================
 * The goal of this project is to
-    1. Allow two ZUMO32U4 robots to play a [mini sumo match]  (https://www.youtube.com/watch?v=iL8IRF4wQmU)
+    1. Allow two ZUMO32U4 robots to play a [mini sumo match](https://www.youtube.com/watch?v=iL8IRF4wQmU)
     2. Have the robots know who won  
     3. Enable the robots to wirelessly communicate match data to a master laptop  
     4. Allow the robots to charge themselves wirelessly  
