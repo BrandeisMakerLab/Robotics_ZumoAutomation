@@ -1,0 +1,7 @@
+//Written by Jacob Smith for Brandeis Robotics Club, identifies keywords for Timer library
+//allows the Arduino Integrated Development Enviornment to properly highlight class name and methods
+Timer	KEYWORD1
+resetTime	KEYWORD2
+getTime		KEYWORD2
+getAndResetTime		KEYWORD2
+interval	KEYWORD2

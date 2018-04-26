@@ -1,0 +1,8 @@
+//written by Jacob Smith for Brandeis Robotics club, April 25 2018\
+//defines keywords that the Arduino Integrated Development Enviornment uses to highlight text
+Encoder		KEYWORD1
+getLeftPos 	KEYWORD2
+getRightPos	KEYWORD2	
+getLeftVel	KEYWORD2	
+getRightVel	KEYWORD2
+getDirection	KEYWORD2	
