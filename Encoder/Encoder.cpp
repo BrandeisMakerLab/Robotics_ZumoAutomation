@@ -27,17 +27,49 @@
 //creates a new Encoder Object
 Encoder::Encoder(){
 	initLeft=getLeftPos();
+	initRight=getRightPos();
 
 }
 
-//calls helper method to get the position of the robots left track
+//calls getPos helper method to find left and right positions, and averages them
+//reutrns absolute value of position if one side is negative
+double Encoder::getAvgPos(){
+	double leftPos=getLeftPos();
+	double rightPos=getRightPos();
+	if (leftPos<0 && rightPos>0){
+		leftPos=fabs(leftPos);
+	}else if (leftPos>0 && rightPos<0){
+		rightPos=fabs(rightPos);
+	}
+	double avgPos=(leftPos+rightPos)/2;
+	return avgPos;
+}
+
+//calls getPos helper method to find left and right positions, and averages them
+//if one velocity is negative, the absolute value of position is returned
+double Encoder::getAvgVel(){
+	double leftVel=getLeftVel();
+	double rightVel=getRightVel();
+	if (getDirection()=="TURNRIGHT"){
+		rightVel=fabs(rightVel);
+	}else if (getDirection()=="TURNLEFT"){
+		rightVel*=-1;
+	}
+	double avgVel=(leftVel+rightVel)/2;
+	return avgVel;
+	
+}
+
+//calls getPos helper method to return the position of the robot's left side
 double Encoder::getLeftPos(){
 	return getPos(LEFT);
+	
 }
 
-//same but for right track
+//calls getPos helper method to return the position of the robot's right side
 double Encoder::getRightPos(){
 	return getPos(RIGHT);
+	
 }
 
 //converts encoder value in ticks into distance in centimeters

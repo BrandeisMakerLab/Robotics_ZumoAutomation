@@ -1,7 +1,7 @@
-/*Written by Jacob Smith for Brandeis Robotics Club, April 24 2018.
+/*Written by Jacob Smith for Brandeis Robotics Club, April 29 2018.
   An example file for the Encoder class, prints the robot' left position,
-  right position, left velocity, right velocity, and overall direction to the Serial
-  Monitor. Units are centimeters and centimeters per second*/
+  right position, avergae position, left velocity, right velocity, average velocity, 
+  and overall direction to the Serial Monitor. Units are centimeters and centimeters per second*/
 //include the source library
 #include <Encoder.h>
 //the encoder object that will asked for position, velocity, and direction
@@ -27,8 +27,10 @@ void setup() {
 void loop() {
   printNumber("LEFTPOS:", enc.getLeftPos());
   printNumber("RIGHTPOS:", enc.getRightPos());
+  printNumber("AVGPOS:", enc.getAvgPos());
   printNumber("LEFTVEL:", enc.getLeftVel());
   printNumber("RIGHTVEL:", enc.getRightVel());
+  printNumber("AVGVEL:", enc.getAvgVel());
   Serial.print("\t");
   Serial.println(enc.getDirection());
   delay(500);

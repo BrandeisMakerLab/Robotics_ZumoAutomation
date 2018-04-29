@@ -32,17 +32,30 @@ class Encoder{
 		//helper method to calculate position of robot in centimeters
 		double getPos(int side);
 	
+		
+	
 	public:
 		//creates a new Encoder object
 		Encoder();
-		//return robot's left side position in centimeters
+		
+		//returns the position of the robot's left track
 		double getLeftPos();
-		//same for right side
+		
+		//returns the position of the robot's right track
 		double getRightPos();
+		
+		//returns the average of the robot's left and right positions
+		double getAvgPos();
+		
+		
 		//returns robot's left side velocity in centimeters
 		double getLeftVel();
 		//same for right side
 		double getRightVel();
+		
+		//returns the average of the robot's left and right accelerations
+		double getAvgVel();
+		
 		//returns robot's direction
 		const char* getDirection();
 	

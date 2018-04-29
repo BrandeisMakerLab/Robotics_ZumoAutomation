@@ -3,6 +3,8 @@
 Encoder		KEYWORD1
 getLeftPos 	KEYWORD2
 getRightPos	KEYWORD2	
+getAvgPos	KEYWORD2
 getLeftVel	KEYWORD2	
 getRightVel	KEYWORD2
+getAvgVel	KEYWORD2
 getDirection	KEYWORD2	
