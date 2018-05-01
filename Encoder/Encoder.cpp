@@ -51,9 +51,9 @@ double Encoder::getAvgVel(){
 	double leftVel=getLeftVel();
 	double rightVel=getRightVel();
 	const char* dir=getDirection();
-	if (strcmpr(dir,"TURNRIGHT")==0){
+	if (strcmp(dir,"TURNRIGHT")==0){
 		rightVel=fabs(rightVel);
-	}else if (strcmpr(dir,"TURNLEFT")==0){
+	}else if (strcmp(dir,"TURNLEFT")==0){
 		rightVel*=-1;
 	}
 	double avgVel=(leftVel+rightVel)/2;
