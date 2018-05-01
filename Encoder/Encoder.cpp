@@ -50,7 +50,7 @@ double Encoder::getAvgPos(){
 double Encoder::getAvgVel(){
 	double leftVel=getLeftVel();
 	double rightVel=getRightVel();
-	string const* dir=getDirection();
+	const char* dir=getDirection();
 	if (strcmpr(dir,"TURNRIGHT")==0){
 		rightVel=fabs(rightVel);
 	}else if (strcmpr(dir,"TURNLEFT")==0){
