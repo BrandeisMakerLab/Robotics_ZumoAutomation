@@ -50,9 +50,10 @@ double Encoder::getAvgPos(){
 double Encoder::getAvgVel(){
 	double leftVel=getLeftVel();
 	double rightVel=getRightVel();
-	if (getDirection()=="TURNRIGHT"){
+	string const* dir=getDirection();
+	if (strcmpr(dir,"TURNRIGHT")==0){
 		rightVel=fabs(rightVel);
-	}else if (getDirection()=="TURNLEFT"){
+	}else if (strcmpr(dir,"TURNLEFT")==0){
 		rightVel*=-1;
 	}
 	double avgVel=(leftVel+rightVel)/2;
@@ -114,9 +115,9 @@ const char* Encoder::getDirection(){
 		return "FORWARD";
 	}else if (dLeft<-THRESHOLD && dRight<-THRESHOLD){
 		return "BACKWARD";
-	}else if (dLeft<THRESHOLD && dRight>THRESHOLD){
+	}else if (dLeft<-THRESHOLD && dRight>THRESHOLD){
 		return "TURNLEFT";
-	}else if (dLeft>THRESHOLD && dRight<THRESHOLD)
+	}else if (dLeft>THRESHOLD && dRight<-THRESHOLD)
 			return "TURNRIGHT";
 	else {
 		return "STOPPED";
