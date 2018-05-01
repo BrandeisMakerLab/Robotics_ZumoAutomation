@@ -23,6 +23,8 @@
 
 //the velocity threshold to determine whether the robot is stopped or moving, in cm/s
 #define THRESHOLD .01
+//unit conversion constant for getVel methods
+#define MS_PER_S 10000
 
 //creates a new Encoder Object
 Encoder::Encoder(){
@@ -90,7 +92,7 @@ double Encoder::getPos(int side){
 double Encoder::getLeftVel(){
 	if (leftTimer.interval(TIME_INTERVAL)){
 		finalLeft=getLeftPos();
-		dLeft=(finalLeft-initLeft)/TIME_INTERVAL;
+		dLeft=(finalLeft-initLeft)/TIME_INTERVAL*MS_PER_S;
 		initLeft=finalLeft;
 	}
 	return dLeft;
@@ -100,7 +102,7 @@ double Encoder::getLeftVel(){
 double Encoder::getRightVel(){
 	if (rightTimer.interval(TIME_INTERVAL)){
 		finalRight=getRightPos();
-		dRight=(finalRight-initRight)/TIME_INTERVAL;
+		dRight=(finalRight-initRight)/TIME_INTERVAL*MS_PER_S;;
 		initRight=finalRight;
 	}
 	return dRight;
