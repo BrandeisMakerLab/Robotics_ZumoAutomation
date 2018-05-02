@@ -10,7 +10,7 @@
 #include <Encoder.h>
 
 //how often the velocities will be updated
-#define TIME_INTERVAL 50.0
+#define TIME_INTERVAL 50
 //this constant depends on which gearing robot is
 #define TICKS_PER_REV 909.7
 //the approximate radius and circumference of one wheel in cm
@@ -24,7 +24,7 @@
 //the velocity threshold to determine whether the robot is stopped or moving, in cm/s
 #define THRESHOLD .01
 //unit conversion constant for getVel methods
-#define MS_PER_S 10000
+#define MS_PER_S 1000
 
 //creates a new Encoder Object
 Encoder::Encoder(){
@@ -77,7 +77,7 @@ double Encoder::getRightPos(){
 
 //converts encoder value in ticks into distance in centimeters
 double Encoder::getPos(int side){
-	int ticks;
+	int ticks=0;
 	if(side==LEFT){
 		ticks=enc.getCountsLeft();
 	}else if (side==RIGHT){
@@ -90,20 +90,26 @@ double Encoder::getPos(int side){
 
 //calculates velocity of left side of the robot, using a timer interval to find the change in position over a time interval
 double Encoder::getLeftVel(){
-	if (leftTimer.interval(TIME_INTERVAL)){
+	float time=(float) leftTimer.getTime();
+	if (time>TIME_INTERVAL){
 		finalLeft=getLeftPos();
-		dLeft=(finalLeft-initLeft)/TIME_INTERVAL*MS_PER_S;
+		time/=MS_PER_S;//convert time to seconds
+		dLeft=(finalLeft-initLeft)/time;	
 		initLeft=finalLeft;
+		leftTimer.resetTime();
 	}
 	return dLeft;
 }
 
-//same but for right side
+//calculates velocity of left side of the robot, using a timer interval to find the change in position over a time interval
 double Encoder::getRightVel(){
-	if (rightTimer.interval(TIME_INTERVAL)){
+	float time=(float) rightTimer.getTime();
+	if (time>TIME_INTERVAL){
 		finalRight=getRightPos();
-		dRight=(finalRight-initRight)/TIME_INTERVAL*MS_PER_S;;
+		time/=MS_PER_S;//convert time to seconds
+		dRight=(finalRight-initRight)/time;	
 		initRight=finalRight;
+		rightTimer.resetTime();
 	}
 	return dRight;
 }
