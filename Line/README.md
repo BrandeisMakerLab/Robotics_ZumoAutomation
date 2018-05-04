@@ -6,6 +6,7 @@ Line Library
     + They are used to return whether the robot is on a line of tape and to print line sensor readings to the robot's display 
 + An example file is provided
     + It uses this library and the Drive library to keep the robot in a ring of tape
+	+ The complex navigation program uses an extra line of tape on the outside of the ring to allow the robot to know when it lost a match
 
 [The dependency library may be found here](http://pololu.github.io/zumo-32u4-arduino-library/)  
  
