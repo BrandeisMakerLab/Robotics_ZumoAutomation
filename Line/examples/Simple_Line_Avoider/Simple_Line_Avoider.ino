@@ -31,7 +31,7 @@ void setup() {
 //unless it sees a line, in which case it while drive backward for 600 milliseconds and turn right for 300 milliseconds
 void loop() {
   motors.driveForward();
-  if (lineReader.isOnLine()) {
+  if (lineReader.isOnEdge()) {
     motors.driveBackward(600);
     motors.turnRight(300);
   }
