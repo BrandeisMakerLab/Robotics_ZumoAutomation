@@ -1,5 +1,8 @@
 //Written by Jacob Smith for Brandeis Robotics Club, identifies keywords for Drive library  April 3 2018
 // which allows the Arduino Integrated Development Enviornment to Highlight Drive functions
 Line	KEYWORD1
-isOnLine	KEYWORD2
+getRegion	KEYWORD2
+isInRing	KEYWORD2
+isOnEdge	KEYWORD2
+isOutBounds		KEYWORD2
 printAllSensors		KEYWORD2

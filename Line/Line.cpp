@@ -13,6 +13,11 @@ April 4 2018*/
 //create a new Line object, and initialize the robot's sensors
 Line::Line(){
 	lineReader.initThreeSensors();
+	this->edgeLow=393;
+	this->edgeHigh=1028;
+	this->middleLow=243;
+	this->middleHigh=741;
+	
 }
 
 //assigns line sensor threshold values 
@@ -26,32 +31,52 @@ Line::Line(int edgeLow,int edgeHigh,int middleLow,int middleHigh){
 	this->middleHigh=middleHigh;
 }
 
+//returns a string representing where the robot is in the zumo ring, using three colors of tape going from dark on inside to blue on edge to white on out  of bounds
+//INRING,EDGE,OUTBOUNDS
+const char* Line::getRegion(){
+	if (isInRing()){
+		return "INRING";
+	}else if (isOnEdge()){
+		return "ONEDGE";
+	}else if (isOutBounds()){
+		return "OUTBOUNDS";
+	}else{
+		return "";
+	}
+	
+}
 
-//update the array of line sensor readings
-//and iterate through it, if any of the sensors are on the line, then rthe sensor is on the line
-bool Line::isOnEdge () {
-	lineReader.read(reflections, true);
-	for (int i=0;i<NUM_SENSORS;i++){
-		if (reflections[i]>804){
-			return true;
-		
-		}
+//first takes line sensor readings to see where the robot is in the sumo ring, and
+//returns true if all of the sensors are darker than the edge tape, false otherwise
+bool Line::isInRing(){
+	lineReader.read(reflections,true);
+	if (reflections[0]>=edgeHigh && reflections[1]>=middleHigh && reflections[2]>=edgeHigh){
+		return true;
+	}
+	return false;
+	
+}
+
+//first takes line sensor readings to see where the robot is in the sumo ring, and
+//returns true if any of the line sensor reflections are bright enough to be the out of bounds tape
+bool Line::isOutBounds(){
+	lineReader.read(reflections,true);
+	if(reflections[0]<edgeLow || reflections[1]<middleLow  || reflections[2]<edgeLow){
+		return true;
 	}
 	return false;
 }
 
-//returns a string representing where the robot is in the zumo ring, using three colors of tape going from dark on inside to blue on edge to white on out  of bounds
-//INRING,EDGE,OUTBOUNDS
-const char* Line::getRegion(){
+//first takes line sensor readings to see where the robot is in the sumo ring, and
+//returns true if any of the sensors are brigher than the inside tape but darker than the out of bounds tape
+bool Line::isOnEdge(){
 	lineReader.read(reflections,true);
 	if(within(reflections[0],edgeLow,edgeHigh)||within(reflections[1],middleLow,middleHigh)||within(reflections[2],edgeLow,edgeHigh)){
-		return "EDGE";
-	}else if(reflections[0]<edgeLow || reflections[1]<middleLow  || reflections[2]<edgeHigh){
-		return "OUTBOUNDS";
-	}else{
-		return "INRING";
+		return true;
 	}
+	return false;
 }
+
 //iterates through the array of current line sensor readings and prints each one to the robot's display
 void Line::printAllSensors(Zumo32U4LCD lcd) {
 	lineReader.read(reflections,true);
@@ -66,8 +91,8 @@ void Line::printAllSensors(Zumo32U4LCD lcd) {
 	
 }
 
-//returns whether the first arument is within the second and third
+//returns whether the first argument is within the second and third
+//helper method for isOnEdge function
 bool Line::within(int num, int min,int max){
 	return num>min && num<max;
 }
-

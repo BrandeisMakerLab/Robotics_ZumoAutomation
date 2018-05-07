@@ -39,8 +39,12 @@ class Line{
 		Line();
 		//creates a new Line object, with given presets
 		Line(int edgeLow,int edgeHigh,int middleLow,int middleHigh);
-		//returns whether the robot is currently sensing a line of tape on the ground
+		//returns whether the robot is inside the sumo ring
+		bool isInRing();
+		//returns whether the robot is over the in bounss tape on the edge of the ring
 		bool isOnEdge();
+		//returns whether the robot is over the out of bounds tape on the outside of the ring
+		bool isOutBounds();
 		//returns the region of the robot on lines of tape
 		const char* getRegion();
 		//prints all of the sensor readings to the lcd
