@@ -8,43 +8,47 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <Zumo32U4Motors.h>
+#include <Timer.h>
 #include "Drive.h"
 
 //creates a new Drive object
 Drive::Drive(){
-
+	
 }
 
+
+//the main driving method, performs one of public commands, such as driving forward 
 //sets the robot to perform the basic action, waits for the specified period of time, and stops the robot
-void Drive::driveForward (int t) {
-  driveForward();
-  delay(t);
-  stopDrive();
-}
-
-void Drive::driveBackward(int t) {
-  driveBackward();
-  delay(t);
-  stopDrive();
-}
-
-void Drive::turnRight(int t) {
-  turnRight();
-  delay(t);
-  stopDrive();
-
-}
-
-void Drive::turnLeft(int t){
-	turnLeft();
-	delay(t);
+void Drive::move(void (Drive::*command) (),int time){
+	driveTimer.resetTime();
+	while (driveTimer.getTime()<time){
+		(*this.*command)();  	  
+	}
 	stopDrive();
+}	
+
+//public methods to command the robot to perform an action for a specified period of time	
+//refer to private move helper method
+void Drive::driveForward (int time) {
+  move(&Drive::driveForward,time);
+}
+
+void Drive::driveBackward(int time) {
+  move(&Drive::driveBackward,time);
+}
+
+void Drive::turnRight(int time) {
+  move(&Drive::turnRight,time);
+
+}
+
+void Drive::turnLeft(int time){
+	move(&Drive::turnLeft,time);
 	
 }
 	
-void Drive::stopDrive (int t) {
- stopDrive();
-  delay(t);
+void Drive::stopDrive (int time) {
+	move(&Drive::stopDrive,time);
 }
 
 //sets the robot to perform the basic action, using the ZUMO32U4 class to interface with the robots

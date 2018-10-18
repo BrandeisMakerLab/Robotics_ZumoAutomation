@@ -49,6 +49,3 @@ void lcdInit() {
   lcd.gotoXY(0, 0);
 
 }
-
-
-

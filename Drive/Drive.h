@@ -12,22 +12,30 @@
 #include <Wire.h>
 #include <Zumo32U4Motors.h>
 #include <Drive.h>
+#include <Timer.h>
 
 class Drive{
 	private:
 		//the ZUMO32U4 object that will be used to interface with the robot
 		Zumo32U4Motors drive;	
+		//a timer to control how long the robot drives
+		Timer driveTimer;
+		
+		//main driving method, allows robot to move for a period of time
+		//while also checking for other variables
+		void move(void (Drive::*command)(), int time);
+	
 	public:
 		//constructor for Drive class, creates a new Drive object
 		Drive();
 		
 		//commands the robot to (method name) for a certain time, good for beginner programs
 		//but the robot can't do anything else while the method executes
-		void driveForward(int t);
-		void driveBackward(int t);
-		void turnRight(int t);
-		void turnLeft(int t);
-		void stopDrive(int t);
+		void driveForward(int time);
+		void driveBackward(int time);
+		void turnRight(int time);
+		void turnLeft(int time);
+		void stopDrive(int time);
 		
 		
 		//commands the robot to (method name), allows for advanced programs
