@@ -1,6 +1,6 @@
 /*Written by Jacob Smith for Brandeis Robotics club
 Provides readable wrapper functions for the Zumo Proximity Sensors
-October 11 2018*/
+October 11 2018 using https://www.youtube.com/watch?v=ddPo6HQvxzQ as model*/
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
@@ -15,6 +15,7 @@ Proximity::Proximity(){
 	
 }
 
+//reads the proximity sensors and returns the left distance
 int Proximity::getLeftCounts(){
 	prox.read();
 	return prox.countsLeftWithLeftLeds();
@@ -22,6 +23,7 @@ int Proximity::getLeftCounts(){
 	
 }
 
+//reads the proximity sensors and returns the center left distance
 int Proximity::getCenterLeftCounts(){
 	prox.read();
 	return prox.countsFrontWithLeftLeds();
@@ -29,6 +31,7 @@ int Proximity::getCenterLeftCounts(){
 	
 }
 
+//reads the proximity sensors and returns the center right distance
 int Proximity::getCenterRightCounts(){
 	prox.read();
 	return prox.countsFrontWithRightLeds();
@@ -36,6 +39,7 @@ int Proximity::getCenterRightCounts(){
 	
 }
 
+//reads the proximity sensors and returns the right distance
 int Proximity::getRightCounts(){
 	prox.read();
 	return prox.countsRightWithRightLeds();
