@@ -9,13 +9,13 @@ Zumo Automation Project
     6. Create a machine learning exercise whereby the robots can learn the best strategy by playing eachother  
 
 * Background information
-	1.[Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
+	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * Robot used	
-	1.[current robot used, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
-	2.[3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
+	+ [current robot used, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
+	+ [3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
 * Software Used
-	1.[Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software) used to download programs to the robot
-	2.[ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot
+	+ [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software) used to download programs to the robot
+	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot
 
 	
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by Jacob Smith
