@@ -7,7 +7,7 @@ Proximity Library
 	+ A printing method is also included
 	
 + An example file is provided
-   +It prints the robot's position to its lcd
+   + It prints the robot's position to its lcd
 
 [The dependency library may be found here](http://pololu.github.io/zumo-32u4-arduino-library/)  
  
