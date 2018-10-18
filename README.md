@@ -8,6 +8,7 @@ Zumo Automation Project
     5. Allow the robots to reset for a new match automatically  
     6. Create a machine learning exercise whereby the robots can learn the best strategy by playing eachother  
 
+* [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by Matthew Millendorf and Jacob Smith
 * We are always looking for anyone who wants to contribute, email us!  
     + jsmith2021@brandeis.edu  

@@ -48,6 +48,10 @@ int Proximity::getRightCounts(){
 
 //iterates through the array of current line sensor readings and prints each one to the robot's display
 void Proximity::printAllSensors(Zumo32U4LCD lcd) {
+	//set the top of the display to label which readout is which
+ //left, center left, center right, right
+ lcd.print("L CL CR R");
+	
 	lcd.gotoXY(0,0);
 	
 	lcd.print(getLeftCounts());
