@@ -5,6 +5,7 @@ April 4 2018*/
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
+#incldue <Zumo32U4ProximitySensors.h>
 #include<Zumo32U4LineSensors.h>
 #include <Zumo32U4LCD.h>
 #include "Line.h"

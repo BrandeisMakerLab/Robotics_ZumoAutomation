@@ -16,7 +16,7 @@ void setup() {
  lcd.init();
  //set the top of the display to label which readout is which
  //left, center left, center right, right
- lcd.display("L CL CR R");
+ lcd.print("L CL CR R");
 
 }
 
