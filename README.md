@@ -17,6 +17,8 @@ Zumo Automation Project
 	+ [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software) used to download programs to the robot
 	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot
 
+* Getting started
+ +[Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
 	
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by Jacob Smith
 * We are always looking for anyone who wants to contribute, email us!  
