@@ -8,6 +8,9 @@ Zumo Automation Project
     5. Allow the robots to reset for a new match automatically  
     6. Create a machine learning exercise whereby the robots can learn the best strategy by playing eachother  
 
+* Getting started
+ + [Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
+ 
 * Background information
 	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * Robot used	
@@ -15,10 +18,7 @@ Zumo Automation Project
 	+ [3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
 * Software Used
 	+ [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software) used to download programs to the robot
-	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot
-
-* Getting started
- +[Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
+	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot)
 	
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by Jacob Smith
 * We are always looking for anyone who wants to contribute, email us!  
