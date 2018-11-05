@@ -5,29 +5,28 @@ April 4 2018*/
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include<Zumo32U4LineSensors.h>
-#include <Zumo32U4LCD.h>
 #include <ZumoShield.h>
-#include "Line.h"
+#include "LineShield.h"
 
 //assigns line sensor threshold values  to default
-Line::Line(){
-	lineReader.initThreeSensors();
+LineShield::LineShield(){
+	lineReader.init();
 	this->blackWhiteBoundary=500;
 
 }
 
 //assigns line sensor threshold values 
-Line::Line(int blackWhiteBoundary){
-	lineReader.initThreeSensors();
+LineShield::LineShield(int blackWhiteBoundary){
+	lineReader.init();
 	this->blackWhiteBoundary=blackWhiteBoundary;
+
 
 }
 
 //first takes line sensor readings to see where the robot is in the sumo ring, and
 //returns true if all of the sensors are darker than the edge tape, false otherwise
-bool Line::isOnEdge(){
-	lineReader.read(reflections,true);
+bool LineShield::isOnEdge(){
+	lineReader.read(reflections);
 	if (reflections[0]<=blackWhiteBoundary || reflections[1]<=blackWhiteBoundary || reflections[2]<=blackWhiteBoundary){
 		return true;
 	}
@@ -36,15 +35,13 @@ bool Line::isOnEdge(){
 }
 
 //iterates through the array of current line sensor readings and prints each one to the robot's display
-void Line::printAllSensors(Zumo32U4LCD lcd) {
-	lineReader.read(reflections,true);
+void LineShield::printAllSensors() {
+	lineReader.read(reflections);
 	for (int i=0;i<NUM_SENSORS;i++){
-		lcd.clear();
-		lcd.print(i);
-		lcd.print(":");
-		lcd.print(reflections[i]);
+		Serial.print(i);
+		Serial.print(":");
+		Serial.println(reflections[i]);
 		delay(1000);
 	}
-	lcd.clear();
 	
 }
