@@ -25,10 +25,19 @@ class Proximity{
 	public:
 		//creates a new Proximity object
 		Proximity();
-		int Proximity::getLeftCounts();
-		int Proximity::getCenterLeftCounts();
-		int Proximity::getCenterRightCounts();
-		int Proximity::getRightCounts();
+		
+		//returns the distance reading from the left side of robot
+		int getLeftCounts();
+		
+		//returns the distance reading from the center left side of robot
+		int getCenterLeftCounts();
+		
+		//returns the distance reading from the center right side of robot
+		int getCenterRightCounts();
+		
+		//returns the distance reading from the right side of robot
+		int getRightCounts();
+		
 		//prints all of the sensor readings to the lcd
 		void printAllSensors(Zumo32U4LCD lcd);
 		
