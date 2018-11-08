@@ -5,7 +5,6 @@ April 4 2018*/
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#incldue <Zumo32U4ProximitySensors.h>
 #include<Zumo32U4LineSensors.h>
 #include <Zumo32U4LCD.h>
 #include <ZumoShield.h>
@@ -33,6 +32,23 @@ bool Line::isOnEdge(){
 		return true;
 	}
 	return false;
+	
+}
+
+//Prints the robot's location using senosr values
+void Line::detectRegion(Zumo32U4LCD lcd) {
+	lineReader.read(reflections,true);
+	relfections[];//[0,1,2]
+	intx= relfections[0];
+	inty= relfections[1];
+	intz= relfections[2];
+	if (x>800 || y>800||z>800){print "hey, you are in the boundary";}
+	elseif(){}
+	elseif(){}
+	else{}
+	
+	
+	lcd.clear();
 	
 }
 
