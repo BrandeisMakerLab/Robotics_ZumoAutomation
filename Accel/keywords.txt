@@ -6,3 +6,4 @@ getY	KEYWORD2
 getZ	KEYWORD2
 updateAccels	KEYWORD2
 initializeCompass		KEYWORD2
+printAccels		KEYWORD2

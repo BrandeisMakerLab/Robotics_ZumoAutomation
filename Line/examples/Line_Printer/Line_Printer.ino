@@ -1,19 +1,19 @@
 /*Jacob Smith 2018.5.7 Brandeis Robotics Club.
   Uses the Line class to print line sensor values
-  to the Zumo32U4 robot's liqqiod crystal display*/
+  to the Serial Monitor*/
 
-#include <Line.h>
-#include <Zumo32U4LCD.h>
-Line lineReader;
-Zumo32U4LCD lcd;
+#include <LineShield.h>
+LineShield lineReader;
 void setup() {
-  lcd.print("LINE");
-  lcd.gotoXY(0, 1);
-  lcd.print("PRINTER");
+  //starts serial connection at 9600 bits per second
+  Serial.begin(9600);
+  //guarantees robot will not continue until serial connection is established
+  while (!Serial) {}
+  Serial.println("brandeis Universty Example Line Sensor Printing Program");
   delay(2000);
 }
 
 void loop() {
-  lineReader.printAllSensors(lcd);
+  lineReader.printAllSensors();
 
 }
