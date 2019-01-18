@@ -34,14 +34,35 @@ bool LineShield::isOnEdge(){
 	
 }
 
+//iterates through the array of current line sensor readings an returns the largest
+//does not take new reading, so can be used with printAllSensors
+double LineShield::getAverageReading() {
+
+  int sum=0;
+  //iterate through all sensors
+  for (int i=0;i<NUM_SENSORS;i++){
+   //add curretn sensor value to sum
+   sum+=reflections[i];
+  }
+  //compute the average sensor reading
+  double average=sum/NUM_SENSORS;
+  return average;
+}
+
 //iterates through the array of current line sensor readings and prints each one to the robot's display
 void LineShield::printAllSensors() {
+	
 	lineReader.read(reflections);
+  double sum=0;
+  //iterate through all sensors
 	for (int i=0;i<NUM_SENSORS;i++){
 		Serial.print(i);
 		Serial.print(":");
-		Serial.println(reflections[i]);
-		delay(1000);
+		Serial.print(reflections[i]);
+    Serial.print('\t');	
+  
 	}
-	
+  Serial.println("");
+	delay(1000);
+
 }
