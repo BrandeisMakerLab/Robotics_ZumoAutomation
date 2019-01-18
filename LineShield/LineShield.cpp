@@ -59,10 +59,10 @@ void LineShield::printAllSensors() {
 		Serial.print(i);
 		Serial.print(":");
 		Serial.print(reflections[i]);
+
     Serial.print('\t');	
   
 	}
   Serial.println("");
 	delay(1000);
-
 }
