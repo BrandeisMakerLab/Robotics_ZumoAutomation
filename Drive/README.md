@@ -12,5 +12,3 @@ Drive Library
  
 -The Brandeis University Robotics Club
 ![Brandeis University Logo](https://www.brandeis.edu/communications/creative/downloads/gotham-outlined.jpg)
-
-TESTETTETETST
