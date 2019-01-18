@@ -5,7 +5,7 @@ ENCODERDriver LIBRARY
 + The functions are outlined in the .h header file
 	+ they allow the robot to set and maintin the speed of its left and right sides
 + An example file is provided
-	+ 
+	+ it prints the motion of the robot
 
 [The dependency library may be found here](http://pololu.github.io/zumo-32u4-arduino-library/)
 
