@@ -40,8 +40,8 @@ void LineShield::printAllSensors() {
 	for (int i=0;i<NUM_SENSORS;i++){
 		Serial.print(i);
 		Serial.print(":");
-		Serial.println(reflections[i]);
-		delay(1000);
+		Serial.print(reflections[i]);
 	}
-	
+	Serial.println("");
+ delay(200);
 }

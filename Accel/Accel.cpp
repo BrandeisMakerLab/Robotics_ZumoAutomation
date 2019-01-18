@@ -1,7 +1,7 @@
 /*Written by Jacob Smith for Brandeis Robotics club
 	A wrapper class for the pololu LSM303 class, which interfaces with the accelerometer on the ZUMO32U4 robot
 	Allows for simple initialization of the accelerometer in the class constructor and provides getter methods to
-	get the robot's x, y, and z axis acceleration. April 23 2018
+	get the robot's x, y, and z axis acceleration. April 23 201 8
 */
 
 //includes the libraries of code necessary to make this one work
