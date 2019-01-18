@@ -38,6 +38,9 @@ class LineShield{
 		
 		//prints all of the sensor readings to the lcd
 		void printAllSensors();
+
+    //returns the average reading of all the line sensors on the robot from the last reading
+   double getAverageReading();
 		
 };
 

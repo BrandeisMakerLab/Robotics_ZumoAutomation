@@ -6,3 +6,4 @@ isInRing	KEYWORD2
 isOnEdge	KEYWORD2
 isOutBounds		KEYWORD2
 printAllSensors		KEYWORD2
+getAverageReading	KEYWORD2
