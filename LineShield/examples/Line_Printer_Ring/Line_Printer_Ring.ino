@@ -12,10 +12,14 @@ ZumoBuzzer speaker;
 int  NUM_READINGS = 3;
 //the number of regions to be seached
 #define NUM_REGIONS 3
-int numRegions=NUM_REGIONS;
+int numRegions = NUM_REGIONS;
 //an array of ring regions
-char* regions[] = {"Black", "Gray", "White"};
-double regionAverages[NUM_REGIONS];
+char* regions[] = {"White", "Gray", "Black"};
+int regionMins[NUM_REGIONS];
+int regionMaxs[NUM_REGIONS];
+//the minimum and maximum readings, useful for calibration
+int min = 5000;
+int max = -5000;
 
 //the object that can print sensor data
 LineShield lineReader;
@@ -36,20 +40,35 @@ void loop() {
   //loop through regions
   for (int i = 0; i < NUM_REGIONS; i++) {
     //take the region and display name of that region
-    double average=takeReadingRegion(regions[i]);
-    regionAverages[i]=average;
-  }
-  //after senso data has been taken, calculate the boundaries between regions
-  Serial.println("Final Results");
-  for(int i=0;i<NUM_REGIONS-1;i++){
-      //average adjacent regions
-      double average=(regionAverages[i]+regionAverages[i+1])/2;
-      //display results to screen
-      Serial.print("Boundary between "); Serial.print(regions[i]);Serial.print(" and ");
-      Serial.print(regions[i+1]);Serial.print(" is ");Serial.println(average);
+    double average = takeReadingRegion(regions[i]);
+    regionMins[i] = min;
+    regionMaxs[i] = max;
   }
 
-  
+
+  //after senso data has been taken, calculate the boundaries between regions
+  Serial.println("Final Results");
+  for (int i = 0; i < NUM_REGIONS - 1; i++) {
+    //take the maximum sensor value o the previous and the minimum of this one
+    int maxPrev = regionMaxs[i];
+    int minNext = regionMins[i + 1];
+    //print header
+    Serial.print("Boundary between "); Serial.print(regions[i]); Serial.print(" and ");
+    Serial.print(regions[i + 1]); Serial.print(" is ");
+    //if they ovelap, print an error
+    if (maxPrev >= minNext) {
+      Serial.println("Error, thresholds aren't discrete");
+      //otherwise tkae the average between them to be the threhold
+    } else {
+      //take the average between the max of the previous region and the min of the next
+      int average = (regionMaxs[i] + regionMins[i + 1]) / 2;
+      //display results to screen
+      Serial.println(average);
+    }
+
+  }
+
+
   //when at end wait to end program
   Serial.println("Finished");
   delay(500000);
@@ -58,22 +77,61 @@ void loop() {
 //given a string representing the region being covered,
 //promprts the person to place robot over region and takes line sensor reading
 //returns the average for that reading
-double takeReadingRegion(char* region) {
+int takeReadingRegion(char* region) {
   Serial.print("Please Move Robot to "); Serial.println(region);
   delay(5000);
-  double sum = 0;
+
   //loop for number of readings
   for (int reading = 1; reading <= NUM_READINGS; reading++) {
-    //display readings number and wait for robot ot be place
+    //display readings number and wait for robot to be placed
     Serial.print("Reading: "); Serial.print(reading); Serial.print('\t');
     delay(3000);
     speaker.playNote(NOTE_D(6), 500, 15);
     //take line sensor reading and display
     lineReader.printAllSensors();
-    //add the average reaing to the sum
-    sum += lineReader.getAverageReading();
+    //update the running minimum and maximum readings
+    updateMinMax(reading);
   }
-  double average = sum / NUM_READINGS;
-  Serial.print("\t average for this region:"); Serial.println(average);
-  return average;
+  Serial.print("\tMin "); Serial.print(min); Serial.print(" Max "); Serial.println(max);
+}
+
+
+//uses the LineReader object to find the mimum and maximum reflection readings
+//and updates the current min max with them
+void updateMinMax(int reading) {
+  //if this is the first reading, then set min and max to be that
+  if (reading == 1) {
+    min = lineReader.getMin();
+    max = lineReader.getMax();
+    return;
+
+  }
+  //otherwise, get the minimum and maximum from this reading
+  int curMin = lineReader.getMin();
+  int curMax = lineReader.getMax();
+  //update the global minum and maximum
+  if (curMin < min) {
+    min = curMin;
+  }
+  if (curMax > max) {
+    max = curMax;
+  }
+
+}
+//display the regions, mins, and maxes arrays
+void displayArrays() {
+  Serial.println("REGIONS: ");
+  for (int i = 0; i < NUM_REGIONS; i++) {
+    Serial.print(regions[i]);
+  }
+  Serial.println();
+  Serial.print("MINS: ");
+  for (int i = 0; i < NUM_REGIONS; i++) {
+    Serial.print(regionMins[i]);
+  }
+  Serial.println();
+  Serial.print("MAXS: ");
+  for (int i = 0; i < NUM_REGIONS; i++) {
+    Serial.print(regionMaxs[i]);
+  }
 }

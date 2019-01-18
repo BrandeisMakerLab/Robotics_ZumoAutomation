@@ -1,7 +1,7 @@
 /*Written by Jacob Smith,Daniel Kang and Matthew Millendorf for Brandeis Robotics club
-Provides readable wrapper functions for Zumo32U4LCD.h. The program is documented for
-understanding by a general audience
-April 4 2018*/
+  Provides readable wrapper functions for Zumo32U4LCD.h. The program is documented for
+  understanding by a general audience
+  April 4 2018*/
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
@@ -9,60 +9,73 @@ April 4 2018*/
 #include "LineShield.h"
 
 //assigns line sensor threshold values  to default
-LineShield::LineShield(){
-	lineReader.init();
-	this->blackWhiteBoundary=500;
+LineShield::LineShield() {
+  lineReader.init();
+  this->blackWhiteBoundary = 500;
 
 }
 
-//assigns line sensor threshold values 
-LineShield::LineShield(int blackWhiteBoundary){
-	lineReader.init();
-	this->blackWhiteBoundary=blackWhiteBoundary;
+//assigns line sensor threshold values
+LineShield::LineShield(int blackWhiteBoundary) {
+  lineReader.init();
+  this->blackWhiteBoundary = blackWhiteBoundary;
 
 
 }
 
 //first takes line sensor readings to see where the robot is in the sumo ring, and
 //returns true if all of the sensors are darker than the edge tape, false otherwise
-bool LineShield::isOnEdge(){
-	lineReader.read(reflections);
-	if (reflections[0]<=blackWhiteBoundary || reflections[1]<=blackWhiteBoundary || reflections[2]<=blackWhiteBoundary){
-		return true;
-	}
-	return false;
-	
+bool LineShield::isOnEdge() {
+  lineReader.read(reflections);
+  if (reflections[0] <= blackWhiteBoundary || reflections[1] <= blackWhiteBoundary || reflections[2] <= blackWhiteBoundary) {
+    return true;
+  }
+  return false;
+
 }
 
-//iterates through the array of current line sensor readings an returns the largest
+//iterates through the array of current line sensor readings an returns the minumum and maximum reading
 //does not take new reading, so can be used with printAllSensors
-double LineShield::getAverageReading() {
-
-  int sum=0;
+void LineShield::findMinMax() {
+  min = reflections[0];
+  max = reflections[0];
   //iterate through all sensors
-  for (int i=0;i<NUM_SENSORS;i++){
-   //add curretn sensor value to sum
-   sum+=reflections[i];
+  for (int i = 1; i < NUM_SENSORS; i++) {
+    //update the min and max if the next reflection value is a min or max
+    int reflection = reflections[i];
+    if (reflection > max) {
+      max = reflection;
+    } else if (reflection < min) {
+      min = reflection;
+    }
   }
-  //compute the average sensor reading
-  double average=sum/NUM_SENSORS;
-  return average;
+}
+//returns the minimum reflection from the last reading
+int LineShield::getMin() {
+  findMinMax();
+  return min;
+}
+
+//returns the maximum reflection from the last reading
+int LineShield::getMax() {
+  findMinMax();
+  return max;
 }
 
 //iterates through the array of current line sensor readings and prints each one to the robot's display
 void LineShield::printAllSensors() {
-	
-	lineReader.read(reflections);
-  double sum=0;
-  //iterate through all sensors
-	for (int i=0;i<NUM_SENSORS;i++){
-		Serial.print(i);
-		Serial.print(":");
-		Serial.print(reflections[i]);
 
-    Serial.print('\t');	
-  
-	}
+  lineReader.read(reflections);
+  double sum = 0;
+  //iterate through all sensors
+  for (int i = 0; i < NUM_SENSORS; i++) {
+    Serial.print(i);
+    Serial.print(":");
+    Serial.print(reflections[i]);
+
+    Serial.print('\t');
+
+  }
   Serial.println("");
-	delay(1000);
+  delay(1000);
 }
