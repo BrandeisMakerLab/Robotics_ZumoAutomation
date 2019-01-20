@@ -102,7 +102,6 @@ void printArr(int nums[], char*name, int arrSize) {
 //print an array of strings
 void printArr(char* nums[], char*name, int arrSize) {
   Serial.print(name);
-  Serial.print(": ");
   //if array size is 0, print nothing
   if (arrSize == 0) {
     return;
