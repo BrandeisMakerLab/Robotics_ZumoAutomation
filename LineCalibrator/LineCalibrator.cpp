@@ -3,7 +3,6 @@
   understanding by a general audience
   April 4 2018*/
 //include the libraries necessary to make this one work
-#include <Arduino.h>
 #include <Wire.h>
 #include<LineShield.h>
 #include "LineCalibrator.h"
@@ -182,3 +181,4 @@ void LineCalibrator::displayArrays() {
   }
   Serial.println("");
 }
+
