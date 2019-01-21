@@ -4,6 +4,4 @@ LineCalibrator		KEYWORD1
 calibrateLineSensors	KEYWORD2
 takeReadingRegion	KEYWORD2
 updateMinMax		KEYWORD2
-selectionSort		KEYWORD2
-swap			KEYWORD2
 displayArrays		KEYWORD2

@@ -9,11 +9,16 @@ void setup() {
   Serial.begin(9600);
   //guarantees robot will not continue until serial connection is established
   while (!Serial) {}
+
   Serial.println("Brandeis Universty Example Line Sensor Printing Program");
   delay(2000);
 }
+
 
 void loop() {
   lineReader.printAllSensors();
 
 }
+
+
+
