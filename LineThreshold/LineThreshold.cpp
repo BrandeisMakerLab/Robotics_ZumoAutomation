@@ -40,27 +40,16 @@ void LineThreshold::setElements(int* regionThresholds, String* regions,
 
 /**
  *
- * @return the region the robot is on
+ *updates the regionsSeen array with what regions each line sensor has seen
  */
-String LineThreshold::getRegion() {
+void LineThreshold::getRegion() {
 	//create an array of reflections
 	unsigned int reflections[NUM_SENSORS];
 	//modify the array with the current sensor values
 	getReflections(reflections);
 	//modify the array with current regions seen
 	getRegionsSeen(regionsSeen, reflections);
-	//go through priority array
-	for (int i = numRegions - 1; i >= 0; i--) {
-		//get the region next in priority
-		String region = regionsPriority[i];
-		//if that region is found, return it
-		boolean found = checkSensorsForRegion(region, regionsSeen);
-		if (found) {
-			return region;
-		}
-	}
-	//if gotten this far, return an error
-	return "ERROR";
+
 }
 
 /**

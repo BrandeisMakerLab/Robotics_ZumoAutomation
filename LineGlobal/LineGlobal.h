@@ -34,6 +34,16 @@ private:
 	 */
 	void printArrs(String* regions, int* thresholds, int numRegions);
 
+	/**
+	 * the number of regions the field has
+	 */
+	int numRegions;
+
+	/**
+	 * a list of the regions the robot goes through
+	 */
+	String* regionsPriority;
+
 public:
 
 	/**
@@ -43,7 +53,8 @@ public:
 	/**
 	 * sets the object given an array of regions, the number of regions, and whether a serial connection shouold be established
 	 */
-	void setElements(String* regions, int numRegions, String regionsSeen[], bool USB);
+	void setElements(String* regions, int numRegions, String regionsSeen[],
+			bool USB);
 
 	/**
 	 *
@@ -51,10 +62,15 @@ public:
 	 */
 	String getRegion();
 
-	/*
+	/**
 	 * displays the region the robot is on and individual sensor values
 	 */
 	void displayLineReadings();
+
+	/**
+	 * displays the region the robot is on and individual sensor values
+	 */
+	void displayLineReadings(String region);
 
 };
 

@@ -77,14 +77,14 @@ void LineCalibrator::calibrateLineSensors() {
 void LineCalibrator::takeReadingRegion(String region) {
 	Serial.print("Please Move Robot to ");
 	Serial.println(region);
-	delay(5000);
+	delay(1000);
 	//loop for number of readings
 	for (int reading = 1; reading <= NUM_READINGS; reading++) {
 		//display readings number and wait for robot to be placed
 		Serial.print("Reading: ");
 		Serial.print(reading);
 		Serial.print('\t');
-		delay(3000);
+		delay(1000);
 
 		//take line sensor reading and display
 		printAllSensors();

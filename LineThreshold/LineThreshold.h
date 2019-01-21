@@ -79,9 +79,9 @@ public:
 
 
 	/**
-	 * returns the region the robot is in
+	 * updates the regionsSeen array with what region each indivual line sensor has seen
 	 */
-	String getRegion();
+	void getRegion();
 
 };
 

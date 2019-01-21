@@ -51,6 +51,8 @@ void LineGlobal::setElements(String* regions, int numRegions,String regionsSeen[
 	Serial.println("Final Calibration Results");
 	printArrs(regions, thresholds,numRegions);
 	this->regionsSeen=regionsSeen;
+	this->numRegions=numRegions;
+	this->regionsPriority=regionsPriority;
 	//use information from calibration to set state of threshold object
 	thresh.setElements(thresholds, regions, regionsPriority, numRegions, regionsSeen);
 }
@@ -60,9 +62,35 @@ void LineGlobal::setElements(String* regions, int numRegions,String regionsSeen[
  * @return the region the robot is over
  */
 String LineGlobal:: getRegion(){
+	//get the regions that each line sensor sees
+	thresh.getRegion();
+	//generate a frequency array of those regions
+	int frequencies [numRegions];
+	for(int i=0;i<numRegions;i++){
+		frequencies[i]=0;
+	}
 
-	return thresh.getRegion();
+	//loop through all the sensors
+	for(int i=0;i<NUM_SENSORS;i++){
+		String region=regionsSeen[i];
+		//loop through all the region names
+		for(int j=0;j<numRegions;j++){
+			//add that region to the frequency array
+			if(region==regionsPriority[j]){
+				frequencies[j]=frequencies[j]+1;
+			}
+		}
+	}
 
+	//loop through fruequency array
+	for(int i=numRegions-1;i>=0;i--){
+		//if more than one sensor saw it, return that region
+		if(frequencies[i]>=2){
+			return regionsPriority[i];
+		}
+	}
+	//otherwise, return the lowest priority region
+	return regionsPriority[0];
 }
 
 
@@ -89,8 +117,7 @@ void LineGlobal::printArrs(String* regions, int* thresholds,int numRegions) {
  * Displays what each individual sensor sees and the overall region
  * @param region the region the robot is on
  */
-void LineGlobal::displayLineReadings() {
-	String region=getRegion();
+void LineGlobal::displayLineReadings(String region) {
 	Serial.print("Individual Sensors:\t");
 	//print what region each individual sensor sees
 	for (int i = 0; i < NUM_SENSORS; i++) {
@@ -102,4 +129,11 @@ void LineGlobal::displayLineReadings() {
 	Serial.println(region);
 }
 
+/**
+ * Overloaded display method to display default region estimate
+ */
+void LineGlobal::displayLineReadings() {
+	String region=getRegion();
+	displayLineReadings(region);
+}
 
