@@ -14,34 +14,40 @@
 #include <Wire.h>
 #include<ZumoShield.h>
 
-class LineShield{
-	
-	private:
-		//the provided class, which will interface with the robot's LineShieldShield sensors
-		ZumoReflectanceSensorArray lineReader;	
-		//an array to store the LineShieldShield sensor readings
-		uint16_t reflections[NUM_SENSORS];
-		
-		//thresholds for tape colors, the difference between the black and white boundary
-		uint16_t blackWhiteBoundary;
+class LineShield {
 
-	public:
-	
-		//creates a new LineShieldShield object with defual sensor reading
-		LineShield();
-	
-		//creates a new LineShieldShield object with input sensor reading
-		LineShield(int threshold);
-		
-		//returns whether the robot is on the edge of the ring
-		bool isOnEdge();
-		
-		//prints all of the sensor readings to the lcd
-		void printAllSensors();
+  private:
+    //the provided class, which will interface with the robot's LineShieldShield sensors
+    ZumoReflectanceSensorArray lineReader;
 
-    //returns the average reading of all the line sensors on the robot from the last reading
-   double getAverageReading();
-		
+    //an array to store the LineShieldShield sensor readings
+    unsigned int reflections[NUM_SENSORS];
+
+    //finds the minimum and maximums reflections from last reading
+    void findMinMax();
+
+    //the minimum and maximum brightness values in one read
+    int min;
+    int max;
+
+  public:
+
+    //creates a new LineShieldShield object with defual sensor reading
+    LineShield();
+
+    //returns the minimum sensor value from alst reading
+    int getMin();
+
+    //returns the maximum sensor value from alst reading
+    int getMax();
+
+    //prints all of the sensor readings to the lcd
+    void printAllSensors();
+
+    //modify an array of line sensor values
+    void getReflections(unsigned int clientArray []);
+
+
 };
 
 #endif

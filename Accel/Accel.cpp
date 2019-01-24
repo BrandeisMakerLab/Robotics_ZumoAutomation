@@ -5,7 +5,7 @@
 */
 
 //includes the libraries of code necessary to make this one work
-#include <LSM303.h>
+#include <Zumo32U4.h>
 #include <Wire.h>
 #include <Arduino.h>
 #include "Accel.h"
