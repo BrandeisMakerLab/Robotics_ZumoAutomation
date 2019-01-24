@@ -27,9 +27,7 @@ void setup() {
 }
 
 void loop() {
-  //String region=cali.getRegion();
-  //Serial.println(region);
-  //delay(200);
+
 }
 
 /**

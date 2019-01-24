@@ -7,7 +7,6 @@
 //LineShield lineReader;
 //using parenthesis here doesn't work for some reason
 int numRegions = 3;
-String regionsPriority[] = { "BLACK", "WHITE", "GRAY" };
 String regions[] = { "WHITE", "GRAY", "BLACK" };
 int thresholds[] = { 442, 1648 };
 String regionsSeen[NUM_SENSORS];
@@ -21,7 +20,7 @@ void setup() {
 	while (!Serial) {
 	}
 	//set all the arrays and numbers the LineThreshold object needs
-	thresh.setElements(thresholds, regions, regionsPriority, numRegions,
+	thresh.setElements(thresholds, regions, numRegions,
 			regionsSeen);
 }
 void loop() {

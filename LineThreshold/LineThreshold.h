@@ -30,16 +30,9 @@ private:
 	int* thresholds;
 
 	/**
-	 * the regions in order of priority
-	 */
-	String *regionsPriority;
-
-	/**
 	 * the number of regions in the filed
 	 */
 	int numRegions;
-
-
 
 	/**
 	 * an array of the regions that each line sensor sees
@@ -52,17 +45,9 @@ private:
 	String getIndividualRegion(int reflection);
 
 	/**
-	 * checks to see if any of the sensors show that region
-	 * returns true if that region was found, false otherwise
-	 */
-	boolean checkSensorsForRegion(String region, String regionsSeen[]);
-
-	/**
 	 * converts the numbers the robot sees into the names of regions
 	 */
 	void getRegionsSeen(String decodedRegions[], unsigned int* reflections);
-
-
 
 public:
 	/*
@@ -73,15 +58,12 @@ public:
 	/**
 	 * creates a new LineShieldShield object with defual sensor reading
 	 */
-	void setElements(int* regionThresholds, String* regions,
-			String* regionsPriority, int numRegions, String* regionsSeen);
-
-
+	void setElements(int* regionThresholds, String* regions, int numRegions, String* regionsSeen);
 
 	/**
 	 * updates the regionsSeen array with what region each indivual line sensor has seen
 	 */
-	void getRegion();
+	void convertToRegion();
 
 };
 

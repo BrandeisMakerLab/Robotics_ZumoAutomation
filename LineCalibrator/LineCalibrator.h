@@ -55,7 +55,7 @@ class LineCalibrator : public LineShield {
   public:
 
     //creates a new LineCalibratorShield object with lineReader object to read sensor data
-    LineCalibrator(String* regions,int numRegions);
+    LineCalibrator(String* regions, int numRegions);
     //moves the robot over the series of colors, and determines threshold values
     void calibrateLineSensors();
 

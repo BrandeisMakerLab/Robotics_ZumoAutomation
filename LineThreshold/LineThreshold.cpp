@@ -13,7 +13,6 @@
 LineThreshold::LineThreshold(){
 	regionsSeen=new String[6];
 	numRegions=0;
-	regionsPriority=new String[3];
 	thresholds=new int[2];
 	regions=new String[3];
 
@@ -28,11 +27,9 @@ LineThreshold::LineThreshold(){
  * @param numRegions the number of regions
  * @param regionsSeen an array of the regions the line sensors have seen to be populated
  */
-void LineThreshold::setElements(int* regionThresholds, String* regions,
-		String* regionsPriority, int numRegions, String* regionsSeen) {
+void LineThreshold::setElements(int* regionThresholds, String* regions, int numRegions, String* regionsSeen) {
 	this->thresholds = regionThresholds;
 	this->regions = regions;
-	this->regionsPriority = regionsPriority;
 	this->numRegions = numRegions;
 	this->regionsSeen = regionsSeen;
 }
@@ -42,7 +39,7 @@ void LineThreshold::setElements(int* regionThresholds, String* regions,
  *
  *updates the regionsSeen array with what regions each line sensor has seen
  */
-void LineThreshold::getRegion() {
+void LineThreshold::convertToRegion() {
 	//create an array of reflections
 	unsigned int reflections[NUM_SENSORS];
 	//modify the array with the current sensor values
@@ -50,23 +47,6 @@ void LineThreshold::getRegion() {
 	//modify the array with current regions seen
 	getRegionsSeen(regionsSeen, reflections);
 
-}
-
-/**
- * checks the array of sensors for a particular region
- * @param region the name of the region to be checked
- * @param reflections an array of reflections of the sensors
- * @return that region if found, null otherwise
- */
-boolean LineThreshold::checkSensorsForRegion(String region,
-		String regionsSeen[]) {
-	//for a given region check, loop through the sensors
-	for (int i = 0; i < NUM_SENSORS; i++) {
-		if (region == regionsSeen[i])
-			return true;
-	}
-	//if you've gotten this far, none of the sensors are in the region
-	return false;
 }
 
 /**
@@ -101,6 +81,3 @@ String LineThreshold::getIndividualRegion(int reflection) {
 	//if you've reached the end, you're at the last region by definition
 	return *(regions + numRegions - 1);
 }
-
-
-
