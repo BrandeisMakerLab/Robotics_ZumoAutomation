@@ -15,10 +15,12 @@ Zumo Automation Project
 	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * Robot used	
 	+ [current robot used, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
+	+ [sec6ndary robot used](https://www.pololu.com/product/2504)
 	+ [3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
 * Software Used
 	+ [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software) used to download programs to the robot
 	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot)
+	+ We had our first meeting!
 	
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by Jacob Smith
 * We are always looking for anyone who wants to contribute, email us!  
