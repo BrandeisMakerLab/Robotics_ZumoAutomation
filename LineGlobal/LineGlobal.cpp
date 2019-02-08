@@ -23,7 +23,7 @@ LineGlobal::LineGlobal(){
  * @param regionsSeen anarray of the regions the robot has seen
  * @param USB whether a serial connection should be opened with the USB
  */
-void LineGlobal::setElements(String* regions, int numRegions,String regionsSeen[], boolean USB) {
+void LineGlobal::setElements(String* regions, int numRegions,String regionsSeen[], bool USB) {
 
 	//save the regions in a new array
 	String* regionsPriority = new String[numRegions];
@@ -52,9 +52,8 @@ void LineGlobal::setElements(String* regions, int numRegions,String regionsSeen[
 	printArrs(regions, thresholds,numRegions);
 	this->regionsSeen=regionsSeen;
 	this->numRegions=numRegions;
-	this->regionsPriority=regionsPriority;
 	//use information from calibration to set state of threshold object
-	thresh.setElements(thresholds, regions, regionsPriority, numRegions, regionsSeen);
+	thresh.setElements(thresholds, regions, numRegions, regionsSeen);
 }
 
 /**
@@ -63,7 +62,7 @@ void LineGlobal::setElements(String* regions, int numRegions,String regionsSeen[
  */
 String LineGlobal:: getRegion(){
 	//get the regions that each line sensor sees
-	thresh.getRegion();
+	thresh.convertToRegion();
 	//generate a frequency array of those regions
 	int frequencies [numRegions];
 	for(int i=0;i<numRegions;i++){

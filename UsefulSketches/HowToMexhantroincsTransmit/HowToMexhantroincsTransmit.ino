@@ -18,7 +18,7 @@ void setup() {
   radio.stopListening();
 }
 void loop() {
-  const char text[] = "Wireless Zumo pp!";
+  const char text[] = "Try these pins!";
   radio.write(&text, sizeof(text));
   delay(1000);
 }
