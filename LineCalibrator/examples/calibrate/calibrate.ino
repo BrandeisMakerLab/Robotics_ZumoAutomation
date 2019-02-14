@@ -1,4 +1,4 @@
-/*Jacob Smith 1/19/2019 Brandeis University Robotics Club
+/*Jacob Smith 2/14/2019 Brandeis University Robotics Club
  uses the LineCalibrator class to find thrshold values for the line sensors in the sumo ring*/
 #include<LineCalibrator.h>
 #include<LineShield.h>
@@ -18,12 +18,10 @@ void setup() {
   }
   // calibrates the line sensors
   cali.calibrateLineSensors();
-  //get the regions and threhsolds calculated
-  String* regions = cali.getRegions();
-  int* thresholds = cali.getThresholds();
-  //print the arrays
-  Serial.println("Final Results");
-  printArrs(regions,thresholds);
+  Serial.println("Calculation is");
+  String* regions=cali.getRegions();
+  int*threshold=cali.getThresholds;
+  printArrs(regions,threshold);
 }
 
 void loop() {
@@ -48,4 +46,5 @@ void printArrs(String* regions, int* thresholds) {
   Serial.println(*(regions + numRegions-1));
 
 }
+
 

@@ -129,3 +129,8 @@ void LineCalibrator::updateMinMax(int reading) {
 int* LineCalibrator::getThresholds() {
 	return this->regionThresholds;
 }
+
+//returns the array of regions
+String* LineCalibrator::getRegions() {
+	return this->regions;
+}

@@ -81,3 +81,5 @@ String LineThreshold::getIndividualRegion(int reflection) {
 	//if you've reached the end, you're at the last region by definition
 	return *(regions + numRegions - 1);
 }
+
+
