@@ -17,12 +17,15 @@ void setup() {
 
 void loop() {
   lineReader.printAllSensors();
-  if(lineReader.isOnWhite()){
-	  Serial.println("OnWhite");
+  bool onWhite=lineReader.isOnWhite();
+  if(onWhite){
+    Serial.println("On White");  
   }else{
-	  Serial.println("NotonWhite");
+    Serial.println("Not on WHite");  
   }
+ 
 }
+
 
 
 

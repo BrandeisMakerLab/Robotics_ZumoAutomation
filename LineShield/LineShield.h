@@ -6,13 +6,10 @@
 #ifndef LineShield_h
 #define LineShield_h
 
-//define the number of sensors that will be used
-#define NUM_SENSORS 6
-
 //include all the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include<ZumoShield.h>
+#include <ZumoReflectanceSensorArray.h>
 
 class LineShield {
 
@@ -21,7 +18,11 @@ class LineShield {
     ZumoReflectanceSensorArray lineReader;
 
     //an array to store the LineShieldShield sensor readings
-    unsigned int reflections[NUM_SENSORS];
+    //declared at an arbitrary size and then actually used with numSensors
+    unsigned int reflections[10];
+
+    //an array to store the number of sensors for convenineve
+    int numSensors;
 
     //finds the minimum and maximums reflections from last reading
     void findMinMax();
@@ -29,6 +30,9 @@ class LineShield {
     //the minimum and maximum brightness values in one read
     int min;
     int max;
+
+    int minThresh;
+    int maxThresh;
 
   public:
 
@@ -46,6 +50,9 @@ class LineShield {
 
     //modify an array of line sensor values
     void getReflections(unsigned int clientArray []);
+
+    //returns whether robot is on gray region
+    bool isOnWhite();
 
 
 };

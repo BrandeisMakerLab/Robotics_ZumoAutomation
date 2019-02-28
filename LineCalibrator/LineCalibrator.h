@@ -61,6 +61,9 @@ class LineCalibrator : public LineShield {
 
     //returns the array of thresholds
     int* getThresholds();
+
+    //returns the array of regions
+    String* getRegions();
 };
 #endif
 
