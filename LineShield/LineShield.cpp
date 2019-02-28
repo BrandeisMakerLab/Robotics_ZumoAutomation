@@ -74,7 +74,7 @@ void LineShield::getReflections(unsigned int clientArray []) {
 }
 
 /**
- * returns whether the robot is on gray region
+ * returns whether the robot is on white region
  * temporary method for robotics club meeting
  */
 bool LineShield::isOnWhite(){
