@@ -10,9 +10,15 @@
 
 //assigns line sensor threshold values  to default
 LineShield::LineShield() {
-	lineReader.init();
+	//uses this mode to avoid using all 6 line sensor pins
+	unsigned char pinsUsed []={4,A2,A3,5};
+	//note use of size of instead of seperate size variable
+	numSensors=sizeof(pinsUsed)/sizeof(pinsUsed[0]);
+	lineReader.init(pinsUsed,numSensors);
 	this->min = 9999;
 	this->max = -9999;
+	this->maxThresh=1684;
+	this->minThresh=900;
 
 }
 
@@ -22,7 +28,7 @@ void LineShield::findMinMax() {
 	min = reflections[0];
 	max = reflections[0];
 	//iterate through all sensors
-	for (int i = 1; i < NUM_SENSORS; i++) {
+	for (int i = 1; i < numSensors; i++) {
 		//update the min and max if the next reflection value is a min or max
 		int reflection = reflections[i];
 		if (reflection > max) {
@@ -51,7 +57,7 @@ void LineShield::printAllSensors() {
 	lineReader.read(reflections, 1);
 
 	//iterate through all sensors
-	for (int i = 0; i < NUM_SENSORS; i++) {
+	for (int i = 0; i < numSensors; i++) {
 		Serial.print(i);
 		Serial.print(":");
 		Serial.print(reflections[i]);
@@ -66,3 +72,26 @@ void LineShield::printAllSensors() {
 void LineShield::getReflections(unsigned int clientArray []) {
 	lineReader.read(clientArray,1);
 }
+
+/**
+ * returns whether the robot is on gray region
+ * temporary method for robotics club meeting
+ */
+bool LineShield::isOnWhite(){
+	//read line sensor
+	lineReader.read(reflections,1);
+	//iterate through all sensors
+	for (int i = 0; i < numSensors; i++) {
+
+		int val=reflections[i];
+		if (val<minThresh){
+			return true;
+		}
+
+	}
+	Serial.println("");
+	delay(1000);
+	return false;
+
+}
+

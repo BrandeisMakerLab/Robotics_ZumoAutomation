@@ -8,16 +8,17 @@
 
 //include the classes necessary to make this one work
 #include <Timer.h>
-#include <Zumo32U4LCD.h>
+
 
 //declare robot display timer, and secondCount variable
-Zumo32U4LCD lcd;
+
 Timer timer;
 int secCount;
 
 //setup is executed before main loop
 void setup() {
-
+  Serial.begin(9600);
+  while(!Serial){}
   printNumber("getTime:", timer.getTime());//should be 0
   waitAndClear();
 
@@ -35,7 +36,7 @@ void setup() {
 //prints the time every second without usage of delay statements
 void loop() {
   if (timer.interval(1000)) {
-    lcd.clear();
+ 
     printNumber("Secs ", secCount);
     secCount++;
   }
@@ -44,12 +45,11 @@ void loop() {
 //wait for 2 seconds and clears the robot's display
 void waitAndClear() {
   delay(2000);
-  lcd.clear();
+
 }
 
 //print a message and a number to the robot's display
 void printNumber (const char *message, long number) {
-  lcd.print(message);
-  lcd.gotoXY(0, 1);
-  lcd.print(number);
+  Serial.print(message);
+  Serial.println(number);
 }

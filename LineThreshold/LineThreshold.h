@@ -11,7 +11,7 @@
 /**
  * define the number of sensors that will be used
  */
-#define NUM_SENSORS 6
+#define NUM_SENSORS 4
 
 #include<Arduino.h>
 #include<LineShield.h>
