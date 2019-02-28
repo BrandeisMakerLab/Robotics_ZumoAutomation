@@ -20,7 +20,7 @@ void setup() {
   cali.calibrateLineSensors();
   Serial.println("Calculation is");
   String* regions=cali.getRegions();
-  int*threshold=cali.getThresholds;
+  int*threshold=cali.getThresholds();
   printArrs(regions,threshold);
 }
 

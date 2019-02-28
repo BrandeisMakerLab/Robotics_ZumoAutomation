@@ -52,7 +52,7 @@ class LineShield {
     void getReflections(unsigned int clientArray []);
 
     //returns whether robot is on gray region
-    bool isOnGray();
+    bool isOnWhite();
 
 
 };

@@ -17,8 +17,8 @@ LineShield::LineShield() {
 	lineReader.init(pinsUsed,numSensors);
 	this->min = 9999;
 	this->max = -9999;
-	this->minThresh=1100;
 	this->maxThresh=1684;
+	this->minThresh=900;
 
 }
 
@@ -77,14 +77,14 @@ void LineShield::getReflections(unsigned int clientArray []) {
  * returns whether the robot is on gray region
  * temporary method for robotics club meeting
  */
-bool LineShield::isOnGray(){
+bool LineShield::isOnWhite(){
 	//read line sensor
 	lineReader.read(reflections,1);
 	//iterate through all sensors
 	for (int i = 0; i < numSensors; i++) {
 
 		int val=reflections[i];
-		if (val>minThresh && val<maxThresh){
+		if (val<minThresh){
 			return true;
 		}
 

@@ -22,7 +22,7 @@ void setup() {
   radio.stopListening();
 }
 void loop() {
-  const char text[] = "Ok Get This!";
+  const char text[] = "Transmission sucessful!";
   radio.write(&text, sizeof(text));
   delay(1000);
 }
