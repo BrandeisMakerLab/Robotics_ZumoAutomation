@@ -74,12 +74,13 @@ void LineShield::getReflections(unsigned int clientArray []) {
 }
 
 /**
- * returns whether the robot is on gray region
+ * returns whether the robot is on white region
  * temporary method for robotics club meeting
  */
 bool LineShield::isOnWhite(){
 	//read line sensor
 	lineReader.read(reflections,1);
+
 	//iterate through all sensors
 	for (int i = 0; i < numSensors; i++) {
 
