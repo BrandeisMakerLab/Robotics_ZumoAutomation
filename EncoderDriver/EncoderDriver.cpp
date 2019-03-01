@@ -55,7 +55,6 @@ void EncoderDriver::setSpeeds(double leftVel,double rightVel){
 		rightPower--;
 	
 	}
-	
 	drive.setSpeeds(leftPower,rightPower);
 		
 }

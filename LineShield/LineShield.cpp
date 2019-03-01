@@ -80,6 +80,7 @@ void LineShield::getReflections(unsigned int clientArray []) {
 bool LineShield::isOnWhite(){
 	//read line sensor
 	lineReader.read(reflections,1);
+
 	//iterate through all sensors
 	for (int i = 0; i < numSensors; i++) {
 
