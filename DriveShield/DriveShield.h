@@ -28,6 +28,7 @@ class DriveShield{
 	public:
 		//constructor for Drive class, creates a new Drive object
 		DriveShield();
+		DriveShield(int signal);
 		
 		//commands the robot to (method name) for a certain time, good for beginner programs
 		//but the robot can't do anything else while the method executes
