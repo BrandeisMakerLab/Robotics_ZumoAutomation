@@ -1,16 +1,17 @@
 Zumo Automation Project
 =======================
 * The goal of this project is to
-    1. Allow two ZUMO32U4 robots to play a mini sumo match https://www.youtube.com/watch?v=iL8IRF4wQmU
+    1. Allow two ZUMO32U4 robots to play a  [mini sumo match]( https://www.youtube.com/watch?v=iL8IRF4wQmU)
     2. Have the robots know who won  
     3. Enable the robots to wirelessly communicate match data to a master laptop  
     4. Allow the robots to charge themselves wirelessly  
     5. Allow the robots to reset for a new match automatically  
-    6. Create a machine learning exercise whereby the robots can learn the best strategy by playing eachother  
+    6. Create a machine learning exercise whereby the robots can learn the best strategy by playing each other  
+    7. Provide Brandeis students with an introduction to programming
 
 * Getting started
  + [Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
- 
+
 * Background information
 	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * Robot used	
@@ -22,7 +23,7 @@ Zumo Automation Project
 	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot)
 	+ We had our first meeting!
 	
-* This project was conceived of by technical advisor Tim Hebert and is currently being implemented by Jacob Smith
+* This project was conceived of by technical advisor Tim Hebert and is currently being implemented by the Brandeis Robotics Club
 * We are always looking for anyone who wants to contribute, email us!  
     + jsmith2021@brandeis.edu  
     + [The Brandeis University Makerlab](http://brandeismakerlab.com/people/) 
