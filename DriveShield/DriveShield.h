@@ -16,6 +16,8 @@
 
 class DriveShield{
 	private:
+		//the power the robot drives at [0,400]
+		int power;
 		//the ZUMO32U4 object that will be used to interface with the robot
 		ZumoMotors drive;	
 		//a timer to control how long the robot drives
@@ -28,7 +30,6 @@ class DriveShield{
 	public:
 		//constructor for Drive class, creates a new Drive object
 		DriveShield();
-		DriveShield(int signal);
 		
 		//commands the robot to (method name) for a certain time, good for beginner programs
 		//but the robot can't do anything else while the method executes
@@ -46,6 +47,12 @@ class DriveShield{
 		void turnRight();
 		void turnLeft();
 		void stopDrive();
+
+		//returns the power the robot is using to drive
+		int getPower();
+
+		//sets the power
+		void setPower(int power);
 };
 
 #endif

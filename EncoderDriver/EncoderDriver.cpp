@@ -23,7 +23,6 @@
 EncoderDriver::EncoderDriver(){
 	leftPower=0;
 	rightPower=0;
-
 }
 
 //returns the power being sent to left side of robot
