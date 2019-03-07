@@ -1,7 +1,5 @@
-/*Written by Jacob Smith for Brandeis Robotics Club
-   contains an example program to use our Drive class.
-   The program is documented for a general audience.
-   April 2 2018
+/*Robotics Club example file
+   March 7 2019
 */
 //includes the header file of the library
 #include <DriveShield.h>
@@ -11,7 +9,6 @@ DriveShield robot;
 
 //occurs before the program enters its main loop
 void setup() {
-Serial.begin(9600);
   //commands the robot to stop for 2 seconds
   robot.stopDrive(2000);
 
