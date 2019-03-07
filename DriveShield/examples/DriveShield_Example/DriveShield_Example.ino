@@ -7,10 +7,11 @@
 #include <DriveShield.h>
 
 //creates a global reference to a Drive object
-DriveShield robot;
+DriveShield robot('r');
 
 //occurs before the program enters its main loop
 void setup() {
+Serial.begin(9600);
   //commands the robot to stop for 2 seconds
   robot.stopDrive(2000);
 

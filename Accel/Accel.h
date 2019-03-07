@@ -11,7 +11,6 @@
 #include<Zumo32U4.h>
 #include <Wire.h>
 #include <Arduino.h>
-#include <Accel.h>
 
 //defines the indeces of the acceleration readings
 #define X 0
