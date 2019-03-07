@@ -1,9 +1,0 @@
-//Written by Jacob Smith for Brandeis Robotics club, April 12 2018
-//allows Arduino Integrated Development Enviornment to Highlight Accel functions
-Accel	KEYWORD1
-getX	KEYWORD2
-getY	KEYWORD2
-getZ	KEYWORD2
-updateAccels	KEYWORD2
-initializeCompass		KEYWORD2
-printAccels		KEYWORD2

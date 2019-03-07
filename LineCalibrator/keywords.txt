@@ -1,7 +1,0 @@
-//Written by Jacob Smith for Brandeis Robotics Club, identifies keywords for Drive library  April 3 2018
-// which allows the Arduino Integrated Development Enviornment to Highlight Drive functions
-LineCalibrator		KEYWORD1
-calibrateLineSensors	KEYWORD2
-takeReadingRegion	KEYWORD2
-updateMinMax		KEYWORD2
-displayArrays		KEYWORD2

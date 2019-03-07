@@ -1,4 +1,0 @@
-//written by Jacob Smith for Brandeis Robotics club, April 25 2018\
-//defines keywords that the Arduino Integrated Development Enviornment uses to highlight text
-DriveEncoder		KEYWORD1	
-setSpeeds	KEYWORD2

@@ -1,4 +1,0 @@
-//Written by Jacob Smith for Brandeis Robotics Club, identifies keywords for Drive library  April 3 2018
-// which allows the Arduino Integrated Development Enviornment to Highlight Drive functions
-Sorter		KEYWORD1
-selectionSort	KEYWORD2
