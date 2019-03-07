@@ -1,0 +1,21 @@
+/*Written by Jacob Smith for Brandeis Robotics club
+	Provides wrapper functions to allow the Zumo Shield and Zumo 32U4 robots play musical chords
+	using their buzzers
+	March 3 2019
+*/
+
+//sets up the Drive Header file
+#ifndef MusicPlayer_h
+#define MusicPLayer_h
+
+//includes the libraries of code necessary to make this one work
+
+
+class DriveShield{
+	private:
+		
+	public:
+		
+};
+
+#endif
