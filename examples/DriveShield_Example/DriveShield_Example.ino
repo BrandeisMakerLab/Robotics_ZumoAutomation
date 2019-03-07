@@ -4,10 +4,10 @@
    April 2 2018
 */
 //includes the header file of the library
-#include <ZumoAutomation.h>
+#include <DriveShield.h>
 
 //creates a global reference to a Drive object
-DriveShield robot();
+DriveShield robot;
 
 //occurs before the program enters its main loop
 void setup() {
