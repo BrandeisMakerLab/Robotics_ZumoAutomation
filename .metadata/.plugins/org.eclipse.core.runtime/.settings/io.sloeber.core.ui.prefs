@@ -1,0 +1,6 @@
+Build\ before\ upload\ option=ASK
+Clean\ Serial\ Monitor\ after\ upload=false
+FmStatus=2
+Gui\ entry\ for\ private\ library\ paths=C\:\\Users\\RTI\\Documents\\Arduino\\libraries;C\:\\Users\\RTI\\Documents\\MusicPlayer
+Open\ serial\ connections\ with\ the\ monitor=true
+eclipse.preferences.version=1
