@@ -17,10 +17,10 @@ void setup() {
 
 void loop() {
   //commands the robot to perform each step for half a second
-  robot.driveForward(500);
-  robot.turnRight(300);
-  robot.turnLeft(300);
-  robot.driveBackward(500);
-  robot.stopDrive(500);
+  //robot speed in cm/sec is 50 
+  int distance = 100;
+  int speed= 50;    
+  robot.driveForward(distance/speed*1000);  
+  robot.stopDrive(2000);
 
 }
