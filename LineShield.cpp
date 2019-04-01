@@ -8,8 +8,22 @@
 #include <ZumoShield.h>
 #include "LineShield.h"
 
-//assigns line sensor threshold values  to default
+//Creates a new LineShield Object and sets its thresholds to default
 LineShield::LineShield() {
+	//constructor chaining is not allowed in C++
+	initializeVars(1684,900);
+}
+
+//Creates a new LineShield Object and sets its thresholds to provided thresholds
+LineShield::LineShield(int minThresh, int maxThresh) {
+	//constructor chaining is not allowed in C++
+	initializeVars(minThresh,maxThresh);
+}
+
+
+
+//assigns line sensor threshold values  to default
+void LineShield::initializeVars(int minThresh,int maxThresh) {
 	//uses this mode to avoid using all 6 line sensor pins
 	unsigned char pinsUsed []={4,A2,A3,5};
 	//note use of size of instead of seperate size variable
@@ -17,8 +31,8 @@ LineShield::LineShield() {
 	lineReader.init(pinsUsed,numSensors);
 	this->min = 9999;
 	this->max = -9999;
-	this->maxThresh=1684;
-	this->minThresh=900;
+	this->maxThresh=maxThresh;
+	this->minThresh=minThresh;
 
 }
 
@@ -92,6 +106,34 @@ bool LineShield::isOnWhite(){
 	}
 	Serial.println("");
 	delay(1000);
+	return false;
+
+}
+
+/**
+ * returns the region the robot is currently in
+ * 0 is black, 1 is white 2, is gray
+ * This method returns and int so we don't use up the memory of strings
+ */
+int LineShield::getRegion(){
+	//update all line sensor reflections
+	lineReader.read(reflections,1);
+
+	//just use the middle line sensor
+	int val=reflections[numSensors/2];
+
+	//if val is less than 0, return error code
+	if(val<0){
+		return -1;
+	//if between 0 and minThresh, return white
+	}else if (val<=minThresh){
+		return 0;
+	//if between minThrehsold and maxThreshold, return gray
+	}else if (val<=maxThresh){
+		return 1;
+	}else{//if greater than max threshold, return black
+		return 2;
+	}
 	return false;
 
 }

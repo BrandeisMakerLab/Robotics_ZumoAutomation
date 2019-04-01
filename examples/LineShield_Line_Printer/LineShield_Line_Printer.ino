@@ -17,11 +17,8 @@ void setup() {
 
 void loop() {
   lineReader.printAllSensors();
-  if(lineReader.isOnWhite()){
-	  Serial.println("OnWhite");
-  }else{
-	  Serial.println("NotonWhite");
-  }
+  int region=lineReader.getRegion();
+  Serial.println(region);
 }
 
 

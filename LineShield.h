@@ -36,8 +36,14 @@ class LineShield {
 
   public:
 
-    //creates a new LineShieldShield object with defual sensor reading
+    //creates a new LineShieldShield object with defualt sensor reading
     LineShield();
+
+    //creates a new LineShieldShield object with provided thresholds
+    LineShield(int minThresh, int maxThresh);
+
+    //initializes all the variables that this class needs, like a constructor
+    void initializeVars(int minThresh, int maxThresh);
 
     //returns the minimum sensor value from alst reading
     int getMin();
@@ -53,6 +59,9 @@ class LineShield {
 
     //returns whether robot is on gray region
     bool isOnWhite();
+
+    //return the region the robot is on, gray, white or black
+    int getRegion();
 
 
 };
