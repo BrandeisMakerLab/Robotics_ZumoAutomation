@@ -14,7 +14,7 @@ LineShield::LineShield() {
 	initializeVars(1684,900);
 }
 
-//Creates a new LineShield Object and sets its thresholds to default
+//Creates a new LineShield Object and sets its thresholds to provided thresholds
 LineShield::LineShield(int minThresh, int maxThresh) {
 	//constructor chaining is not allowed in C++
 	initializeVars(minThresh,maxThresh);
@@ -112,13 +112,11 @@ bool LineShield::isOnWhite(){
 
 /**
  * returns the region the robot is currently in
- * 0 is black
- * 1 is white
- * 2 is gray
- * This method returns and int so we don't mess around with strings
+ * 0 is black, 1 is white 2, is gray
+ * This method returns and int so we don't use up the memory of strings
  */
 int LineShield::getRegion(){
-	//read line sensor
+	//update all line sensor reflections
 	lineReader.read(reflections,1);
 
 	//just use the middle line sensor
