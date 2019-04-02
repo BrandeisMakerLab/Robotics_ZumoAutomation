@@ -11,7 +11,7 @@
 //Creates a new LineShield Object and sets its thresholds to default
 LineShield::LineShield() {
 	//constructor chaining is not allowed in C++
-	initializeVars(1684,900);
+	initializeVars(900,1684);
 }
 
 //Creates a new LineShield Object and sets its thresholds to provided thresholds
@@ -121,7 +121,6 @@ int LineShield::getRegion(){
 
 	//just use the middle line sensor
 	int val=reflections[numSensors/2];
-
 	//if val is less than 0, return error code
 	if(val<0){
 		return -1;
