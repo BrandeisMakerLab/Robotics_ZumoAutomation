@@ -11,64 +11,51 @@ Zumo Automation Project
 
 * Getting started
  + [Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
-
+ + And see example files in examples folder
 * Background information
 	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
-* Robot used	
-	+ [current robot used, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
-	+ [sec6ndary robot used](https://www.pololu.com/product/2504)
+* Hardware
+        + [Current robot used](https://www.pololu.com/product/2504)
+	+ [previous, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
 	+ [3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
-* Software Used
-	+ [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software) used to download programs to the robot
-	+ [ZUMO32U4 robot library](http://pololu.github.io/zumo-32u4-arduino-library/) used to interface with the robot)
-	+ We had our first meeting!
 	
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by the Brandeis Robotics Club
 * We are always looking for anyone who wants to contribute, email us!  
     + jsmith2021@brandeis.edu  
     + [The Brandeis University Makerlab](http://brandeismakerlab.com/people/) 
 
-# Drive Library
+# Pololu Wrapper Libraries
+  +  These libraries provide added functionality to [Pololu's Zumo Shield Library](https://github.com/pololu/zumo-shield-arduino-library)
+  + They take a sensor or motor and make it more user friendly and add calibration
+ 
+ ## Accel Library, Interfaces with Robot's accelerometer
+   - includes calibration function 'initializeCompass()', which makes sure accelerometer at rest reads no acceleration on x and y axes
+  -  The getter functions allow the robot's acceleration to be returned in centimeters per second squared 'accel.getX()'
+  -  The class can also return whether it has been collided with from rest 'collided()' See *Was_Bumped* 
+  -  The class can print its acceleration to the serial monitor 'printAccels()' See *Print_Accelerations* 
+  
+## DriveShield Library, Interfaces with Robot's motors
+- Includes functions like DriveForward, DriveBackward, etc whic hlet the robot drive around. 
+  -  The simplest version 'driveForward(500)' would tell the robot to drive forward, wait half a second, and stop See *Example* 
+  -  The more advanced version with no time parameter 'driveForward()' just sets the robot to drive forward and gives more user control.
+-  The get and setPower method allow the robot to change its speed, so it can speed up or slow down wihtout hardcoding speed, like this 'setPower(getPower()/2)' which halves the robot's power. See *Random Power*
 
-- This Library Provides Wrapper Functions for the ZUMO32U4 Motors Class  
-  - It is designed to work on the [ZUMO32U4 robot](https://www.pololu.com/docs/0J63/all) using the [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software)
-- The functions are outlined in the header file  
-  - They consist of driving, turning, and stopping functions 
-  - which can be used either as a step in a sequence or integrated into more advanced programs
-- An example file is provided
-  - It uses the simplified robot commands to drive, turn, and stop for half a second    
+# Zumo Game Libraries
+  +  These libraries build on the more low level programs to allow the robots to play a zumo match
 
-[The dependency library may be found here](http://pololu.github.io/zumo-32u4-arduino-library/)  
 
-# LineCalibrator Library
+## LineCalibrator Library, Determines Thresholds Between Regions of a Zumo Ring
+  - includes function to prompt a user to move the robot over the regions to be detected 'calibrateLineSensors()' See 'calibrate'
+  - to get the result, use 'getThresholds()' which returns a list of the numerical boundaries between regions
+  - to get the list of regions (which could be in different order than you gave) use 'getRegions()'
+  
+## LineGlobal Library, Allows Robot to be able to tell apart the regions of any zumo field
+    - To use, you need the 'setElements(String* regions, int numRegions, String regionsSeen[],
+			bool USB)' 
+    - To see what region the robot is over, use 'getRegion()' See *Calibrate* 
+    - To display individual sensor values, use 'displayLineReadings()' 
 
-- This Library Allows the Line Sensors of the Zumo 32U4 robot to be calibrated 
-
-  - It is designed to work on the [ZUMO robot for arduino](https://www.pololu.com/product/2506) using the [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software)
-
-- The functions are outlined in the header file  
-
-  - They are used to have the robot travel over all the colors it is supposed to sense 
-  - and then calculate threshold values between the regions
-  - the calibration function is designed to work with any colors in any order, as long as they can be read differently enough
-
-- An example file is provided
-
-  - It uses a LineSensor object to find the threshold values for a zumo ring
-
-  # LineGlobal Library
-
-  - A library that uses calclates thresholds to know what region the robot line sensors are over 
-    - It is designed to work on the [ZUMO robot for arduino](https://www.pololu.com/product/2506) using the [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software)
-  - The functions are outlined in the header file  
-    - They allow the robot to determine what region it is over
-    - given an array of region names and thresholds, 	as well as an array of the priority of regions.
-
-# LineShield Library
-
-- This Library Provides Wrapper Functions for the ZUMO32U4LineSensors Class  
-  - It is designed to work on the [ZUMO robot for arduino](https://www.pololu.com/product/2506) using the [Arduino Integrated Development Enviornment](https://www.arduino.cc/en/Main/Software)
-- The functions are outlined in the header file  
+## LineShield Library
   - They are used to return whether the robot is on a line of tape and to print line sensor readings to the robot's display 
   - The boolean methods of the class are isInRing, isOnEdge, isOutBounds
   - The getRegion method returns where the robot is in the ring
@@ -77,13 +64,13 @@ Zumo Automation Project
   - It uses this library and the Drive library to keep the robot in a ring of tape
   - The complex navigation program uses an extra line of tape on the outside of the ring to allow the robot to know when it lost a match
 
-# Sorter Library
+## Sorter Library
 
 - This Library sorts a given array, which is useful in calibrating the line sensors
 - An example file is provided
   - It sorts 3 example arrays in a similar format to how theyd be used in a line sensor application
 
-# Timer Library
+## Timer Library
 
 - This library is a wrapper class for the [Arduino time function](https://www.arduino.cc/reference/en/language/functions/time/millis/)
 - This library allows for the instantiation of a timer object which can return the current time, be reset, and be used on an interval
