@@ -1,5 +1,5 @@
 /*Jacob Smith 2019.4.1 Brandeis Robotics Club.
- Uses the Line class to follow a line around a circle*/
+ Allows the Robot to line itself up on the edge of the zumo ring and wait for the active robot.*/
 //define constants to refer to regions, so I can type WHITE instead of 0
 #define WHITE 0
 #define GRAY 1

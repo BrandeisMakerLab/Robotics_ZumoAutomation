@@ -1,5 +1,7 @@
 /*Jacob Smith 2019.4.1 Brandeis Robotics Club.
-  Uses the Line class to follow a line around a circle*/
+  Uses the Line class to follow a line around a circle, the active version. This drives the robot around the
+  egde of the zumo ring until it collides with the passive bot waiting for it.
+  For purposes of automatic reset after a zumo match.*/
 
 #define WHITE 0
 #define GRAY 1
