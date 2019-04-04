@@ -54,6 +54,16 @@ void DriveShield::driveBackward(int time) {
   move(&DriveShield::driveBackward,time);
 }
 
+void DriveShield::pivotRight(int time) {
+  move(&DriveShield::pivotRight,time);
+
+}
+
+void DriveShield::pivotLeft(int time){
+	move(&DriveShield::pivotLeft,time);
+
+}
+
 void DriveShield::turnRight(int time) {
   move(&DriveShield::turnRight,time);
 
@@ -75,6 +85,13 @@ void DriveShield::driveForward() {
 
 void DriveShield::driveBackward() {
   drive.setSpeeds(-power, -power);
+}
+
+void DriveShield::pivotRight(){
+	drive.setSpeeds(0,power);
+}
+void DriveShield::pivotLeft(){
+	drive.setSpeeds(power,0);
 }
 
 void DriveShield::turnRight() {

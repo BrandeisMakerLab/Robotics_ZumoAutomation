@@ -35,6 +35,8 @@ class DriveShield{
 		//but the robot can't do anything else while the method executes
 		void driveForward(int time);
 		void driveBackward(int time);
+		void pivotRight(int time);
+		void pivotLeft(int time);
 		void turnRight(int time);
 		void turnLeft(int time);
 		void stopDrive(int time);
@@ -44,9 +46,12 @@ class DriveShield{
 		//because the robot can perform other operations while performing the action
 		void driveForward();
 		void driveBackward();
+		void pivotRight();
+		void pivotLeft();
 		void turnRight();
 		void turnLeft();
 		void stopDrive();
+
 
 		//returns the power the robot is using to drive
 		int getPower();
