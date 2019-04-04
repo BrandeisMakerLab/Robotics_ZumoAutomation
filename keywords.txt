@@ -1,8 +1,46 @@
 //Written by Jacob Smith for Brandeis Robotics club, April 2 2018
 //allows Arduino Integrated Development Enviornment to Highlight Drive functions
-Drive	KEYWORD1
+
+ZumoAutomation		KEYWORD1
+
+DriveShield		KEYWORD1
 driveForward	KEYWORD2
 driveBackward	KEYWORD2
 turnRight	KEYWORD2
 turnLeft	KEYWORD2
 stopDrive	KEYWORD2
+
+LineCalibrator		KEYWORD1
+calibrateLineSensors	KEYWORD2
+takeReadingRegion	KEYWORD2
+updateMinMax		KEYWORD2
+displayArrays		KEYWORD2
+
+LineGlobal	KEYWORD1
+setElements	KEYWORD2
+getRegion	KEYWORD2
+
+LineShield	KEYWORD1
+getRegion	KEYWORD2
+isInRing	KEYWORD2
+isOnEdge	KEYWORD2
+isOutBounds		KEYWORD2
+printAllSensors		KEYWORD2
+getAverageReading	KEYWORD2
+
+LineThreshold	KEYWORD1
+getRegion	KEYWORD2
+isInRing	KEYWORD2
+isOnEdge	KEYWORD2
+isOutBounds		KEYWORD2
+printAllSensors		KEYWORD2
+getAverageReading	KEYWORD2
+
+Sorter		KEYWORD1
+selectionSort	KEYWORD2
+
+Timer	KEYWORD1
+resetTime	KEYWORD2
+getTime		KEYWORD2
+getAndResetTime		KEYWORD2
+interval	KEYWORD2
