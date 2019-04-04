@@ -52,7 +52,7 @@ Zumo Automation Project
 ## LineGlobal Library, Allows Robot to be able to tell apart the regions of any zumo field
  - To use, you need the `setElements(String* regions, int numRegions, String regionsSeen[],bool USB)` 
  - To see what region the robot is over, use `getRegion()` See *Calibrate* 
- - To display individual sensor values, use ~displayLineReadings()~ 
+ - To display individual sensor values, use `displayLineReadings()` 
 
 ## LineShield Library
   - They are used to return whether the robot is on a line of tape and to print line sensor readings to the robot's display 
