@@ -34,6 +34,8 @@ class LineShield {
     int minThresh;
     int maxThresh;
 
+    int lastRegion;
+
   public:
 
     //creates a new LineShieldShield object with defualt sensor reading

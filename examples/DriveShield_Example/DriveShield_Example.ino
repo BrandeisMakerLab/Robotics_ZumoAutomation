@@ -24,6 +24,8 @@ void loop() {
   robot.turnRight(300);
   robot.turnLeft(300);
   robot.driveBackward(500);
+  robot.pivotLeft(300);
+  robot.pivotRight(300);
   robot.stopDrive(500);
 
 }

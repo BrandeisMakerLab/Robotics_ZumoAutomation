@@ -1,7 +1,6 @@
-/*Jacob Smith 2018.5.7 Brandeis Robotics Club.
+/*Jacob Smith 2019.4.2 Brandeis Robotics Club.
   Uses the Line class to print line sensor values
   to the Serial Monitor*/
-
 #include <LineShield.h>
 LineShield lineReader;
 void setup() {
@@ -17,12 +16,16 @@ void setup() {
 
 void loop() {
   lineReader.printAllSensors();
-  bool onWhite=lineReader.isOnWhite();
-  if(onWhite){
+  int region=lineReader.getRegion();
+  if(region==0){
     Serial.println("On White");  
+  }else if (region==1){
+    Serial.println("On Gray");
   }else{
-    Serial.println("Not on WHite");  
+    Serial.println("On Black");
   }
+  //delay for easy printing
+  delay(500);
  
 }
 
