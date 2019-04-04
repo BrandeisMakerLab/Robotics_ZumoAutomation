@@ -29,31 +29,31 @@ Zumo Automation Project
   + They take a sensor or motor and make it more user friendly and add calibration
  
  ## Accel Library, Interfaces with Robot's accelerometer
-   - includes calibration function 'initializeCompass()', which makes sure accelerometer at rest reads no acceleration on x and y axes
-  -  The getter functions allow the robot's acceleration to be returned in centimeters per second squared 'accel.getX()'
-  -  The class can also return whether it has been collided with from rest 'collided()' See *Was_Bumped* 
-  -  The class can print its acceleration to the serial monitor 'printAccels()' See *Print_Accelerations* 
+   - includes calibration function ' initializeCompass() ', which makes sure accelerometer at rest reads no acceleration on x and y axes
+  -  The getter functions allow the robot's acceleration to be returned in centimeters per second squared ' accel.getX() '
+  -  The class can also return whether it has been collided with from rest ' collided() ' See *Was_Bumped* 
+  -  The class can print its acceleration to the serial monitor ' printAccels() ' See *Print_Accelerations* 
   
 ## DriveShield Library, Interfaces with Robot's motors
 - Includes functions like DriveForward, DriveBackward, etc whic hlet the robot drive around. 
-  -  The simplest version 'driveForward(500)' would tell the robot to drive forward, wait half a second, and stop See *Example* 
-  -  The more advanced version with no time parameter 'driveForward()' just sets the robot to drive forward and gives more user control.
--  The get and setPower method allow the robot to change its speed, so it can speed up or slow down wihtout hardcoding speed, like this 'setPower(getPower()/2)' which halves the robot's power. See *Random Power*
+  -  The simplest version ' driveForward(500) ' would tell the robot to drive forward, wait half a second, and stop See *Example* 
+  -  The more advanced version with no time parameter ' driveForward() ' just sets the robot to drive forward and gives more user control.
+-  The get and setPower method allow the robot to change its speed, so it can speed up or slow down wihtout hardcoding speed, like this ' setPower(getPower()/2) ' which halves the robot's power. See *Random Power*
 
 # Zumo Game Libraries
   +  These libraries build on the more low level programs to allow the robots to play a zumo match
 
 
 ## LineCalibrator Library, Determines Thresholds Between Regions of a Zumo Ring
-  - includes function to prompt a user to move the robot over the regions to be detected 'calibrateLineSensors()' See 'calibrate'
-  - to get the result, use 'getThresholds()' which returns a list of the numerical boundaries between regions
-  - to get the list of regions (which could be in different order than you gave) use 'getRegions()'
+  - includes function to prompt a user to move the robot over the regions to be detected ' calibrateLineSensors() ' See *calibrate*
+  - to get the result, use ' getThresholds() ' which returns a list of the numerical boundaries between regions
+  - to get the list of regions (which could be in different order than you gave) use ' getRegions() '
   
 ## LineGlobal Library, Allows Robot to be able to tell apart the regions of any zumo field
-    - To use, you need the 'setElements(String* regions, int numRegions, String regionsSeen[],
-			bool USB)' 
-    - To see what region the robot is over, use 'getRegion()' See *Calibrate* 
-    - To display individual sensor values, use 'displayLineReadings()' 
+    - To use, you need the ' setElements(String* regions, int numRegions, String regionsSeen[],
+			bool USB) ' 
+    - To see what region the robot is over, use ' getRegion() ' See *Calibrate* 
+    - To display individual sensor values, use ' displayLineReadings() ' 
 
 ## LineShield Library
   - They are used to return whether the robot is on a line of tape and to print line sensor readings to the robot's display 
