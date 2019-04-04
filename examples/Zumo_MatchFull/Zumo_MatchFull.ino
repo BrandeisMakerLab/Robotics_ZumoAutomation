@@ -102,7 +102,3 @@ void pathFind(DriveShield robot, LineShield LineReader,int tries, int goalRegion
     }
 	pathFind(robot,lineReader,tries+1,goalRegion);
 }
-
-
-
-

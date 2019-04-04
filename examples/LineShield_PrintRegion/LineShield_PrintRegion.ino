@@ -22,7 +22,7 @@ void loop() {
   }else if (region==1){
     Serial.println("On Gray");
   }else{
-	  Serial.println("On Black");
+    Serial.println("On Black");
   }
   //delay for easy printing
   delay(500);
