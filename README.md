@@ -77,6 +77,36 @@ Zumo Automation Project
 - This allows an arduino board to continually perform an update procedure without the use of delay statements
 - The provided example file shows the suggested use of this class on a [ZUMO32U4 robot](https://www.pololu.com/docs/0J63/all) using the [Arduino Integrated Development Enviornment](
 
+# Non Class Example Files
+  +  These example files aren't based on any one class but still represent useful endeavors of the robotics club
+
+## Robotics Club, programs written by robotics club members that aren't in classes
+
+- As an introduction, the students started out with sample zumo behaviors See *RoboticsClub_First_Meeting*
+- Over a few weeks, students worked on this program to allow the robot to determine its speedSee *Calibrate*
+
+## Wireless, programs written to allow the robot to drive wirelessly (provided code except remote control)
+
+- Provideed Program allows robot to message eachother NRF24 *Wireless_HowToMechatronicsRecieve* and *Wireless_HowToMexhantroincsTransmit*
+- Provided Program allows robot to cmmunicate with eachother over bluetooth *Wireless_wifittest3w*
+- This Program allows the robot to be controlled by a computer over bluetooth *Wireless_RemoteControl*
+
+## Zumo, programs written to allow the robot to navigate and play a Zumo Match
+
+- This Program uses a timer to tell if the robot has driven to the other side of the ring *CollisionTimer* 
+- This Program finds the other robot in a ring for reset purposes by waiting on the edge of the ring *FindPartnerPassive*
+- This Program finds the other robot in a ring for reset purposes by driving into the other robot *FindPartnerActive*
+- This Program lets the robot drive around the edge of a zumo ring*Line_Follower*
+- This program lets the robot know how to tell the difference between what region it is on *MatchCalibrate*
+- This Program incorporates a button to simulate how a wireless network would work in a zumo match *MatchFull*
+- This program allows the robot toplay a simple zumo match *MatchSimple*
+
+## Zumo32U4, programs written for the Zumo32U4 robot, deprecated
+
+- This Program simulates a zumo matfch, including knowing who lost *Complex_Line_Avoider*
+- This Program allows a robot to stay inside a zumo ring *Simple_Line_Avoider*
+- This program allows the robot to stay inside a zumo ring *Simple_Line_Detector*
+
 -The Brandeis University Robotics Club  
 
 <img src="https://a.pololu-files.com/picture/0J6721.1200.jpg?f23bb5e39014c5721350a43b8c0e8fe4" width="200" height="200">
