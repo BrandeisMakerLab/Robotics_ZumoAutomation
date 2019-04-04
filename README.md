@@ -10,8 +10,8 @@ Zumo Automation Project
     7. Provide Brandeis students with an introduction to programming
 
 * Getting started
- + [Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
- + And see example files in examples folder
+  + [Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
+  +  And see example files in examples folder
 * Background information
 	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * Hardware
@@ -41,8 +41,8 @@ Zumo Automation Project
 -  The get and setPower method allow the robot to change its speed, so it can speed up or slow down wihtout hardcoding speed, like this ' setPower(getPower()/2) ' which halves the robot's power. See *Random Power*
 
 # Zumo Game Libraries
-  +  These libraries build on the more low level programs to allow the robots to play a zumo match
-
+ +  These libraries build on the more low level programs to allow the robots to play a zumo match
+ 
 
 ## LineCalibrator Library, Determines Thresholds Between Regions of a Zumo Ring
   - includes function to prompt a user to move the robot over the regions to be detected ' calibrateLineSensors() ' See *calibrate*
@@ -50,10 +50,9 @@ Zumo Automation Project
   - to get the list of regions (which could be in different order than you gave) use ' getRegions() '
   
 ## LineGlobal Library, Allows Robot to be able to tell apart the regions of any zumo field
-    - To use, you need the ' setElements(String* regions, int numRegions, String regionsSeen[],
-			bool USB) ' 
-    - To see what region the robot is over, use ' getRegion() ' See *Calibrate* 
-    - To display individual sensor values, use ' displayLineReadings() ' 
+ - To use, you need the ' setElements(String* regions, int numRegions, String regionsSeen[],bool USB) ' 
+ - To see what region the robot is over, use ' getRegion() ' See *Calibrate* 
+ - To display individual sensor values, use ' displayLineReadings() ' 
 
 ## LineShield Library
   - They are used to return whether the robot is on a line of tape and to print line sensor readings to the robot's display 
