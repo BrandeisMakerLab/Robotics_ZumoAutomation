@@ -16,9 +16,14 @@ void setup() {
 
 
 void loop() {
+  //print sensors
   lineReader.printAllSensors();
+  //get region
   int region=lineReader.getRegion();
+  //print region
   Serial.println(region);
+  //wait half a second
+  delay(500);
 }
 
 
