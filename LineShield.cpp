@@ -126,7 +126,7 @@ int LineShield::getRegion(){
 	lineReader.read(reflections,1);
 
 	//just use the middle line sensor
-	int val=reflections[0];
+	int val=reflections[2];
 	//if val is less than 0, return error code
 	if(val<0){
 		lastRegion=ERROR;
