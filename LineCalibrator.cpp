@@ -56,7 +56,6 @@ void LineCalibrator::calibrateLineSensors() {
 		buzzer.playNote(NOTE_D(i%4+3), 500, 15);
 		#endif	
 		
-		
 		//take the region and display name of that region
 		takeReadingRegion(*(regions + i));
 		regionMins[i] = minGlobal;

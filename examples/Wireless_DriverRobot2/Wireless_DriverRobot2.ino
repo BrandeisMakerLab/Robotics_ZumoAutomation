@@ -64,7 +64,7 @@ void loop(){
             } else if (header.indexOf("GET /stopF")>=0){
               driveCode = "stopF";
               stopDrive();  
-            } else if (header.indexOf("GET /stopB")>=0){
+            } else {//if (header.indexOf("GET /stopB")>=0)
               driveCode = "stopB";
               stopDrive();  
             }
