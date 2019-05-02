@@ -5,11 +5,12 @@
 #include <Wire.h>
 #include<LineShield.h>
 #include <Sorter.h>
-
+#include <ZumoBuzzer.h>
 //add optional buzzer if using arduino uno
 #ifdef ARDUINO_AVR_UNO
 #include<PololuBuzzer.h>
 #endif	
+#include<PololuBuzzer.h>
 #include "LineCalibrator.h"
 
 //creates a new LineCalibrator object
