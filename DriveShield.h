@@ -10,7 +10,7 @@
 //includes the libraries of code necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include <ZumoShield.h>
+#include <MotorsGeneral.h>
 #include <DriveShield.h>
 #include <Timer.h>
 
@@ -18,8 +18,8 @@ class DriveShield{
 	private:
 		//the power the robot drives at [0,400]
 		int power;
-		//the ZUMO32U4 object that will be used to interface with the robot
-		ZumoMotors drive;	
+		//the  motors general object that will be used to interface with the robot
+		MotorsGeneral drive;	
 		//a timer to control how long the robot drives
 		Timer driveTimer;
 		

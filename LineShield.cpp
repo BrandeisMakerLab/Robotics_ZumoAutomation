@@ -5,7 +5,7 @@
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include <ZumoShield.h>
+#include <ZumoReflectanceSensorArray.h>
 #include "LineShield.h"
 
 //define constants to refer to regions to make the code easier to read

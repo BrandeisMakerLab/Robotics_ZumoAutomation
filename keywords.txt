@@ -8,7 +8,12 @@ driveForward	KEYWORD2
 driveBackward	KEYWORD2
 turnRight	KEYWORD2
 turnLeft	KEYWORD2
+pivotRight	KEYWORD2
+pivotLeft	KEYWORD2
 stopDrive	KEYWORD2
+
+MotorsGeneral	KEYWORD1
+setMotors	KEYWORD2
 
 LineCalibrator		KEYWORD1
 calibrateLineSensors	KEYWORD2
