@@ -6,6 +6,7 @@
 #include<LineShield.h>
 #include<LineCalibrator.h>
 #include<LineThreshold.h>
+#include <ZumoBuzzer.h>
 #include <LineGlobal.h>
 
 
@@ -64,6 +65,7 @@ String LineGlobal:: getRegion(){
 	//get the regions that each line sensor sees
 	thresh.convertToRegion();
 	//generate a frequency array of those regions
+	
 	int frequencies [numRegions];
 	for(int i=0;i<numRegions;i++){
 		frequencies[i]=0;
@@ -90,6 +92,7 @@ String LineGlobal:: getRegion(){
 	}
 	//otherwise, return the lowest priority region
 	return regionsPriority[0];
+	
 }
 
 
