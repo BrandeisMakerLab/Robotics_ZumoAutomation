@@ -5,7 +5,10 @@
 #include <Wire.h>
 #include<LineShield.h>
 #include <Sorter.h>
-#include<ZumoShield.h>
+//add optional buzzer if using arduino uno
+#ifdef ARDUINO_AVR_UNO
+#include<PololuBuzzer.h>
+#endif	
 #include "LineCalibrator.h"
 
 //creates a new LineCalibrator object
@@ -38,13 +41,22 @@ void LineCalibrator::calibrateLineSensors() {
 	Serial.println(
 			"This Program allows for the regions of a sumo battle ring to be measured");
 	delay(2000);
-	//loop through regions
+	
+	//if using arduino uno
+	#ifdef ARDUINO_AVR_UNO
 	//create a buzzer to prompt user so the robot can be used without a screen
 	ZumoBuzzer buzzer;
-
+	#endif	
+	//loop through regions
 	for (int i = 0; i < numRegions; i++) {
+		//if using arduino uno
+		#ifdef ARDUINO_AVR_UNO
+		//play the buzzer
 		//the math is to make sure the note is at a pleasing octave
 		buzzer.playNote(NOTE_D(i%4+3), 500, 15);
+		#endif	
+		
+		
 		//take the region and display name of that region
 		takeReadingRegion(*(regions + i));
 		regionMins[i] = minGlobal;

@@ -8,7 +8,7 @@
 #define Accel_h
 
 //includes the libraries of code necessary to make this one work
-#include<ZumoShield.h>
+#include<LSM303.h>
 #include <Wire.h>
 #include <Arduino.h>
 
