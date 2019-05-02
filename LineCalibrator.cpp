@@ -5,7 +5,7 @@
 #include <Wire.h>
 #include<LineShield.h>
 #include <Sorter.h>
-#include<ZumoShield.h>
+#include <ZumoBuzzer.h>
 #include "LineCalibrator.h"
 
 //creates a new LineCalibrator object

@@ -15,6 +15,7 @@
 
 #include<Arduino.h>
 #include<LineThreshold.h>
+#include <ZumoBuzzer.h>
 
 class LineGlobal {
 
