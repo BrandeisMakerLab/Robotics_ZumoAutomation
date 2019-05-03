@@ -2,11 +2,15 @@
  Allows the robot's line sensors to be calibrated
  January 20 2019*/
 //include the libraries necessary to make this one work
+#ifdef ARDUINO_AVR_UNO
+
 #include <Arduino.h>
 #include<LineShield.h>
 #include<LineCalibrator.h>
 #include "LineThreshold.h"
 
+
+		
 /**
  * Creates a LineThreshold object with default states
  */
@@ -81,5 +85,7 @@ String LineThreshold::getIndividualRegion(int reflection) {
 	//if you've reached the end, you're at the last region by definition
 	return *(regions + numRegions - 1);
 }
-
+#else
+	#warning This class doesn't work for your board
+#endif
 

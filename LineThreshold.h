@@ -8,6 +8,8 @@
 #ifndef LineThreshold_h
 #define LineThreshold_h
 
+#ifdef ARDUINO_AVR_UNO
+
 /**
  * define the number of sensors that will be used
  */
@@ -67,4 +69,7 @@ public:
 
 };
 
+#endif
+#else
+	#warning This class doesn't work for your board
 #endif

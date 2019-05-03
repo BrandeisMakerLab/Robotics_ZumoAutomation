@@ -5,6 +5,7 @@
 */
 
 //includes the libraries of code necessary to make this one work
+#warning test
 #include <LSM303.h>
 #include <Wire.h>
 #include <Arduino.h>

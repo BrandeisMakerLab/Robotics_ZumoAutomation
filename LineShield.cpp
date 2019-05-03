@@ -5,7 +5,8 @@
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include <ZumoReflectanceSensorArray.h>
+
+#ifdef ARDUINO_AVR_UNO	
 #include "LineShield.h"
 
 //define constants to refer to regions to make the code easier to read
@@ -143,3 +144,6 @@ int LineShield::getRegion(){
 
 }
 
+#else
+	#warning This class doesn't work for your board
+#endif

@@ -6,7 +6,9 @@
 #include<LineShield.h>
 #include<LineCalibrator.h>
 #include<LineThreshold.h>
-#include <ZumoBuzzer.h>
+#ifdef ARDUINO_AVR_UNO
+	#include <ZumoBuzzer.h>	
+
 #include <LineGlobal.h>
 
 
@@ -140,4 +142,6 @@ void LineGlobal::displayLineReadings() {
 	String region=getRegion();
 	displayLineReadings(region);
 }
-
+#else
+	#warning This class doesn't work for your board
+#endif

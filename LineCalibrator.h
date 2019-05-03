@@ -6,11 +6,16 @@
 #ifndef LineCalibrator_h
 #define LineCalibrator_h
 
+#ifdef ARDUINO_AVR_UNO
+#include <ZumoReflectanceSensorArray.h>
+
 //include all the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
 #include<LineShield.h>
 #include<Sorter.h>
+
+
 
 //the number of regions the robot has
 
@@ -66,4 +71,6 @@ class LineCalibrator : public LineShield {
     String* getRegions();
 };
 #endif
-
+#else
+	#warning This class doesn't work for your board
+#endif

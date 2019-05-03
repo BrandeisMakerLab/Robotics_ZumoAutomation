@@ -15,8 +15,8 @@
 
 #include<Arduino.h>
 #include<LineThreshold.h>
+#ifdef ARDUINO_AVR_UNO
 #include <ZumoBuzzer.h>
-
 class LineGlobal {
 
 private:
@@ -74,5 +74,6 @@ public:
 	void displayLineReadings(String region);
 
 };
-
+#else
+	#warning This class doesn't work for your board
 #endif

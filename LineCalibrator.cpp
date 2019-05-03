@@ -5,12 +5,12 @@
 #include <Wire.h>
 #include<LineShield.h>
 #include <Sorter.h>
-#include <ZumoBuzzer.h>
+
 //add optional buzzer if using arduino uno
-#ifdef ARDUINO_AVR_UNO
-#include<PololuBuzzer.h>
-#endif	
-#include<PololuBuzzer.h>
+#ifdef ARDUINO_ESP8266_WEMOS_D1R1
+	#warning this board not supported by program
+#else
+#include<ZumoBuzzer.h>
 #include "LineCalibrator.h"
 
 //creates a new LineCalibrator object
@@ -147,3 +147,5 @@ int* LineCalibrator::getThresholds() {
 String* LineCalibrator::getRegions() {
 	return this->regions;
 }
+
+#endif

@@ -9,14 +9,18 @@
 //include all the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
+
+#ifdef ARDUINO_AVR_UNO
+
 #include <ZumoReflectanceSensorArray.h>
+
 
 class LineShield {
 
   private:
-    //the provided class, which will interface with the robot's LineShieldShield sensors
-    ZumoReflectanceSensorArray lineReader;
-
+    
+	ZumoReflectanceSensorArray lineReader;
+	
     //an array to store the LineShieldShield sensor readings
     //declared at an arbitrary size and then actually used with numSensors
     unsigned int reflections[10];
@@ -67,5 +71,7 @@ class LineShield {
 
 
 };
-
+#endif
+#else
+	#warning This class doesn't work for your board
 #endif
