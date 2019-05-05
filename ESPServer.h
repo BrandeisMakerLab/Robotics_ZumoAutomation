@@ -5,6 +5,7 @@
 */
 #ifndef ESPServer_h
 #define ESPServer_h
+//only compile this class i the board is correct
 #ifdef ARDUINO_ESP8266_WEMOS_D1R1
 
 #include <Arduino.h>

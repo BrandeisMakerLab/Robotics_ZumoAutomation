@@ -5,7 +5,7 @@
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-
+//only compile this class if board is correct
 #ifdef ARDUINO_AVR_UNO	
 #include "LineShield.h"
 
@@ -145,5 +145,4 @@ int LineShield::getRegion(){
 }
 
 #else
-	#warning This class does not work for your board
 #endif

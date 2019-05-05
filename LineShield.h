@@ -6,11 +6,12 @@
 #ifndef LineShield_h
 #define LineShield_h
 
+//only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
+
 //include all the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-
-#ifdef ARDUINO_AVR_UNO
 
 #include <ZumoReflectanceSensorArray.h>
 
@@ -71,7 +72,10 @@ class LineShield {
 
 
 };
+#elif defined (DONT_NEED_LINE)
+	#warning : May lead to "error: 'LineShield' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
 #else
-	#warning This class does not work for your board
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_LINE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
 #endif
 #endif
