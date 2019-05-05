@@ -5,6 +5,7 @@
 	randomSeed(analogRead(5)); // randomize using noise from analog pin 5
 	https://www.tutorialspoint.com/arduino/arduino_random_numbers.htm
 */
+#if defined (ARDUINO_AVR_UNO) | defined(ARDUINO_ESP8266_WEMOS_D1R1)
 
 //includes the libraries of code necessary to make this one work
 #include <Arduino.h>
@@ -104,3 +105,5 @@ void DriveShield::turnLeft() {
 void DriveShield::stopDrive () {
   drive.setSpeeds(0, 0);
 }
+#else
+#endif

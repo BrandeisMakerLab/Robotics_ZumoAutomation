@@ -6,6 +6,7 @@
 //sets up the Drive Header file
 #ifndef DriveShield_h
 #define DriveShield_h
+#if defined (ARDUINO_AVR_UNO) | defined(ARDUINO_ESP8266_WEMOS_D1R1)
 
 //includes the libraries of code necessary to make this one work
 #include <Arduino.h>
@@ -59,5 +60,10 @@ class DriveShield{
 		//sets the power
 		void setPower(int power);
 };
-
+#elif defined (DONT_NEED_DRIVE)
+	#warning : May lead to "error: 'DriveShield' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_DRIVE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+#endif
 #endif
