@@ -71,7 +71,7 @@ class LineShield {
 
 
 };
-#endif
 #else
 	#warning This class does not work for your board
+#endif
 #endif

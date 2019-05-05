@@ -48,16 +48,9 @@ class ESPServer{
 				
 };
 #elif defined (DONT_NEED_ESPSERVER)
-	//if user says they don't need the file, ignore copmpilation of this class but display the warning
-	#warning This class does not work for your board, if you still use this program it will not work and you will get more errors below
-	/*class ESPServer{
-		public:
-		//creates a new ESPServer object
-		void wifiConnect();
-		ESPServer(String possibleOptions [],int numCodes);
-		int runServer();
-	};*/
+	#warning : May lead to "error: 'ESPServer' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
 #else
-	#error This class does not work for your board, if that is ok add <#define DONT_NEED_ESPSERVER> to first line 
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_ESPSERVER> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
 #endif
 #endif
