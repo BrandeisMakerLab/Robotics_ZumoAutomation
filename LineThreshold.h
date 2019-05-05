@@ -13,7 +13,7 @@
 /**
  * define the number of sensors that will be used
  */
-#define NUM_SENSORS 4
+#define NUM_SENSORS 6
 
 #include<Arduino.h>
 #include<LineShield.h>
@@ -71,5 +71,5 @@ public:
 
 #endif
 #else
-	#warning This class doesn't work for your board
+	#warning This class does not work for your board
 #endif

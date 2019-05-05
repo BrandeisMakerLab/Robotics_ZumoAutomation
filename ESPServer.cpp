@@ -3,9 +3,10 @@ Keeps track of current time
 March 15 2018*/
 
 //include all of the classes necessary to make this one work
-#include <Arduino.h>
-#warning test
+
 #ifdef ARDUINO_ESP8266_WEMOS_D1R1
+//#error mark here 
+#include <Arduino.h>
 #include <ESPServer.h>
 //ESPServer constructor
 ESPServer::ESPServer(String* possibleCodes,int numCodes){
@@ -14,7 +15,6 @@ ESPServer::ESPServer(String* possibleCodes,int numCodes){
 	this->ssid     = "brandeis_open";
 	this->password = "";
 	this->title = "Deis Robotics Test Web Server";
-
 	
 }
 
@@ -74,7 +74,7 @@ int ESPServer::runServer() {
 	//connects to wifi is user didn't already
 if(WiFi.status() != WL_CONNECTED){
 	wifiConnect();
-}else{
+}else
 	client= server.available(); 
   //WiFiClient client = server.available();   // Listen for incoming clients
   int indexUsed = -1;
@@ -110,7 +110,6 @@ if(WiFi.status() != WL_CONNECTED){
   }
   return indexUsed;
 }
-}	
 
 
 void ESPServer::setupHeader() {
@@ -158,6 +157,5 @@ void ESPServer::wifiConnect() {
   server.begin();
   
 }
-#else
-	#warning This class doesn't work for your board
+#else 
 #endif

@@ -9,7 +9,7 @@ int numRegions = 3;
 String regions[] = { "WHITE", "GRAY", "BLACK" };
 int thresholds[] = { 442, 1648 };
 String regionsSeen[NUM_SENSORS];
-//using parenthesis here doesn't work for some reason
+//using parenthesis here does not work for some reason
 LineThreshold thresh;
 //runs once
 void setup() {

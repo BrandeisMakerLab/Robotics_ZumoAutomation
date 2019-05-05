@@ -5,7 +5,7 @@
 */
 
 //includes the libraries of code necessary to make this one work
-#warning test
+#ifdef ARDUINO_AVR_UNO
 #include <LSM303.h>
 #include <Wire.h>
 #include <Arduino.h>
@@ -145,3 +145,5 @@ bool Accel::collided() {
 		return false;
 	}
 }
+#else
+#endif

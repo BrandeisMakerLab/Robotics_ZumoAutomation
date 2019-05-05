@@ -86,6 +86,6 @@ String LineThreshold::getIndividualRegion(int reflection) {
 	return *(regions + numRegions - 1);
 }
 #else
-	#warning This class doesn't work for your board
+	#warning This class does not work for your board
 #endif
 

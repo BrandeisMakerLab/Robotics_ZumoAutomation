@@ -18,5 +18,5 @@ void loop() {
 
 }
 #else
-  #error This class doesn't work for your board
+  #error This class does not work for your board
 #endif

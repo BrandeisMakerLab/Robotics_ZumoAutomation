@@ -6,6 +6,7 @@
 #ifndef ESPServer_h
 #define ESPServer_h
 #ifdef ARDUINO_ESP8266_WEMOS_D1R1
+
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include<ESPServer.h>
@@ -46,7 +47,17 @@ class ESPServer{
 		int runServer();
 				
 };
+#elif defined (DONT_NEED_ESPSERVER)
+	//if user says they don't need the file, ignore copmpilation of this class but display the warning
+	#warning This class does not work for your board, if you still use this program it will not work and you will get more errors below
+	/*class ESPServer{
+		public:
+		//creates a new ESPServer object
+		void wifiConnect();
+		ESPServer(String possibleOptions [],int numCodes);
+		int runServer();
+	};*/
 #else
-	#warning This class doesn't work for your board
+	#error This class does not work for your board, if that is ok add <#define DONT_NEED_ESPSERVER> to first line 
 #endif
 #endif

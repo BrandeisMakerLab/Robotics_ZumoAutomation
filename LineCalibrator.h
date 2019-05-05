@@ -72,5 +72,5 @@ class LineCalibrator : public LineShield {
 };
 #endif
 #else
-	#warning This class doesn't work for your board
+	#warning This class does not work for your board
 #endif

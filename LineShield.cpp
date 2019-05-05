@@ -145,5 +145,5 @@ int LineShield::getRegion(){
 }
 
 #else
-	#warning This class doesn't work for your board
+	#warning This class does not work for your board
 #endif
