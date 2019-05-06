@@ -1,15 +1,14 @@
 /*Written by Jacob Smith for Brandeis Robotics club
  Calibrates the Zumo robot's line Sensors
  April 4 2018*/
-//include the libraries necessary to make this one work
+
+//only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
+
+ //include the libraries necessary to make this one work
 #include <Wire.h>
 #include<LineShield.h>
 #include <Sorter.h>
-
-//add optional buzzer if using arduino uno
-#ifdef ARDUINO_ESP8266_WEMOS_D1R1
-	#warning this board not supported by program
-#else
 #include<ZumoBuzzer.h>
 #include "LineCalibrator.h"
 
@@ -147,5 +146,5 @@ int* LineCalibrator::getThresholds() {
 String* LineCalibrator::getRegions() {
 	return this->regions;
 }
-
+#else
 #endif

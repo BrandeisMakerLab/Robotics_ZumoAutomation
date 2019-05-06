@@ -1,15 +1,18 @@
 /*Written by Jacob Smith for Brandeis Robotics club
-Keeps track of current time
-March 15 2018*/
+Runs a website on the local wifi network which displays a title and buttons 
+with user provided names. The class also reutrns whihc button was pressed to the arduino
+An object orineted version of  https://randomnerdtutorials.com/esp8266-web-server/
+May 5 2019*/
 
-//include all of the classes necessary to make this one work
-
+//only compile this class if the board is correct
 #ifdef ARDUINO_ESP8266_WEMOS_D1R1
-//#error mark here 
+//include all of the classes necessary to make this one work
 #include <Arduino.h>
 #include <ESPServer.h>
+
 //ESPServer constructor
-ESPServer::ESPServer(String* possibleCodes,int numCodes){
+ESPServer::ESPServer(String title,String* possibleCodes,int numCodes){
+	this->title=title;
 	this->numCodes=numCodes;
 	this->possibleCodes =possibleCodes;
 	this->ssid     = "brandeis_open";
@@ -18,7 +21,28 @@ ESPServer::ESPServer(String* possibleCodes,int numCodes){
 	
 }
 
-//resets the initial time
+//connect to the wifi and display ip and mac adress
+void ESPServer::wifiConnect() {
+  Serial.print("MAC aress of this device:");
+  Serial.println(WiFi.macAddress());
+  // Connect to Wi-Fi network with SSID and password
+  Serial.print("Connecting to :");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  // Print local IP address and start web server
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  server.begin();
+  
+}
+
+//displays the website with html commmands
 int ESPServer::displayWebsite () {
 	setupHeader();
 	styleButton();
@@ -34,7 +58,7 @@ int ESPServer::displayWebsite () {
 
 
 
-//returns the current time and resets the initial time
+//displays the boy of the website
 int ESPServer::displayBody() {
   int index=getIndex();
   displayButtons();
@@ -66,11 +90,14 @@ int ESPServer::getIndex(){
   return index;
 }
 
+//returns whether the usr has entered a link
 boolean ESPServer::hasLink(String url){ 
 	return (header.indexOf("GET /" + url) >= 0);
 }
 
+//the public method to run the server and return the user responce as the index of choices array
 int ESPServer::runServer() {
+	
 	//connects to wifi is user didn't already
 if(WiFi.status() != WL_CONNECTED){
 	wifiConnect();
@@ -109,9 +136,10 @@ if(WiFi.status() != WL_CONNECTED){
     client.stop();
   }
   return indexUsed;
+  
 }
 
-
+//Enters necessary html information to st up the website
 void ESPServer::setupHeader() {
   // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
   // and a content-type so the client knows what's coming, then a blank line:
@@ -127,6 +155,7 @@ void ESPServer::setupHeader() {
 
 }
 
+//styles the buttons with css code to look better
 void ESPServer:: styleButton() {
 
   // CSS to style the on/off buttons
@@ -137,25 +166,4 @@ void ESPServer:: styleButton() {
   client.println("</style></head>");
 }
 
-
-void ESPServer::wifiConnect() {
-  Serial.print("MAC aress of this device:");
-  Serial.println(WiFi.macAddress());
-  // Connect to Wi-Fi network with SSID and password
-  Serial.print("Connecting to :");
-  Serial.println(ssid);
-  WiFi.begin(ssid, password);  
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  // Print local IP address and start web server
-  Serial.println("");
-  Serial.println("WiFi connected.");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-  server.begin();
-  
-}
-#else 
 #endif

@@ -9,6 +9,9 @@
 #ifndef MotorsGeneral_h
 #define MotorsGeneral_h
 
+//only compile this class if the board is correct
+#if defined(ARDUINO_ESP8266_WEMOS_D1R1) | defined (ARDUINO_AVR_UNO)
+
 //includes the libraries of code necessary to make this one work
 #include <MotorsGeneral.h>
 #include <Arduino.h>
@@ -39,5 +42,10 @@ class MotorsGeneral{
 		void setSpeeds(int leftSpeed, int rightSpeed);
 		
 };
-
+#elif defined (DONT_NEED_DRIVE)
+	#warning : May lead to "error: 'MotorsGeneral' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_DRIVE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+#endif
 #endif

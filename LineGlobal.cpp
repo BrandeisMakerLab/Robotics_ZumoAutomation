@@ -1,14 +1,16 @@
 /*Written by Jacob Smith\for Brandeis Robotics club
  Allows the robot's line sensors to be calibrated
  January 20 2019*/
-//include the libraries necessary to make this one work
+
+ //only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
+ 
+ //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include<LineShield.h>
 #include<LineCalibrator.h>
 #include<LineThreshold.h>
-#ifdef ARDUINO_AVR_UNO
-	#include <ZumoBuzzer.h>	
-
+#include <ZumoBuzzer.h>	
 #include <LineGlobal.h>
 
 
@@ -143,5 +145,4 @@ void LineGlobal::displayLineReadings() {
 	displayLineReadings(region);
 }
 #else
-	#warning This class does not work for your board
 #endif

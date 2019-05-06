@@ -8,7 +8,7 @@
 
 //only compile this class if the board is correct
 #ifdef ARDUINO_AVR_UNO
-
+#define NUM_SENSORS 6
 //include all the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>

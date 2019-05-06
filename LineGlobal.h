@@ -8,15 +8,14 @@
 #ifndef LineGlobal_h
 #define LineGlobal_h
 
-/**
- * define the number of sensors that will be used
- */
+//only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
 #define NUM_SENSORS 6
-
+//include all of the necessary library to make this one work
 #include<Arduino.h>
 #include<LineThreshold.h>
-#ifdef ARDUINO_AVR_UNO
 #include <ZumoBuzzer.h>
+
 class LineGlobal {
 
 private:
@@ -74,7 +73,10 @@ public:
 	void displayLineReadings(String region);
 
 };
+#elif defined (DONT_NEED_LINE)
+	#warning : May lead to "error: 'LineGlobal' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
 #else
-	#warning This class does not work for your board
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_LINE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
 #endif
 #endif

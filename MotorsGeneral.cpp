@@ -7,8 +7,11 @@
 	to be driven by any of defined boards here with no extra work on behalf of the user
 */
 
-//includes the libraries of code necessary to make this one work
+//only compile this class if the board is correct
+#if defined(ARDUINO_ESP8266_WEMOS_D1R1) | defined (ARDUINO_AVR_UNO)
 
+
+//includes the libraries of code necessary to make this one work
 #include "MotorsGeneral.h"
 
 //creates a new Drive object, which won't have random motor power
@@ -96,3 +99,4 @@ void MotorsGeneral::setMotorPower(int motorPin, int motorPower){
 	}
 
 }
+#endif
