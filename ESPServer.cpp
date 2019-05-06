@@ -17,7 +17,7 @@ ESPServer::ESPServer(String title,String* possibleCodes,int numCodes){
 	this->possibleCodes =possibleCodes;
 	this->ssid     = "brandeis_open";
 	this->password = "";
-	this->title = "Deis Robotics Test Web Server";
+	this->title = title;
 	
 }
 
