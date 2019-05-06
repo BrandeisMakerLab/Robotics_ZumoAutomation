@@ -8,6 +8,9 @@
 //set up the SorterShield header file
 #ifndef Sorter_h
 #define Sorter_h
+
+//this should work on all boards, so there is no preprocessor directive here
+
 //include the Arduino library so Strings can be used
 #include<Arduino.h>
 

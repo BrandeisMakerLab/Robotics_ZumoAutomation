@@ -8,11 +8,11 @@
 #ifndef LineThreshold_h
 #define LineThreshold_h
 
-/**
- * define the number of sensors that will be used
- */
-#define NUM_SENSORS 4
-
+//only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
+//include all of the necessary library to make this one work
+#define NUM_SENSORS 6
+//#include<ZumoAutomation.h>
 #include<Arduino.h>
 #include<LineShield.h>
 #include<LineThreshold.h>
@@ -66,5 +66,10 @@ public:
 	void convertToRegion();
 
 };
-
+#elif defined (DONT_NEED_LINE)
+	#warning : May lead to "error: 'LineThreshold' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_LINE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+#endif
 #endif

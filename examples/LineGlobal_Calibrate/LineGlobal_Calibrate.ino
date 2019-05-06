@@ -3,13 +3,14 @@
  The program is documented for a general audience.
  April 2 2018
  */
-//includes the header file of the library
+//includes the header file of the 
+#define DONT_NEED_LINE
 #include <DriveShield.h>
 #include <Arduino.h>
 #include<LineGlobal.h>
 #include<Wire.h>
-#include<ZumoShield.h>
 #include <Timer.h>
+#include <GeneralBuzzer.h>
 
 //creates a global reference to a Drive object
 DriveShield robot;
@@ -28,7 +29,9 @@ LineGlobal reader;
 int numLost;
 
 //a buzzer to display when robot turns back
-ZumoBuzzer buzzer;
+GeneralBuzzer buzzer;
+
+
 //occurs before the program enters its main loop
 void setup() {
 	Serial.begin(9600);
@@ -49,7 +52,7 @@ void setup() {
 	//buzz the numer of losses
 	for(int i=0;i<numLost;i++){
 		//250 milliseconds with note on
-		buzzer.playNote(NOTE_A(3), 250, 15);
+		playBuzzer(3);
 		delay(250);
 		//250 milliseconds with note off
 		delay(250);
@@ -69,7 +72,7 @@ int navigate(int numLosses) {
 	reader.displayLineReadings(region);
 	if (region == "WHITE") {
 		//play  a note to signal robot has reached edge
-		buzzer.playNote(NOTE_A(4), 500, 15);
+		playBuzzer(4);
 		robot.driveBackward(500);
 		robot.turnLeft(300);
 	} else if (region == "GRAY") {
@@ -77,7 +80,7 @@ int navigate(int numLosses) {
 		Serial.print("LOST: ");
 		Serial.println(numLosses);
 		//play a note to signal robot has lost
-		buzzer.playNote(NOTE_A(3), 500, 15);
+		playBuzzer(3);
 		robot.driveBackward(500);
 		delay(2000);
 
@@ -90,6 +93,4 @@ int navigate(int numLosses) {
 
 //the main loop of the robot
 
-void loop() {
-
-}
+void loop() {}

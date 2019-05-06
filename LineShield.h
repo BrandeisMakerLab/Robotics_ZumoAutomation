@@ -6,17 +6,22 @@
 #ifndef LineShield_h
 #define LineShield_h
 
+//only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
+#define NUM_SENSORS 6
 //include all the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
+
 #include <ZumoReflectanceSensorArray.h>
+
 
 class LineShield {
 
   private:
-    //the provided class, which will interface with the robot's LineShieldShield sensors
-    ZumoReflectanceSensorArray lineReader;
-
+    
+	ZumoReflectanceSensorArray lineReader;
+	
     //an array to store the LineShieldShield sensor readings
     //declared at an arbitrary size and then actually used with numSensors
     unsigned int reflections[10];
@@ -67,5 +72,10 @@ class LineShield {
 
 
 };
-
+#elif defined (DONT_NEED_LINE)
+	#warning : May lead to "error: 'LineShield' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_LINE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+#endif
 #endif

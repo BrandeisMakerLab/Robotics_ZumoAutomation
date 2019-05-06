@@ -5,7 +5,7 @@
 #include <Arduino.h>
 #include<Wire.h>
 //LineShield lineReader;
-//using parenthesis here doesn't work for some reason
+//using parenthesis here does not work for some reason
 String regions[] = { "BLACK", "WHITE", "GRAY" };
 int numRegions = 3;
 LineCalibrator cali(regions, numRegions);

@@ -6,11 +6,12 @@
 //sets up the Drive Header file
 #ifndef DriveShield_h
 #define DriveShield_h
+#if defined (ARDUINO_AVR_UNO) | defined(ARDUINO_ESP8266_WEMOS_D1R1)
 
 //includes the libraries of code necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include <ZumoShield.h>
+#include <MotorsGeneral.h>
 #include <DriveShield.h>
 #include <Timer.h>
 
@@ -18,8 +19,8 @@ class DriveShield{
 	private:
 		//the power the robot drives at [0,400]
 		int power;
-		//the ZUMO32U4 object that will be used to interface with the robot
-		ZumoMotors drive;	
+		//the  motors general object that will be used to interface with the robot
+		MotorsGeneral drive;	
 		//a timer to control how long the robot drives
 		Timer driveTimer;
 		
@@ -59,5 +60,10 @@ class DriveShield{
 		//sets the power
 		void setPower(int power);
 };
-
+#elif defined (DONT_NEED_DRIVE)
+	#warning : May lead to "error: 'DriveShield' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_DRIVE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+#endif
 #endif

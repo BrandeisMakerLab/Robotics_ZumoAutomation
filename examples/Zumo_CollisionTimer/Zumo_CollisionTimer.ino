@@ -1,6 +1,6 @@
 /*Jacob Smith 2.28.2019 This program builds on robotics club work to write a kill Timer for the Zumo robot. 
 The idea is that if the robot knows how much time it should take to cros the field, roughly 3 seconds, then
-if it doesn't reach the end of the field by 3 seconds, it knows it has been collided with*/
+if it does not reach the end of the field by 3 seconds, it knows it has been collided with*/
 //include libraries needed to make this one work
 #include <Timer.h>
 #include <LineShield.h>

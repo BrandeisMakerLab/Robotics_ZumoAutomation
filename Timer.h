@@ -6,6 +6,8 @@
 #ifndef Timer_h
 #define Timer_h
 
+//this should work on all boards, so there is no preprocessor directive here
+
 #include <Arduino.h>
 #include<Timer.h>
 

@@ -5,7 +5,8 @@
 //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include <Wire.h>
-#include <ZumoShield.h>
+//only compile this class if board is correct
+#ifdef ARDUINO_AVR_UNO	
 #include "LineShield.h"
 
 //define constants to refer to regions to make the code easier to read
@@ -143,3 +144,5 @@ int LineShield::getRegion(){
 
 }
 
+#else
+#endif

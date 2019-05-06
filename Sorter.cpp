@@ -4,6 +4,8 @@
 //include the libraries necessary to make this one work
 #include "Sorter.h"
 
+//this should work on all boards, so there is no preprocessor directive here
+
 //creates a new Sorter object
 Sorter::Sorter(int* regionMaxes ,int* regionMins, String* regions,int arrSize ) {
   this->regionMaxes=regionMaxes;

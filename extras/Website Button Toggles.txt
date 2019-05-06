@@ -1,0 +1,14 @@
+Dive F -stoppped
+Drive B -stopped
+Turn L-stepped
+Turn R=stopped
+
+
+Drive F-DriveB
+Turn L-Turn R
+Move- Stop
+
+Drive--Stop
+Forward--Backward
+Turn Right--Stop
+Turn Left--Stop

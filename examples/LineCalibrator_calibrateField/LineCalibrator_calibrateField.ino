@@ -5,7 +5,7 @@
 #include<LineThreshold.h>
 
 //LineShield lineReader;
-//using parenthesis here doesn't work for some reason
+//using parenthesis here does not work for some reason
 int numRegions = 3;
 String regions[] = { "WHITE", "GRAY", "BLACK" };
 int thresholds[] = { 442, 1648 };

@@ -1,11 +1,16 @@
 /*Written by Jacob Smith\for Brandeis Robotics club
  Allows the robot's line sensors to be calibrated
  January 20 2019*/
-//include the libraries necessary to make this one work
+
+ //only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
+ 
+ //include the libraries necessary to make this one work
 #include <Arduino.h>
 #include<LineShield.h>
 #include<LineCalibrator.h>
 #include<LineThreshold.h>
+#include <ZumoBuzzer.h>	
 #include <LineGlobal.h>
 
 
@@ -64,6 +69,7 @@ String LineGlobal:: getRegion(){
 	//get the regions that each line sensor sees
 	thresh.convertToRegion();
 	//generate a frequency array of those regions
+	/*
 	int frequencies [numRegions];
 	for(int i=0;i<numRegions;i++){
 		frequencies[i]=0;
@@ -90,6 +96,9 @@ String LineGlobal:: getRegion(){
 	}
 	//otherwise, return the lowest priority region
 	return regionsPriority[0];
+	*/
+	//return region of first sensor
+	return regionsSeen[0];
 }
 
 
@@ -135,4 +144,5 @@ void LineGlobal::displayLineReadings() {
 	String region=getRegion();
 	displayLineReadings(region);
 }
-
+#else
+#endif

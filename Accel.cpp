@@ -3,9 +3,11 @@
 	Allows for simple initialization of the accelerometer in the class constructor and provides getter methods to
 	get the robot's x, y, and z axis acceleration. April 23 201 8
 */
+//only compile this class if the board is correct
+#ifdef ARDUINO_AVR_UNO
 
 //includes the libraries of code necessary to make this one work
-#include <ZumoShield.h>
+#include <LSM303.h>
 #include <Wire.h>
 #include <Arduino.h>
 #include "Accel.h"
@@ -144,3 +146,4 @@ bool Accel::collided() {
 		return false;
 	}
 }
+#endif

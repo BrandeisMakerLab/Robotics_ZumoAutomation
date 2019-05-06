@@ -6,11 +6,17 @@
 #ifndef LineCalibrator_h
 #define LineCalibrator_h
 
+//only compile this class i the board is correct
+#ifdef ARDUINO_AVR_UNO
+
 //include all the libraries necessary to make this one work
+#include <ZumoReflectanceSensorArray.h>
 #include <Arduino.h>
 #include <Wire.h>
 #include<LineShield.h>
 #include<Sorter.h>
+
+
 
 //the number of regions the robot has
 
@@ -65,5 +71,10 @@ class LineCalibrator : public LineShield {
     //returns the array of regions
     String* getRegions();
 };
+#elif defined (DONT_NEED_LINE)
+	#warning : May lead to "error: 'LineCalibrator' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_LINE> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
 #endif
-
+#endif

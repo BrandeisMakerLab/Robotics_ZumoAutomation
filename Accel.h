@@ -7,8 +7,11 @@
 #ifndef Accel_h
 #define Accel_h
 
+//only compile this class if the board is correct
+#if defined(ARDUINO_AVR_UNO) 
+
 //includes the libraries of code necessary to make this one work
-#include<ZumoShield.h>
+#include<LSM303.h>
 #include <Wire.h>
 #include <Arduino.h>
 
@@ -67,5 +70,10 @@ class Accel{
 		//returns whether a stationary robot has detected a collision with its accelerometer
 		bool collided();
 };
-
+#elif defined (DONT_NEED_ACCEL)
+	#warning : May lead to "error: 'Accel' does not name a type" ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+	
+#else
+	#error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_ACCEL> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html
+#endif
 #endif
