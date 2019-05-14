@@ -5,7 +5,8 @@
 	
 	Allows the Zumo Shield Robot or anything using the drv8835 motor driver (see link above)
 	to be driven by any of defined boards here with no extra work on behalf of the user
-*///sets up the Drive Header file
+*/
+//sets up the Drive Header file
 #ifndef MotorsGeneral_h
 #define MotorsGeneral_h
 
