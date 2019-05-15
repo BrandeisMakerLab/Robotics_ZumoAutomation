@@ -28,8 +28,8 @@ public abstract class ArduinoClassMaster{
 		arduinoClass+=generateHeaderComment(author,organization,headerComments,supportedBoards);
 		
 	}
-
-	/* Generates the header comment of an arduino class given
+	
+	/** Generates the header comment of an arduino class given
 	necessary strings*/
 	protected String generateHeaderComment(String author,String organization, String headerComments,String supportedBoards){
 		//date code from link
@@ -44,7 +44,7 @@ public abstract class ArduinoClassMaster{
 		return headerComment;	
 	}
 	
-	/* Generates the board definition that allows a class to not cause compilation errors for the long board*/
+	/** Generates the board definition that allows a class to not cause compilation errors for the long board*/
 	protected String generateBoardDefInitial(String supportedBoards){
 		//check if all boards are allowed, if not go to more complicated helper method
 		if(supportedBoards.equals("ALL")){
@@ -54,7 +54,7 @@ public abstract class ArduinoClassMaster{
 		}
 	}
 	
-	/* Generates the string that will only compile the class if the board is correct*/
+	/** Generates the string that will only compile the class if the board is correct*/
 	protected String generateBoardDef(String supportedBoards){
 		//input comment
 		String boardDef="//only compile this class if the board is correct\n";
@@ -75,7 +75,7 @@ public abstract class ArduinoClassMaster{
 		return boardDef;
 	}
 		
-	/* Determines what libraries should be included by
+	/** Determines what libraries should be included by
 	analyzing the type of variables*/
 	protected String startLibraryIncludes(String variables,String className){
 		//add comment and include for header file
@@ -84,7 +84,7 @@ public abstract class ArduinoClassMaster{
 		return includes;
 	}
 	
-	/* Generate method bodies based on input Strings*/
+	/** Generate method bodies based on input Strings*/
 	protected String generateMethods(String className,String methods,boolean isPublic){
 		//return a blank string if inputs are null,useful because a class could not have any private methods
 		if(methods==null){return "";}
@@ -100,7 +100,7 @@ public abstract class ArduinoClassMaster{
 		return methodString;
 	}
 	
-	/* parses a method into a body, dataType, comment*/
+	/** parses a method into a body, dataType, comment*/
 	protected String [] parseMethod(String methodInfo){
 		MiniScanner methodReader=new MiniScanner();
 		methodReader.prime(methodInfo, "|");
@@ -116,26 +116,11 @@ public abstract class ArduinoClassMaster{
 		return methodParts;
 	}
 	
-	/* Generate method bodies based on input Strings, will be implrmented by later classes*/
+	/** Generate method bodies based on input Strings, will be implrmented by later classes*/
 	protected abstract String genMethod(String className,String []methods,boolean isPublic);
 	
-	
-	/*Inserts tabs into a string separated by newline characters*/
-	protected String insertTabs(String base){
-		MiniScanner reader2=new MiniScanner();
-		reader2.prime(base,"\n");
-		String withTabs="";
-		String line;
-		while(reader2.hasNext()){
-			line=reader2.next();
-			withTabs+="    "+line+"\n";
-		}
-		return withTabs;
-		
-	}
-	
 
-	/*
+	/**
 	* Returns a string representation of the class
 	*/
 	public String toString(){

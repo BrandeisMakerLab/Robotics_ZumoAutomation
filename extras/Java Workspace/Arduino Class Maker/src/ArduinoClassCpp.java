@@ -34,13 +34,13 @@ public class ArduinoClassCpp extends ArduinoClassMaster{
 			methodString+=" ";
 		}
 		methodString+=className+"::"+methodParts[1]+"() {";//name
-		methodString+=insertTabs(methodParts[3]);//body
+		methodString+=ArduinoParser.insertTabs(methodParts[3],1);//body
 		methodString+="\n}\n\n";
 		return methodString;
 		
 	}
 	
-	/* Generates the final board definition which generates errors if the wrong board is used*/
+	/** Generates the final board definition which generates errors if the wrong board is used*/
 	private String generateBoardDefFinal(){
 		return "#endif";
 	}

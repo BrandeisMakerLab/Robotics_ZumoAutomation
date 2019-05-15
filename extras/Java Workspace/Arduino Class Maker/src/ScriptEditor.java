@@ -21,7 +21,7 @@ public class ScriptEditor{
 	private Scanner editor;
 	
 
-	/*
+	/**
 	* Creates a new Script editor object
 	*/
 	public ScriptEditor(String fileName){
@@ -66,7 +66,7 @@ public class ScriptEditor{
 		
 	}
 	
-	/*
+	/**
 	*  Replaces a file with given String
 	*/
 	public void writeFile(String message){

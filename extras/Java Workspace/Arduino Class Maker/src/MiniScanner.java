@@ -3,6 +3,7 @@ Date: May 13 2019
 Assignment: Personal Study, allows the user to create a scanner object which iterates
 over a base string and returns one token at a time
 Email: jsmith2021@brandeis.edu
+Throw error if hasNext was called twice in a row at end of input
 */
 
 public class MiniScanner{
@@ -16,12 +17,12 @@ public class MiniScanner{
 
 	private String nextString;
 	
-	/*instantiates a MiniScanner object*/
+	/**instantiates a MiniScanner object*/
 	public MiniScanner(){
 		initClass();
 	}
 	
-	/* Helper method to initialize or reset all of the classes instance variables
+	/** Helper method to initialize or reset all of the classes instance variables
 	*/
 	public void initClass(){
 		primed=false;
@@ -52,7 +53,7 @@ public class MiniScanner{
 		
 	}
 		
-    /*Gets a MiniScanner reader to iterate over the MiniScanner*/
+    /**Gets a MiniScanner reader to iterate over the MiniScanner*/
 	public void prime(String base, String token){
 	
 		this.base=base;
@@ -62,7 +63,7 @@ public class MiniScanner{
 	
 	}
 	
-	/*returns whether the scanner is reader to iterate over
+	/**returns whether the scanner is reader to iterate over
 		updates the nextString field*/
 	public boolean hasNext(){
 		checkPrimed();
@@ -89,7 +90,7 @@ public class MiniScanner{
 		
 	}
 	
-	/*returns the next string, which will be null if there is no next string*/
+	/**returns the next string, which will be null if there is no next string*/
 	public String next(){
 		checkPrimed();
 		String temp=nextString;
@@ -98,7 +99,7 @@ public class MiniScanner{
 		
 	}
 	
-	/*throws an exception if the user hasn't primed the MiniScanner*/
+	/**throws an exception if the user hasn't primed the MiniScanner*/
 	private void checkPrimed(){
 		if(!primed){
 			throw new IllegalArgumentException("Error, Scanner not primed. Maybe you called next an extra time?");

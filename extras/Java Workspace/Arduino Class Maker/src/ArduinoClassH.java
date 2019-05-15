@@ -16,6 +16,8 @@ public class ArduinoClassH extends ArduinoClassMaster{
 	* and parses it into header comment, methods, header file
 	*/
 	
+	/**Creates a new ArduinoClassH object from necessary strings containing information like supported boards and author name
+	 * */
 	public ArduinoClassH(String className,String author,String organization,String headerComments,String supportedBoards,String variables,String privateMethods,String publicMethods){
 		//call super constructor to create header comment
 		super(className,author,organization,headerComments,supportedBoards);
@@ -43,7 +45,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 		keywords+=className+"\tKEYWORD1\n";
 	}
 
-	/* generates the definitions of the header file*/
+	/** generates the definitions of the header file*/
 	private String setupHeader(String className){
 		String define="";
 		define+="//sets up the "+className+" Header file\n";
@@ -52,7 +54,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 		return define;
 	}
 		
-	/* Determines what libraries should be included by
+	/** Determines what libraries should be included by
 	analyzing the type of variables*/
 	private String findLibraryIncludes(String variables,String className){
 		String type;
@@ -74,7 +76,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 		
 	
 	
-	/* gets the data type from the varibale entry
+	/** gets the data type from the varibale entry
 	*/
 	private String getDataType(String variables){
 		    MiniScanner reader= new MiniScanner();
@@ -85,7 +87,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 			return reader.next();	
 	}
 	
-	/*Generates a method given the dataType, methodName, comment, and body*/
+	/** Generates a method given the dataType, methodName, comment, and body*/
 	protected String generateVariables(String variables){
 		reader.prime(variables,"\n");
 		String vars="";
@@ -98,7 +100,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 	
 	}
 	
-	/*parses a variable into dataType, name, and comment*/
+	/** parses a variable into dataType, name, and comment*/
 	protected String parseVariable(String line){
 		String varLine="";
 		MiniScanner readerB=new MiniScanner();
@@ -113,7 +115,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 	
 	}
 	
-	/*Generates a method given the dataType, methodName, comment, and body*/
+	/** Generates a method given the dataType, methodName, comment, and body*/
 	protected String genMethod(String className,String []methodParts,boolean isPublic){
 		String methodString="";
 		methodString+="    //"+methodParts[2]+"\n";//comment
@@ -121,7 +123,8 @@ public class ArduinoClassH extends ArduinoClassMaster{
 			methodString+=" ";
 		}
 		//use this spot in parsing to generate keywords list of public methods
-		if(isPublic) {
+		//except the keyword for the class name will be handled in keyword init
+		if(isPublic && !methodParts[1].equals(className)) {//only add keyword if method is public and isn't a constructor
 			keywords+=methodParts[1]+"\tKEYWORD2\n";
 		}
 		methodString+="   "+methodParts[0]+" "+methodParts[1]+"();\n";//data type,name
@@ -130,7 +133,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 	}
 
 	
-	/* Generates the final board definition which generates errors if the wrong board is used*/
+	/** Generates the final board definition which generates errors if the wrong board is used*/
 	private String generateBoardDefFinal(String className){
 		String finalDef="";
 		finalDef+="#elif defined (DONT_NEED_"+className.toUpperCase()+")\n";
@@ -142,7 +145,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 	}
 
 	
-	/* Returns whether the key string exists in the array
+	/** Returns whether the key string exists in the array
 	*/
 	private boolean contains(String [] array,String key){
 		for(int i=0;i<array.length;i++){
@@ -153,12 +156,12 @@ public class ArduinoClassH extends ArduinoClassMaster{
 		return false;
 	}
 	
-	/*Returns a String representation of the header file*/
+	/** Returns a String representation of the header file*/
 	public String getHeader() {
 		return arduinoClass;
 	}
 	
-	/*Returns a String representation of the keywords file*/
+	/** Returns a String representation of the keywords file*/
 	public String getKeywords() {
 		return keywords;
 	}
