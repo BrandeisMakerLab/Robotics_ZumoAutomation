@@ -54,6 +54,24 @@ public class AssertMethodsTest {
 	
 	}
 	
+
+	/**helper method to allow for testing an exception was thrown
+	 * This helper method is in the test class because it can only be used to test one
+	 * method
+	 * */
+	public void assertExceptionArrEquals(String[] givens, String[] correct,
+			boolean shouldResults) {
+		// set threw based on exception
+		boolean threw = false;
+		try {
+			AssertMethods.arrEquals(givens, correct);
+		} catch (Exception e) {
+			threw = true;
+		}
+		// assert if an exception should have been thrown
+		assertEquals(threw, shouldResults);
+	}
+	
 	@Test
 	/**makes sure that the assertEquals method returns stirng representing the summary comparison pf
 	 * two input strings
@@ -94,22 +112,8 @@ public class AssertMethodsTest {
 	
 	}
 
-	/**helper method to allow for testing an exception was thrown
-	 * This helper method is in the test class because it can only be used to test one
-	 * method
-	 * */
-	public void assertExceptionArrEquals(String[] givens, String[] correct,
-			boolean shouldResults) {
-		// set threw based on exception
-		boolean threw = false;
-		try {
-			AssertMethods.arrEquals(givens, correct);
-		} catch (Exception e) {
-			threw = true;
-		}
-		// assert if an exception should have been thrown
-		assertEquals(threw, shouldResults);
-	}
+	
+
 
 
 }

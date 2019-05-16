@@ -1,0 +1,108 @@
+package classGenerators;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+/**
+ * Name: Jacob Smith Email:jsmith2021@brandeis.edu Assignment: Personal Study,
+ * makes sure that the ArduinoClass CPP returns a proprly formatted classs when
+ * given the correct inputs Date: May 15, 2019 Sources: Bugs:
+ */
+
+public class ArduinoClassCppTest {
+
+	@Test
+	/**Establishes correct example strings and confirms the output of the cpp class with correct
+	 * tempalte file
+	 * */
+	public void test() {
+
+		// This example generates a class represented as a string
+		// The user can decide how these string will be inputted
+		// These fields are the minimum required to generate an arudino class
+
+		// Titles are one word
+		String className = "Timer";
+		// This information is useful in the header comment
+		String author = "Jacob Smith";
+		String organization = "Brandeis Robotics Club";
+
+		String headerComments = "A timer class to allow the user to create loops and maintain program control";
+
+		String supportedBoards = "ARDUINO_AVR_UNO ESP8266_WEMOSD1R1";
+		// variables will always be private, I ain't in the business of allowing
+		// bad programming
+		// format of variables is dataType varName
+		String variables = "";
+		variables += "long|initTime|the beginning time of the interval" + "\n";
+		variables += "Apple|test|a test varible for the parser";
+
+		// Methods are an array of strings, each string is format
+		// returnType methodName comments
+		// method bodies are the code that goes in the methods
+		String publicMethods = "";
+
+		publicMethods += "initTime=millis();\n\n";
+		publicMethods += "long|resetTime|resets the Initial Time|\n";
+		publicMethods += "initTime=millis();\nreturn getTime();\n\n";
+		publicMethods += "long|getTime|returns the current time|\n";
+		publicMethods += "return millis()-initTime;\n\n";
+		publicMethods += "long|getAndResetTime|returns the current time and the initial time|\n";
+		publicMethods += "long curTime=getTime();\nresetTime();\nreturn curTime;\n\n";
+
+		String privateMethods = null;
+
+		ArduinoClassCpp template = new ArduinoClassCpp(className, author,
+				organization, true,headerComments, supportedBoards, variables,
+				privateMethods, publicMethods);
+		
+		String generatedClass = template.toString();
+		
+		assertEquals(correctClassHardCode,generatedClass);
+
+
+	}
+
+
+private static String correctClassHardCode=
+"/* Written by Jacob Smith for Brandeis Robotics Club 2019/05/15\n\t"+
+"A timer class to allow the user to create loops and maintain program control\n"+
+"Boards supported: ARDUINO_AVR_UNO ESP8266_WEMOSD1R1*/\n\n"+
+
+"//only compile this class if the board is correct\n"+
+"if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
+
+"//includes the libraries of code necessary to make this one work\n"+
+"#include <Timer.h>\n\n"+
+
+"//Creates a new Timer object\n"+
+"Timer::Timer() {\n"    +
+"    initTime=millis();\n\n"+
+
+"}\n\n"+
+
+"//resets the Initial Time\n"+
+"long Timer::resetTime() {\n" +   
+"    initTime=millis();\n"+
+"    return getTime();\n\n"+
+
+"}\n\n"+
+
+"//returns the current time\n"+
+"long Timer::getTime() {\n" +
+"    return millis()-initTime;\n\n"+
+
+"}\n\n"+
+
+"//returns the current time and the initial time\n"+
+"long Timer::getAndResetTime() {\n"  +
+"    long curTime=getTime();\n"+
+"    resetTime();\n"+
+"    return curTime;\n\n"+
+
+"}\n\n"+
+
+"#endif";
+
+}

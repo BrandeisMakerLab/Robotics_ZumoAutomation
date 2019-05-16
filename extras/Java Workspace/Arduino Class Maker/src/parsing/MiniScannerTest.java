@@ -72,6 +72,41 @@ public class MiniScannerTest {
 	
 	@Test
 	/**
+	 * Tests that the scanner won't throw an exception if base string is null
+	 * on method call hasNext
+	 * 
+	 */
+	public void nullBaseHasNext() {
+		// this example iterates over a base stirng with spaces used as a token
+		MiniScanner reader = new MiniScanner();
+
+		//test that a scanner won't throw exception if hasNext is called 6 times
+		reader.prime(null, " ");
+		for(int i=0;i<5;i++){
+			assertExceptionReader(reader,true,false);
+		}
+		
+	}
+	
+	@Test
+	/**
+	 * Tests that the scanner won't throw an exception if base string is null
+	 * with call to next method
+	 */
+	public void nullBaseNext() {
+		// this example iterates over a base stirng with spaces used as a token
+		MiniScanner reader = new MiniScanner();
+
+		//test that a scanner won't throw exception if hasNext is called 6 times
+		reader.prime(null, " ");
+		for(int i=0;i<5;i++){
+			assertExceptionReader(reader,false,false);
+		}
+		
+	}
+	
+	@Test
+	/**
 	 * Tests that the scanner can parse one string corredctly, be reset, and parse another string correctly
 	 */
 	public void testTokens() {

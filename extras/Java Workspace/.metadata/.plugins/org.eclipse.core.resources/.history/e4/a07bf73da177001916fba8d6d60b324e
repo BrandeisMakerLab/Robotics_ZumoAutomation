@@ -1,0 +1,22 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment:Personal Study, makes sure that the ArduinoClassH class can geenerate output
+ *  that matches correct output in ArduinoClassHardcoded enum for the h and keywords files
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package classGenerators;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassHTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

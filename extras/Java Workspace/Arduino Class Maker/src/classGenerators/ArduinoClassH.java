@@ -1,4 +1,5 @@
 package classGenerators;
+import enums.ArduinoClassExample;
 import parsing.MiniScanner;
 
 /* Name: Jacob Smith
@@ -158,7 +159,7 @@ public class ArduinoClassH extends ArduinoClassMaster{
 		finalDef+="  #warning : May lead to error: '"+className+"' does not name a type ; Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html\n";
 		finalDef+="#else\n";
 		finalDef+="  #error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_"+className.toUpperCase()+"> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html\n";
-		finalDef+="#endif\n#endif\n";
+		finalDef+="#endif\n#endif";
 		return finalDef;
 	}
 
@@ -189,45 +190,22 @@ public class ArduinoClassH extends ArduinoClassMaster{
 	* Shows an example file with this class
 	*/
 	public static void main (String [] args){
-		//This example generates a class represented as a string
-		//The user can decide how these string will be inputted
-		//These fields are the minimum required to generate an arudino class
-		
-		//Titles are one word
-		String className="Timer";
-		//This information is useful in the header comment
-		String author="Jacob Smith";
-		String organization="Brandeis Robotics Club";
+		// This example generates a class represented as a string
+		// The user can decide how these string will be inputted
+		// These fields are the minimum required to generate an arudino class
+
+		ArduinoClassH template = new ArduinoClassH(ArduinoClassExample.CLASSNAME.toString(),
+			ArduinoClassExample.AUTHOR.toString(),
+			ArduinoClassExample.ORGANIZATION.toString(), 
+			true,
+			ArduinoClassExample.HEADERCOMMENTS.toString(), 
+			ArduinoClassExample.SUPPORTEDBOARDS.toString(),
+			ArduinoClassExample.VARIABLES.toString(),
+			ArduinoClassExample.PRIVATEMETHODS.toString(),
+			ArduinoClassExample.PUBLICMETHODS.toString());
 			
-		
-		String headerComments="A timer class to allow the user to create loops and maintain program control";
-		
-		String supportedBoards="ARDUINO_AVR_UNO ESP8266_WEMOSD1R1";
-		//variables will always be private, I ain't in the business of allowing bad programming
-		//format of variables is dataType varName
-		String variables="";
-		variables+="long|initTime|the beginning time of the interval"+"\n";
-		variables+="Apple|test|a test varible for the parser";
-			
-		//Methods are an array of strings, each string is format
-		//returnType methodName comments
-		//method bodies are the code that goes in the methods
-		String publicMethods="";
-		
-		publicMethods+="initTime=millis();\n\n";
-		publicMethods+="long|resetTime|resets the Initial Time|\n";
-		publicMethods+="initTime=millis();\nreturn getTime();\n\n";
-		publicMethods+="long|getTime|returns the current time|\n";
-		publicMethods+="return millis()-initTime;\n\n";
-		publicMethods+="long|getAndResetTime|returns the current time and the initial time|";
-		publicMethods+="long curTime=getTime();\nresetTime();\nreturn curTime;\n\n";
-		
-				
-		String  privateMethods=null;
-		//create an ArduinoClassH object and display the header file and keywords
-		ArduinoClassH template=new ArduinoClassH(className,author,organization,headerComments,supportedBoards,variables,privateMethods,publicMethods);
-		System.out.println(template.getHeader());
-		System.out.println(template.getKeywords());
+			System.out.println(template.getHeader());
+			System.out.println(template.getKeywords());
 		
 	}
 }

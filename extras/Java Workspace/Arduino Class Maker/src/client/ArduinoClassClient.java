@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 import classGenerators.ArduinoClassCpp;
 import classGenerators.ArduinoClassH;
-import enums.ArduinoClassField;
+import enums.ArduinoClassExample;
+import enums.ArduinoClassPrompts;
 
 /**Name: Jacob Smith 
  * Date 5/14/2049 Personal Study, uses ArduinoClasses to autaomtically generate header, class, and keyword files
@@ -15,8 +16,8 @@ public class ArduinoClassClient {
 				//These fields are the minimum required to generate an arduino class
 				
 				//use any of examples
-				simplestExample();
-				//scannerExample();
+				//simplestExample();
+				scannerExample();
 				
 	}
 	
@@ -24,42 +25,16 @@ public class ArduinoClassClient {
 	 * Creates an arduino cpp, header, and keyword file strings with no input or output
 	 * */
 	public static void simplestExample(){
-		//input String needed to create files as hardcoded
-		
-		//Titles are one word
-		String className="Timer";
-		//This information is useful in the header comment
-		String author="Jacob Smith";
-		String organization="Brandeis Robotics Club";
-				
-			
-		String headerComments="A timer class to allow the user to create loops and maintain program control";
-			
-		String supportedBoards="ARDUINO_AVR_UNO ESP8266_WEMOSD1R1";
-		//variables will always be private, I ain't in the business of allowing bad programming
-		//format of variables is dataType varName
-		String variables="";
-		variables+="long|initTime|the beginning time of the interval"+"\n";
-		variables+="Apple|test|a test varible for the parser";
-				
-		//Methods are an array of strings, each string is format
-		//returnType methodName comments
-		//method bodies are the code that goes in the methods
-		String publicMethods="";
-			
-		publicMethods+="initTime=millis();\n\n";
-		publicMethods+="long|resetTime|resets the Initial Time|\n";
-		publicMethods+="initTime=millis();\nreturn getTime();\n\n";
-		publicMethods+="long|getTime|returns the current time|\n";
-		publicMethods+="return millis()-initTime;\n\n";
-		publicMethods+="long|getAndResetTime|returns the current time and the initial time|\n";
-		publicMethods+="long curTime=getTime();\nresetTime();\nreturn curTime;\n\n";
-			
-					
-		String  privateMethods=null;
 	
 		//call helper method to display the generated files
-		ArduinoClassClient.createFiles(className, author, organization, headerComments, supportedBoards, variables, privateMethods, publicMethods);
+		ArduinoClassClient.createFiles(ArduinoClassExample.CLASSNAME.toString(),
+				ArduinoClassExample.AUTHOR.toString(),
+				ArduinoClassExample.ORGANIZATION.toString(),
+				ArduinoClassExample.HEADERCOMMENTS.toString(),
+				ArduinoClassExample.SUPPORTEDBOARDS.toString(),
+				ArduinoClassExample.VARIABLES.toString(),
+				ArduinoClassExample.PRIVATEMETHODS.toString(),
+				ArduinoClassExample.PUBLICMETHODS.toString());
 			
 	}
 	
@@ -70,16 +45,19 @@ public class ArduinoClassClient {
 		//initalize a new scanner to read keyboard input
 		Scanner reader=new Scanner(System.in);
 		//generate an array of field names
-		ArduinoClassField []fields=ArduinoClassField.values();
+		ArduinoClassPrompts []fields=ArduinoClassPrompts.values();
+		ArduinoClassExample[]examples=ArduinoClassExample.values();
 		//create an array of the same length to hold the user's answers
 		String []userAnswers=new String[fields.length];
 		//temporary variable for code readability
-		ArduinoClassField field;
+		ArduinoClassPrompts field;
+		ArduinoClassExample example;
 		//iterate through all the fields, displaying prompt, example formatting, and reading user input
 		for(int i=0;i<fields.length;i++){
 			field=fields[i];
+			example=examples[i];
 			//display prompt
-			System.out.println(field.prompt+"\n"+field.format);
+			System.out.println(field.prompt+"\n"+example.toString());
 			//read user input
 			userAnswers[i]=reader.nextLine();
 		}

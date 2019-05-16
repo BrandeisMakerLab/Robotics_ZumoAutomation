@@ -5,6 +5,8 @@
  *  Date: May 15, 2019
  *  Sources: 
  *  Bugs:
+ *  Notes: I used to have custom methods to compare special characters abd line numbers of strings,
+ *  but I decided to use a hardcoded string comparison which is moer explicit and doesn''t need those tools
  */
 package testBackgroundCode;
 
@@ -33,6 +35,7 @@ public class AssertMethods {
 		// if all elements are equal, return true
 		return true;
 	}
+	
 	/**
 	 *Helper method to compare two strings and assert whether they are equal
 	 *but provide more helpful information than Junit assertEquals like line number and different character
@@ -102,4 +105,5 @@ public class AssertMethods {
 		return -1;
 
 	}
+	
 }

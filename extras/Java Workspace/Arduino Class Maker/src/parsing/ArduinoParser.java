@@ -14,6 +14,17 @@ public class ArduinoParser {
 	/**Insert internal tabs into a string separated by newline characters
 	 * @param firstLine whether to insert a tab into the first line*/
 	public static String insertTabs(String base, int numTabs,boolean firstLine){
+		//check edge cases if base string is null
+		//if user wants to tab first line, return a tab plus the base
+		if(base==null && firstLine){
+			   return genTab(numTabs)+base;	
+		}
+		//if user doens't want to tab first line, just return base
+		if(base==null && !firstLine){
+			return base;
+		}
+		
+		//set up sacnner to iterate over base string
 		MiniScanner reader=new MiniScanner();
 		reader.prime(base,"\n");
 		String withTabs="";
