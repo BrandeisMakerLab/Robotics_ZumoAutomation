@@ -19,7 +19,7 @@ public enum ArduinoClassHardCoded {
     		"Boards supported: ARDUINO_AVR_UNO ESP8266_WEMOSD1R1*/\n\n"+
 
     		"//only compile this class if the board is correct\n"+
-    		"#if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
+    		"if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
 
     		"//includes the libraries of code necessary to make this one work\n"+
     		"#include <Timer.h>\n\n"+
@@ -100,7 +100,7 @@ public enum ArduinoClassHardCoded {
     		"#define Timer_h\n\n"+
 
 			"//only compile this class if the board is correct\n"+
-			"#if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
+			"if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
 		
     		"//includes the libraries of code necessary to make this one work\n"+
     		"#include <Timer.h>\n"+

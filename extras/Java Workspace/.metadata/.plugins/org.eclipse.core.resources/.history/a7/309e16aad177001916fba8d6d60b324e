@@ -100,7 +100,7 @@ public abstract class ArduinoClassMaster{
 		reader.prime(supportedBoards," ");
 		String board;
 		//generate board statement for first board
-		boardDef+="#if defined(";
+		boardDef+="if defined(";
 		if(reader.hasNext()){
 			board=reader.next();
 			boardDef+=board+") ";
