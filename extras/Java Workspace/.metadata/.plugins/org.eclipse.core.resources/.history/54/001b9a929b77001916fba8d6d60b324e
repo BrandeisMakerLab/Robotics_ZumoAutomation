@@ -1,0 +1,152 @@
+package classGenerators;
+import parsing.ArduinoParser;
+
+ /* Name: Jacob Smith
+Date: May 12 2019
+Assignment: Personal study, allows the user to ecreate the cpp file given necessary information
+using an inheritance schem to save code
+Email: jsmith2021@brandeis.edu
+*/
+
+public class ArduinoClassCpp extends ArduinoClassMaster{
+	
+	/**
+	* Loads an example class into memory with hardcoded date
+	* and parses it into header comment, methods, header file
+	*/
+	public ArduinoClassCpp(String className,String author,String organization,boolean hardCodeDate,String headerComments,String supportedBoards,String variables,String privateMethods,String publicMethods){
+		super(className,author,organization,hardCodeDate,headerComments,supportedBoards);
+		init(className,supportedBoards,variables,publicMethods,privateMethods);
+		
+	}
+	
+	/**
+	* Loads an example class into memory with automatic date
+	* and parses it into header comment, methods, header file
+	*/
+	public ArduinoClassCpp(String className,String author,String organization,String headerComments,String supportedBoards,String variables,String privateMethods,String publicMethods){
+		super(className,author,organization,headerComments,supportedBoards);
+		init(className,supportedBoards,variables,publicMethods,privateMethods);
+		
+	}
+	
+	/**
+	 * Helper method to intialize class specific methods and allow date to be hardcoded
+	 */
+	private void init(String className,String supportedBoards,String variables,String publicMethods, String privateMethods){
+		arduinoClass+=super.generateBoardDefInitial(supportedBoards);
+		arduinoClass+=super.startLibraryIncludes(variables, className)+"\n";
+		arduinoClass+=generateMethods(className,privateMethods,false);	
+		//add an automatic comment for the constructor
+		publicMethods="|"+className+"|Creates a new "+className+" object|\n"+publicMethods;
+		arduinoClass+=generateMethods(className,publicMethods,true);
+		arduinoClass+=generateBoardDefFinal();
+	}
+		
+
+	/*Generates a method given the dataType, methodName, comment, and body*/
+	protected String genMethod(String className,String []methodParts,boolean isPublic){
+		String methodString="";
+		methodString+="//"+methodParts[2]+"\n";//comment
+		methodString+=methodParts[0];//data type
+		//remove extra space for constructor
+		if(!methodParts[0].equals("")) {
+			methodString+=" ";
+		}
+		methodString+=className+"::"+methodParts[1]+"() {";//name
+		methodString+=ArduinoParser.insertTabs(methodParts[3],1);//body
+		methodString+="\n}\n\n";
+		return methodString;
+		
+	}
+	
+	/** Generates the final board definition which generates errors if the wrong board is used*/
+	private String generateBoardDefFinal(){
+		return "#endif";
+	}
+	/**
+	* Shows an example file with this class
+	*/
+	public static void main (String [] args){
+		//This example generates a class represented as a string
+		//The user can decide how these string will be inputted
+		//These fields are the minimum required to generate an arudino class
+		
+		//Titles are one word
+		String className="Timer";
+		//This information is useful in the header comment
+		String author="Jacob Smith";
+		String organization="Brandeis Robotics Club";
+				
+			
+		String headerComments="A timer class to allow the user to create loops and maintain program control";
+			
+		String supportedBoards="ARDUINO_AVR_UNO ESP8266_WEMOSD1R1";
+		//variables will always be private, I ain't in the business of allowing bad programming
+		//format of variables is dataType varName
+		String variables="";
+		variables+="long|initTime|the beginning time of the interval"+"\n";
+		variables+="Apple|test|a test varible for the parser";
+				
+		//Methods are an array of strings, each string is format
+		//returnType methodName comments
+		//method bodies are the code that goes in the methods
+		String publicMethods="";
+			
+		publicMethods+="initTime=millis();\n\n";
+		publicMethods+="long|resetTime|resets the Initial Time|\n";
+		publicMethods+="initTime=millis();\nreturn getTime();\n\n";
+		publicMethods+="long|getTime|returns the current time|\n";
+		publicMethods+="return millis()-initTime;\n\n";
+		publicMethods+="long|getAndResetTime|returns the current time and the initial time|\n";
+		publicMethods+="long curTime=getTime();\nresetTime();\nreturn curTime;\n\n";
+			
+		System.out.println("TEST\n"+correctClassHardCode);		
+		String  privateMethods=null;
+		
+		ArduinoClassCpp template=new ArduinoClassCpp(className,author,organization,headerComments,supportedBoards,variables,privateMethods,publicMethods);
+		System.out.println(template.toString());
+		
+	}
+		
+	private static String correctClassHardCode=
+			"/* Written by Jacob Smith for Brandeis Robotics Club 2019/05/16\n"+
+			"A timer class to allow the user to create loops and maintain program control\n"+
+			"Boards supported: ARDUINO_AVR_UNO ESP8266_WEMOSD1R1*/\n\n"+
+			
+			"//only compile this class if the board is correct\n"+
+			"if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
+
+			"//includes the libraries of code necessary to make this one work\n"+
+			"#include <Timer.h>\n\n"+
+
+			"//Creates a new Timer object\n"+
+			"Timer::Timer() {\n"    +
+			   "\tinitTime=millis();\n\n"+
+
+			"}\n"+
+
+			"//resets the Initial Time"+
+			"long Timer::resetTime() {]\n" +   
+			    "\tinitTime=millis();\n"+
+			    "\treturn getTime();\n\n"+
+
+			"}\n\n"+
+
+			"//returns the current time\n"+
+			"long Timer::getTime() {   \n" +
+			    "\treturn millis()-initTime;\n\n"+
+
+			"}\n\n"+
+
+			"//returns the current time and the initial time\n"+
+			"long Timer::getAndResetTime() {  \n"  +
+			    "\tlong curTime=getTime();\n"+
+			    "\tresetTime();\n"+
+			   "\treturn curTime;\n\n"+
+
+			"}\n\n"+
+
+			"#endif";
+
+}

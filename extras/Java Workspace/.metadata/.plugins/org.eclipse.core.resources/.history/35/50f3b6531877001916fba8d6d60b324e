@@ -1,0 +1,67 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Tests the correct function of the MiniScanner class, especially important because 
+ *  	it is the basis of all parsing in the Arduino Project
+ *  Date: May 15, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+
+public class MiniScannerTest {
+
+	@Test
+	public void test() {
+		//this example iterates over a base stirng with spaces used as a token
+		MiniScanner reader=new MiniScanner();
+		
+		//test prime with base string separated by spaces
+		reader.prime("This is a test"," ");
+		String []parsed=new String[4];
+		String []correct={"This","is","a","test"};
+		while(reader.hasNext()){
+			
+			System.out.println(reader.next());
+		}
+		/*
+		System.out.println("test prime with base string separated by colons");
+		reader.prime("This:is:also:a:test",":");
+		while(reader.hasNext()){
+			System.out.println(reader.next());
+		}*/
+	}
+	
+	@Test
+	/**makes sure that the arrEquals method throws an exception if either argument is null
+	 * */
+	public void arrEqualNull() {
+		String[]arr={"a","b"};
+		arrEquals(null,arr);
+		arrEquals(arr,null);
+	}
+	/**
+	 * Helper method to compare two arrays of strings for Junit testing
+	 */
+	public static boolean arrEquals(String[]given,String[]correct){	
+		if(given==null |correct==null){
+			throw new IllegalArgumentException("arrays can't be null");
+		}
+		//check lengths because assuming parallel arrays
+		if(given.length!=correct.length){
+			throw new IllegalArgumentException("arrays aren't same length");
+		}
+		//iterate through both arrays, if any elements aren't equal return false
+		for(int i=0;i<correct.length;i++){
+			if(!given[i].equals(correct[i])){
+				return false;
+			}
+		}
+		//if all elements are equal, return true
+		return true;
+	}
+
+}

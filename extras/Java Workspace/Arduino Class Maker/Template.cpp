@@ -1,0 +1,38 @@
+/* Written by Jacob Smith for Brandeis Robotics Club 2019/05/15
+A timer class to allow the user to create loops and maintain program control
+Boards supported: ARDUINO_AVR_UNO ESP8266_WEMOSD1R1*/
+
+//only compile this class if the board is correct
+if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)
+
+//includes the libraries of code necessary to make this one work
+#include <Timer.h>
+
+//Creates a new Timer object
+Timer::Timer() {
+    initTime=millis();
+
+}
+
+//resets the Initial Time
+long Timer::resetTime() {
+    initTime=millis();
+    return getTime();
+
+}
+
+//returns the current time
+long Timer::getTime() {
+    return millis()-initTime;
+
+}
+
+//returns the current time and the initial time
+long Timer::getAndResetTime() {
+    long curTime=getTime();
+    resetTime();
+    return curTime;
+
+}
+
+#endif

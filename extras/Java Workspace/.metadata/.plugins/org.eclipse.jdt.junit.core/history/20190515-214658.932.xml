@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MiniScannerTest" project="Arduino Class Maker" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="MiniScannerTest" time="0.0">
+    <testcase name="exceptionSafeNext" classname="MiniScannerTest" time="0.0"/>
+    <testcase name="exceptionSafeHasNext" classname="MiniScannerTest" time="0.0"/>
+    <testcase name="testTokens" classname="MiniScannerTest" time="0.0"/>
+  </testsuite>
+</testrun>

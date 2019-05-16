@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="arrEqualTest" project="Arduino Class Maker" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="arrEqualTest" time="0.0">
+    <testcase name="arrEqualNull" classname="arrEqualTest" time="0.0"/>
+    <testcase name="arrEqualLength" classname="arrEqualTest" time="0.0"/>
+    <testcase name="arrEqualMethods" classname="arrEqualTest" time="0.0"/>
+  </testsuite>
+</testrun>

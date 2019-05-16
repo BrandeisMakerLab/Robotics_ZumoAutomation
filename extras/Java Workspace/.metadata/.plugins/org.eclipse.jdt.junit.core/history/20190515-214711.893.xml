@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Arduino Class Maker" project="Arduino Class Maker" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="arrEqualTest" time="0.0">
+    <testcase name="arrEqualNull" classname="arrEqualTest" time="0.0"/>
+    <testcase name="arrEqualLength" classname="arrEqualTest" time="0.0"/>
+    <testcase name="arrEqualMethods" classname="arrEqualTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="MiniScannerTest" time="0.0">
+    <testcase name="exceptionSafeNext" classname="MiniScannerTest" time="0.0"/>
+    <testcase name="exceptionSafeHasNext" classname="MiniScannerTest" time="0.0"/>
+    <testcase name="testTokens" classname="MiniScannerTest" time="0.0"/>
+  </testsuite>
+</testrun>
