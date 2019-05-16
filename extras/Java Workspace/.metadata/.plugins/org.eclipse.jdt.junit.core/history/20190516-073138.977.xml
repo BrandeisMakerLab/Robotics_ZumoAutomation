@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ArduinoClassClientTest.getInputStream" project="Arduino Class Maker" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testcase name="getInputStream" classname="client.ArduinoClassClientTest" incomplete="true"/>
+  <testsuite name="Unrooted Tests" time="0.0">
+    <testcase name="initializationError" classname="org.junit.runner.manipulation.Filter" time="0.0">
+      <error>java.lang.Exception: No tests found matching Method getInputStream(client.ArduinoClassClientTest) from org.junit.internal.requests.ClassRequest@7a5d012c
+	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:37)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.&lt;init&gt;(JUnit4TestReference.java:33)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestMethodReference.&lt;init&gt;(JUnit4TestMethodReference.java:25)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader.createTest(JUnit4TestLoader.java:54)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader.loadTests(JUnit4TestLoader.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:452)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

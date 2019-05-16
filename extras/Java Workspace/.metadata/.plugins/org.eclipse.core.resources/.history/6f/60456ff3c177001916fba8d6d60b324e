@@ -1,0 +1,23 @@
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+public class test {
+	public static void main (String[] args) {
+		ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
+		System.setIn(in);
+
+		// do your thing
+		Scanner reader=new Scanner(System.in0)
+		// optionally, reset System.in to its original
+		System.setIn(System.in)
+	}
+
+}

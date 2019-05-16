@@ -30,7 +30,7 @@ public enum ArduinoClassExample {
     		"long|getTime|returns the current time|\n"+
     		"return millis()-initTime;\n\n"+
     		"long|getAndResetTime|returns the current time and the initial time|\n"+
-    		"long curTime=getTime();\nresetTime();\nreturn curTime;\n\n");
+    		"long curTime=getTime();\nresetTime();\nreturn curTime;\n");
     
     //the hardcoded example of the field
     private String example;

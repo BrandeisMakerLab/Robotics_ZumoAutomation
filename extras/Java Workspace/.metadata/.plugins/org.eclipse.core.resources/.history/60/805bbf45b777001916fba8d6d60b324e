@@ -1,0 +1,30 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: all code from https://stackoverflow.com/questions/42429134/reading-multiple-lines-into-a-scanner-object-in-java
+ *  Bugs:
+ */
+
+public class test {
+	public static void main (String[] args) {
+	    Scanner scnr = new Scanner(System.in);
+	    String userString = getUserString(scnr);  
+	    System.out.println("\nCurrent Text: " + userString);
+	}
+
+	public static String getUserString(Scanner keyboard) { 
+	    System.out.println("Enter Initial Text: ");
+	    String input = "";
+	    String line;
+	    while (keyboard.hasNextLine()) {
+	        line = keyboard.nextLine();
+	        if (line.isEmpty()) {
+	            break;
+	        }
+	        input += line + "\n";
+	    }
+	    return input;
+	}
+
+}

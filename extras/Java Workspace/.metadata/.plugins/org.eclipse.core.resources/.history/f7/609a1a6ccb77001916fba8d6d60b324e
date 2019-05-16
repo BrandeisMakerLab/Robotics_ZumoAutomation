@@ -1,0 +1,24 @@
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+
+import testBackgroundCode.AssertMethods;
+
+import client.ArduinoClassClient;
+import client.ArduinoClassContainer;
+
+import enums.ArduinoClassExample;
+import enums.ArduinoClassHardCoded;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+public class test {
+	
+}

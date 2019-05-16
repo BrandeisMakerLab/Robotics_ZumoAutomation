@@ -1,0 +1,37 @@
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
+import enums.ArduinoClassExample;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+public class test {
+	public static void main (String[] args) {
+		String allResponces="";
+		for(ArduinoClassExample example : ArduinoClassExample.values()){
+			allResponces+=example+"!";
+		}
+		System.out.println(allResponces);
+		
+		ByteArrayInputStream in = new ByteArrayInputStream(allResponces.getBytes());
+		System.setIn(in);
+
+		// do your thing
+		Scanner reader=new Scanner(System.in);
+		while(reader.hasNextLine()){
+			System.out.println(reader.nextLine());
+		}
+		
+		
+		// optionally, reset System.in to its original
+		System.setIn(System.in);
+		reader.close();
+	}
+
+}

@@ -1,0 +1,65 @@
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+
+import testBackgroundCode.AssertMethods;
+
+import client.ArduinoClassClient;
+import client.ArduinoClassContainer;
+
+import enums.ArduinoClassExample;
+import enums.ArduinoClassHardCoded;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+public class test {
+	public static void main (String[] args) {
+		//save the old input and output streams
+		InputStream keyboard=System.in;
+		PrintStream console = System.out;
+		
+		//build a string of all the resopnces needed to create an arduino class
+		String allResponces="";
+		for(ArduinoClassExample example : ArduinoClassExample.values()){
+			allResponces+=example+ArduinoClassClient.consoleToken+"\n";
+		}
+		//set System.in to feed in that stream
+		ByteArrayInputStream in = new ByteArrayInputStream(allResponces.getBytes());
+		System.setIn(in);
+		
+		// Create a stream to hold the output
+		ByteArrayOutputStream toString= new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(toString);
+		// Tell Java to use your special stream
+		System.setOut(ps);
+		
+		//run the console printing example
+		ArduinoClassContainer cont=ArduinoClassClient.scannerExample();
+		resetStreams(keyboard,console);
+		
+		System.out.println();
+		System.out.print("Cpp File Test:");
+		System.out.println(AssertMethods.assertEqualsFeedback(ArduinoClassHardCoded.CPP_FILE.toString(), cont.getBody()));
+		assertEquals(ArduinoClassHardCoded.CPP_FILE.toString(),cont.getBody());
+		assertEquals(ArduinoClassHardCoded.H_FILE,cont.getHeader());
+		assertEquals(ArduinoClassHardCoded.KEYWORDS_FILE,cont.getKeywords());
+		
+		
+	}
+	/**
+	 * resets the console and keyboard to correct input/output
+	 */
+	private static void resetStreams(InputStream keyboard, PrintStream console){
+		// optionally, reset System.in and out
+		System.setIn(keyboard);
+		System.out.flush();
+		System.setOut(console);
+	}
+}

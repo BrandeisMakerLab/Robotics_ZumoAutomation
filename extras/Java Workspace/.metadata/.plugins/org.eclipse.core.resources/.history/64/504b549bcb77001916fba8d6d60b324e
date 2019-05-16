@@ -1,0 +1,22 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: redirecting system.in to string: https://stackoverflow.com/questions/6415728/junit-testing-with-simulated-user-input
+ *  redirexting system.out to string:https://stackoverflow.com/questions/8708342/redirect-console-output-to-string-in-java
+ *  Bugs:
+ */
+package client;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassClientTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
