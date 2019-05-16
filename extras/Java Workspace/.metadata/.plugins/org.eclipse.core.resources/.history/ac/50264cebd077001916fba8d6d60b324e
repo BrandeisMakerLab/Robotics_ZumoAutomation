@@ -95,13 +95,13 @@ public class ArduinoClassClient {
 			//call helper method to display the generated files, array positions hardcoded
 			cont=new ArduinoClassContainer(userAnswers[0], userAnswers[1], userAnswers[2], true,userAnswers[3],userAnswers[4], userAnswers[5], userAnswers[6], userAnswers[7]);
 			System.out.println("loading...");
-			sleepNoError(7000);
+			sleepNoError(5000);
 			System.out.println(cont.getHeader());
-			sleepNoError(7000);
+			sleepNoError(5000);
 			System.out.println(cont.getBody());
-			sleepNoError(7000);
+			sleepNoError(5000);
 			System.out.println(cont.getKeywords());
-			sleepNoError(7000);
+			sleepNoError(5000);
 			
 		}catch (Exception e){
 			System.out.println("Sorry, there was a formatting error in your input, couldn't make class");

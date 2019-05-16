@@ -57,6 +57,7 @@ public class ArduinoClassClient {
 		System.out.println("Welcome to Arduino Class Genrator by Brandeis Automation Labortory");
 		System.out.println("Please enter information from each prompt and end with "+consoleToken);
 		populate(fields,examples,userAnswers,reader);
+		
 		return endConsole(userAnswers,reader);
 	
 	}
@@ -94,15 +95,7 @@ public class ArduinoClassClient {
 		try{
 			//call helper method to display the generated files, array positions hardcoded
 			cont=new ArduinoClassContainer(userAnswers[0], userAnswers[1], userAnswers[2], true,userAnswers[3],userAnswers[4], userAnswers[5], userAnswers[6], userAnswers[7]);
-			System.out.println("loading...");
-			sleepNoError(7000);
-			System.out.println(cont.getHeader());
-			sleepNoError(7000);
-			System.out.println(cont.getBody());
-			sleepNoError(7000);
-			System.out.println(cont.getKeywords());
-			sleepNoError(7000);
-			
+			System.out.println(cont);
 		}catch (Exception e){
 			System.out.println("Sorry, there was a formatting error in your input, couldn't make class");
 			System.out.println("Would you like to view the error? Y/N");

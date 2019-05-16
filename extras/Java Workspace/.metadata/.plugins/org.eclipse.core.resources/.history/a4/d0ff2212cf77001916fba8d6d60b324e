@@ -53,24 +53,12 @@ public class ArduinoClassClient {
 		ArduinoClassExample[]examples=ArduinoClassExample.values();
 		//create an array of the same length to hold the user's answers
 		String []userAnswers=new String[fields.length];
-		
-		System.out.println("Welcome to Arduino Class Genrator by Brandeis Automation Labortory");
-		System.out.println("Please enter information from each prompt and end with "+consoleToken);
-		populate(fields,examples,userAnswers,reader);
-		return endConsole(userAnswers,reader);
-	
-	}
-	
-	/**
-	 * Populates the UserNaswers array with Scanner input using promprts from given enums
-	 * no return type because arrrays are passed by reference
-	 */
-	private static void populate(ArduinoClassPrompts []fields, ArduinoClassExample[]examples,String[]userAnswers,Scanner reader){
 		//temporary variable for code readability
 		ArduinoClassPrompts field;
 		ArduinoClassExample example;
 		String responce;
-		
+		System.out.println("Welcome to Arduino Class Genrator by Brandeis Automation Labortory");
+		System.out.println("Please enter information from each prompt and end with "+consoleToken);
 		//iterate through all the fields, displaying prompt, example formatting, and reading user input
 		for(int i=0;i<fields.length;i++){
 			field=fields[i];
@@ -82,27 +70,15 @@ public class ArduinoClassClient {
 			userAnswers[i]=processUserResponce(responce);
 			
 		}
+		for(int i=0;i<userAnswers.length;i++){
+			System.out.println("Index:"+i+" ["+userAnswers[i]+"]");
+		}
 		
-	}
-	
-	/**
-	 * handles the exit conditions of the  cient scanner demonstration by either returning
-	 * a Arduino Class Container object or catching an exception
-	 */
-	private static ArduinoClassContainer endConsole(String[]userAnswers,Scanner reader){
 		ArduinoClassContainer cont=null;
 		try{
 			//call helper method to display the generated files, array positions hardcoded
 			cont=new ArduinoClassContainer(userAnswers[0], userAnswers[1], userAnswers[2], true,userAnswers[3],userAnswers[4], userAnswers[5], userAnswers[6], userAnswers[7]);
-			System.out.println("loading...");
-			sleepNoError(7000);
-			System.out.println(cont.getHeader());
-			sleepNoError(7000);
-			System.out.println(cont.getBody());
-			sleepNoError(7000);
-			System.out.println(cont.getKeywords());
-			sleepNoError(7000);
-			
+			System.out.println(cont);
 		}catch (Exception e){
 			System.out.println("Sorry, there was a formatting error in your input, couldn't make class");
 			System.out.println("Would you like to view the error? Y/N");
@@ -118,9 +94,10 @@ public class ArduinoClassClient {
 			}
 			
 		}
-		reader.close();
 		System.out.println("Thank you, closing down now");
+		reader.close();
 		return cont;
+	
 	}
 	/**
 	 * process user responce, converting data types such
