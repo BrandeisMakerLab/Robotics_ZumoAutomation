@@ -1,5 +1,6 @@
 package enums;
 
+// @formatter:off
 /** Name: Jacob Smith
  *  Email:jsmith2021@brandeis.edu
  *  Assignment: Personal Study, an enum to contain correct string representations
@@ -51,6 +52,44 @@ public enum ArduinoClassHardCoded {
     		"}\n\n"+
 
     		"#endif"),
+   	CPP_FILE_All_BOARDS( 
+       		"/* Written by Jacob Smith for Brandeis Robotics Club 2019/05/15\n"+
+       		"A timer class to allow the user to create loops and maintain program control\n"+
+       		"Boards supported: ALL*/\n\n"+
+
+			"//this should work on all boards, so there is no preprocessor directive here\n\n"+
+       		
+    	    "//includes the libraries of code necessary to make this one work\n"+
+    	    "#include <Timer.h>\n\n"+
+
+    	    "//Creates a new Timer object\n"+
+    	    "Timer::Timer() {\n"    +
+    	    "    initTime=millis();\n\n"+
+
+    	    "}\n\n"+
+
+    	    "//resets the Initial Time\n"+
+    	    "long Timer::resetTime() {\n" +   
+    	    "    initTime=millis();\n"+
+    	    "    return getTime();\n\n"+
+
+    	    "}\n\n"+
+
+    	    "//returns the current time\n"+
+    	    "long Timer::getTime() {\n" +
+    	    "    return millis()-initTime;\n\n"+
+
+    	    "}\n\n"+
+
+    	    "//returns the current time and the initial time\n"+
+    	    "long Timer::getAndResetTime() {\n"  +
+    	    "    long curTime=getTime();\n"+
+    	    "    resetTime();\n"+
+    	    "    return curTime;\n\n"+
+
+    	    "}\n\n"+
+
+    	    "#endif"),
     H_FILE(
     		"/* Written by Jacob Smith for Brandeis Robotics Club 2019/05/15\n"+
     		"A timer class to allow the user to create loops and maintain program control\n"+
@@ -60,9 +99,9 @@ public enum ArduinoClassHardCoded {
     		"#ifndef Timer_h\n"+
     		"#define Timer_h\n\n"+
 
-    		"//only compile this class if the board is correct\n"+
-    		"if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
-
+			"//only compile this class if the board is correct\n"+
+			"if defined(ARDUINO_AVR_UNO) | defined (ESP8266_WEMOSD1R1)\n\n"+
+		
     		"//includes the libraries of code necessary to make this one work\n"+
     		"#include <Timer.h>\n"+
     		"#include <Apple.h>\n\n"+
@@ -89,6 +128,39 @@ public enum ArduinoClassHardCoded {
     		"  #error : Program to Board Incompatibility ; One of the libraries you are using will not work with your board ; Quick fix: add <#define DONT_NEED_TIMER> to top ; For more information, go to cse230.artifice.cc/lecture/splitting-code.html\n"+
     		"#endif\n"+
     		"#endif"),
+ 	H_FILE_ALL_BOARDS(
+     		"/* Written by Jacob Smith for Brandeis Robotics Club 2019/05/15\n"+
+     		"A timer class to allow the user to create loops and maintain program control\n"+
+     		"Boards supported: ALL*/\n\n"+
+
+     		"//sets up the Timer Header file\n"+
+     		"#ifndef Timer_h\n"+
+     		"#define Timer_h\n\n"+
+
+			"//this should work on all boards, so there is no preprocessor directive here\n\n"+
+
+
+     		"//includes the libraries of code necessary to make this one work\n"+
+     		"#include <Timer.h>\n"+
+     		"#include <Apple.h>\n\n"+
+
+     		"class Timer{\n"+
+     		"  private:\n"+
+     		"    //the beginning time of the interval\n"+
+    		"    long initTime;\n"+
+     		"    //a test varible for the parser\n"+
+     		"    Apple test;\n"+
+     		"  public:\n"+
+     		"    //Creates a new Timer object\n"+
+     		"    Timer();\n"+
+     		"    //resets the Initial Time\n"+
+     		"    long resetTime();\n"+
+     		"    //returns the current time\n"+
+     		"    long getTime();\n"+
+     		"    //returns the current time and the initial time\n"+
+     		"    long getAndResetTime();\n"+
+     		"};\n"+
+     		"#endif"),
     	KEYWORDS_FILE(
     		"//Generates ARDUINO KEYWORDS for Timer class\n"+
     		"Timer	KEYWORD1\n"+

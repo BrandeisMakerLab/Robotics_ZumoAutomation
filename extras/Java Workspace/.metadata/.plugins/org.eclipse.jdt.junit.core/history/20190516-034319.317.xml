@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Rerun parsing.MiniScannerTest.testNoHasNext" project="Arduino Class Maker" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="testNoHasNext" classname="parsing.MiniScannerTest" time="0.0"/>
+</testrun>
