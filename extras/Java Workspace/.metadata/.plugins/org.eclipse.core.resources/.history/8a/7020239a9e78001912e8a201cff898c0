@@ -85,8 +85,6 @@ public class ArduinoClassClient {
 				message=example.validate(responce);
 				if(message==null){
 					validated=true;
-					//convert "null" to null
-					responce= processUserResponce(responce);
 				}else{
 					System.out.println(message);
 				}
@@ -150,6 +148,8 @@ public class ArduinoClassClient {
 			
 			
 			responce=readAndTokenizeUserResponce(reader);
+			//convert "null" to null
+			responce= processUserResponce(responce);
 			//check for mistaken input
 			mistake=checkMistakes(responce);
 			if(mistake==null){

@@ -33,18 +33,17 @@ public enum ArduinoClassExample {
     		"long|getTime|returns the current time|\n"+
     		"return millis()-initTime;\n\n"+
     		"long|getAndResetTime|returns the current time and the initial time|\n"+
-    		"long curTime=getTime();\nresetTime();\nreturn curTime;\n",false,true,true,true,null);
+    		"long curTime=getTime();\nresetTime();\nreturn curTime;\n",false,true,true,true,"null");
     
     //the hardcoded example of the field
     private String example;
-    //validation information
     private boolean enforceSpaces;
     private boolean enforceBars;
     private boolean enforceNewLines;
     private int numSpaces;
     private int numNewLines;
     private int numBars;
-    //sepcail forms information, like how board defines can either be specific forms or ALL
+    
     private boolean multiplePrompt;
     private String alternateForm;
     
@@ -69,42 +68,10 @@ public enum ArduinoClassExample {
     }
     
     /**
-     * validates user input for one of the ArduinoFields
-     * returns null if input is correct and error message if it is not
-     */
-    public String validate(String input){
-    	//check the number of special characters
-    	String specialCharsCheck=enforceSpecialCharacters(input);
-    	//if there is an alternate form, check to see if the input matches it
-    	if(alternateForm!=null && input.equals(alternateForm)){
-    		//if true, then re
-    		return null;
-    	}
-    	//if the user entered null but there is no allowed alternate form, return error message
-    	if(input.equals("null") && alternateForm==null){
-    		return "This field cannot be null";
-    	//if user entered null and the alternate form isn't null, return error message
-    	}else if(input.equals("null") && !alternateForm.equals("null")){
-    		return "This field cannot be null";
-    	}
-    	//otherwise, just check special characters
-    	return specialCharsCheck;
-    	
-    }
-    
-    /**
-     * returns whether this field needs to be done in multiple stages
-     */
-    public boolean getMultiplePrompt(){
-    	return multiplePrompt;
-    }
-    
-    
-    /**
-     * enforces the number of special characters in an input string
+     * validates a user input string
      * @ return null if input is valid and an error message if not
      */
-    private String enforceSpecialCharacters(String input){
+    public String validate(String input){
     	//count up the number of special characters
     	int inputSpaces=countCharacter(input,' ');
     	int inputBars=countCharacter(input,'|');

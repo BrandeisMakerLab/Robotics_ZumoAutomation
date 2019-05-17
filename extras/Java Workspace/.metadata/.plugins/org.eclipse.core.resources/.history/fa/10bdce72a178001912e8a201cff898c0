@@ -33,7 +33,7 @@ public enum ArduinoClassExample {
     		"long|getTime|returns the current time|\n"+
     		"return millis()-initTime;\n\n"+
     		"long|getAndResetTime|returns the current time and the initial time|\n"+
-    		"long curTime=getTime();\nresetTime();\nreturn curTime;\n",false,true,true,true,null);
+    		"long curTime=getTime();\nresetTime();\nreturn curTime;\n",false,true,true,true,"null");
     
     //the hardcoded example of the field
     private String example;
@@ -80,11 +80,8 @@ public enum ArduinoClassExample {
     		//if true, then re
     		return null;
     	}
-    	//if the user entered null but there is no allowed alternate form, return error message
-    	if(input.equals("null") && alternateForm==null){
-    		return "This field cannot be null";
-    	//if user entered null and the alternate form isn't null, return error message
-    	}else if(input.equals("null") && !alternateForm.equals("null")){
+    	//check for user entering null, imoprtant because null will be converted to a null string
+    	if(alternateForm==null && input.equals("null")){
     		return "This field cannot be null";
     	}
     	//otherwise, just check special characters
