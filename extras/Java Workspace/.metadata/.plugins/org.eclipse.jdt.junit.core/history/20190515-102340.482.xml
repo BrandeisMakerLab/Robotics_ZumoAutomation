@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="MiniScannerTest" project="Arduino Class Maker" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="MiniScannerTest" time="0.001">
-    <testcase name="test" classname="MiniScannerTest" time="0.001"/>
-  </testsuite>
-</testrun>

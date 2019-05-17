@@ -1,0 +1,25 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Personalt Study, an enum to keep track of special characters
+ *  	and to automatically allow them to be be printed explicitely
+ *  	So this can convert an invsibe newline to the word newline
+ *  	Useful in user input validation 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package enums;
+
+public enum Character {
+	NEWLINE("\n","\\n","new line"),SPACE(" "," ","space"),TAB("\t","\\t","tab"),BLANK("","","blank");
+	
+	private String sequence;
+	private String visible;
+	private String seqName;
+	
+	private Character(String sequence,String visible,String seqName){
+		this.sequence=sequence;
+		this.visible=visible;
+		this.seqName=seqName;
+	}
+} 

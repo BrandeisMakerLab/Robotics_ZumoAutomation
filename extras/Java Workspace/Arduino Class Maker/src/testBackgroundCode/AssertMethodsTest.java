@@ -19,12 +19,53 @@ public class AssertMethodsTest {
 	/**makes sure that the arrEquals method throws an exception if either argument is null
 	 * */
 	public void arrEqualNull() {
-		String []arr={"a","b"};
+	    String []arr={"a","b"};
 		assertExceptionArrEquals(null,null,true);
 		assertExceptionArrEquals(null,arr,true);
 		assertExceptionArrEquals(arr,null,true);
 		assertExceptionArrEquals(arr,arr,false);
+		
 	}
+	
+	@Test
+	/**makes sure that the arrEquals method
+	 * doesn't throw an exception when dealing with elements
+	 * that are null
+	 * */
+	public void arrEqualExceptionNullElements() {
+		//this behavior can't be tested with one array because
+		//the function returns as soon as one element is different
+		String []arr1={"a"};
+		String[]arr2= {"a"};
+		assertExceptionArrEquals(arr1,arr2,false);
+		arr1[0]="a";
+		arr2[0]= null;
+		assertExceptionArrEquals(arr1,arr2,false);
+		arr1[0]=null;
+		arr2[0]="a";
+		assertExceptionArrEquals(arr1,arr2,false);
+		arr1[0]=null;
+		arr2[0]=null;
+		assertExceptionArrEquals(arr1,arr2,false);
+	}
+	
+	@Test
+	/**makes sure that the arrEquals method
+	 * can compare arrays with null elements
+	 * */
+	public void arrEqualCorrectnessNullElements() {
+		String [] ancd={"a",null,"c","d"};
+		String [] ancd2={"a",null,"c","d"};
+		String [] ance={"a",null,"c","e"};
+
+		//different last element, false
+		boolean result=AssertMethods.arrEquals(ancd, ance);
+		assertEquals(result,false);
+		//same last element true
+		result=AssertMethods.arrEquals(ancd, ancd2);
+		assertEquals(result,true);
+	}
+	
 	
 	@Test
 	/**makes sure that the arrEquals method throws an exception if length of arrays is different
@@ -69,7 +110,7 @@ public class AssertMethodsTest {
 			threw = true;
 		}
 		// assert if an exception should have been thrown
-		assertEquals(threw, shouldResults);
+		assertEquals(shouldResults,threw);
 	}
 	
 	@Test

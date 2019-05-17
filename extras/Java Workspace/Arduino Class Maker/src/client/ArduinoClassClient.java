@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import enums.ArduinoClassExample;
 import enums.ArduinoClassPrompts;
+import enums.SpecialChar;
 
 /**Name: Jacob Smith 
  * Date 5/14/2049 Personal Study, uses ArduinoClasses to autaomtically generate header, class, and keyword files
@@ -69,7 +70,6 @@ public class ArduinoClassClient {
 		//temporary variable for code readability
 		ArduinoClassPrompts field;
 		ArduinoClassExample example;
-		String responce;
 		
 		//iterate through all the fields, displaying prompt, example formatting, and reading user input
 		for(int i=0;i<fields.length;i++){
@@ -77,9 +77,20 @@ public class ArduinoClassClient {
 			example=examples[i];
 			//display prompt
 			System.out.println(field.prompt+"\n"+example.toString()+consoleToken);
-			//read user input
-			responce=readUserResponce(reader,consoleToken);
-			userAnswers[i]=processUserResponce(responce);
+			boolean validated=false;
+			String message;
+			String responce=null;
+			while(!validated){
+				responce=readAndValidateUserResponce(reader);
+				message=example.validate(responce);
+				if(message==null){
+					validated=true;
+				}else{
+					System.out.println(message);
+				}
+			}
+			userAnswers[i]=responce;
+			
 			
 		}
 		
@@ -96,11 +107,11 @@ public class ArduinoClassClient {
 			cont=new ArduinoClassContainer(userAnswers[0], userAnswers[1], userAnswers[2], true,userAnswers[3],userAnswers[4], userAnswers[5], userAnswers[6], userAnswers[7]);
 			System.out.println("loading...");
 			sleepNoError(7000);
-			System.out.println(cont.getHeader());
+			System.out.println(cont.getHeader()+"\n");
 			sleepNoError(7000);
-			System.out.println(cont.getBody());
+			System.out.println(cont.getBody()+"\n");
 			sleepNoError(7000);
-			System.out.println(cont.getKeywords());
+			System.out.println(cont.getKeywords()+"\n");
 			sleepNoError(7000);
 			
 		}catch (Exception e){
@@ -122,6 +133,100 @@ public class ArduinoClassClient {
 		System.out.println("Thank you, closing down now");
 		return cont;
 	}
+	
+	/**
+	 * reads the user's responce from the console, and only returns result if valid
+	 * otherwise, will display error message and re-cosnume user input
+	 */
+	private static String readAndValidateUserResponce(Scanner reader){
+		boolean valid=false;
+
+		String responce=null;
+		SpecialChar mistake;
+		//loop readings uer input, and either quit or display error message
+		while(!valid){
+			
+			
+			responce=readAndTokenizeUserResponce(reader);
+			//convert "null" to null
+			responce= processUserResponce(responce);
+			//check for mistaken input
+			mistake=checkMistakes(responce);
+			if(mistake==null){
+				valid=true;
+			}else{
+				System.out.println("Error, the responce can't only be "+mistake.getseqName()+" .");
+				System.out.println("Please try again");
+			}
+			
+		}
+		return responce;
+	
+		
+	}
+	
+	/**
+	 * reads the user responce from the console and gaurantees that it can be tokenized
+	 * by asking for correct input until it can be
+	 */
+	private static String readAndTokenizeUserResponce(Scanner reader){
+		boolean tokenized=false;
+		String responce="";
+		while(!tokenized){
+			//read user input
+			responce=readUserResponce(reader);
+			if(responce==null){
+				System.out.println("Error reading your responce, did you have two of "+consoleToken+"?");
+			}else{
+				tokenized=true;
+			}
+		}
+		return responce;
+	}
+	
+	/**
+	 * validation method to iterate over a sequence of common mistake Strings
+	 * and prompt the user if they are not allowed
+	 * @return null if input is correct, the SpecialChar if it is not
+	 */
+	private static SpecialChar checkMistakes(String responce){
+		SpecialChar []mistakeChars=SpecialChar.values();
+		for(int i=0;i<mistakeChars.length;i++){
+			//if the responce is only mistake characters, return true
+			if(containsOnly(responce,mistakeChars[i])){
+				return mistakeChars[i];
+			}
+		}
+		//if all mistake characters where executed,return c for correct
+		return null;
+		
+		
+	}
+	
+	/**
+	 * validation method to return whether string contains only a string
+	 * which could be a blank string or a bunch  of newline, either of which are not
+	 * valud input
+	 */
+	private static boolean containsOnly(String s,SpecialChar c){
+		//check for null string
+		if(s==null){return false;}
+		//check for blank string manually
+		if(s.isEmpty()&&c.getSequence().equals("")){return true;}
+		//otherwise, iterate through the base string and see if it is only special characters
+		String temp;
+		for(int i=0;i<s.length();i++){
+			//get the one element string at that index
+			temp=s.substring(i,i+1);
+			//if the special character doesn't equal the temps string, return false
+			if(!c.getSequence().equals(temp)){
+				return false;
+			}
+		}
+		//if the whole string was iterated through, return true
+		return true;
+	}
+	
 	/**
 	 * process user responce, converting data types such
 	 * as "null" to null
@@ -137,7 +242,7 @@ public class ArduinoClassClient {
 	/**
 	 * reads and assembles responces from the user that can consist fo many lines
 	 */
-	private static String readUserResponce(Scanner reader,String token){
+	private static String readUserResponce(Scanner reader){
 		String line="dummy";
 		String input="";
 		boolean tokenFound=false;
@@ -145,12 +250,15 @@ public class ArduinoClassClient {
 		while(!tokenFound){
 			//consume next line of input
 			line=reader.nextLine();
-			//see if token was found
-			if(line.contains(token)){
+			//check for multiple tokens being found in one entry
+			if(containsMultiple(line,consoleToken)){
+				return null;
+		    //see if token was found	
+			}else if(line.contains(consoleToken)){
 				//set flag to true
 				tokenFound=true;
 				//remove all instances of the token
-				line=line.replaceAll(token, "");
+				line=line.replaceAll(consoleToken, "");
 				//add the line without a newline character at the end
 				input+=line;
 			}else{
@@ -162,6 +270,16 @@ public class ArduinoClassClient {
 		}
 		//return the total string of input
 		return input;
+	}
+	/**
+	 * helper method to tell if a string contains multiple of a susbtring
+	 * helpful for input validation
+	 */
+	private static boolean containsMultiple(String base, String sequence){
+		int firstIndex=base.indexOf(sequence);
+		int secondIndex= base.indexOf(sequence, firstIndex+1);
+		return secondIndex>firstIndex;
+		
 	}
 	/**
 	 * Helper method to tell computer to sleep without needing throws declaration

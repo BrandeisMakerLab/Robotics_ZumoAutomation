@@ -1,0 +1,37 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Test the validation method of ArduinoClass example
+ *  Which is useful in validating user input
+ *  Date: May 17, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package enums;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassExampleTest {
+	
+	/**
+	 * adds the character to every element of examples to test input validator
+	 */
+	 private static String[] addCharacter(char c){
+		  ArduinoClassExample[]examples=ArduinoClassExample.values();
+		  String example;
+		  String[]incorrectResponces=new String[examples.length];
+		  for(int i=0;i<examples.length;i++){
+			  example=examples[i].toString();
+			  incorrectResponces[i]=example+c;
+		  }
+		  return incorrectResponces;
+	  } 
+	  
+	@Test
+	public void test() {
+		String []incorrectResponces=addCharacter('\n');
+		
+	}
+
+}

@@ -13,8 +13,9 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="ArduinoClassFields" key="selection"/>
+		<item value="alreadyChecked" key="selection"/>
 		<list key="findhistory">
+			<item value="alreadychecked"/>
 			<item value="Planet"/>
 			<item value="keyword"/>
 			<item value="variable"/>

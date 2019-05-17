@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="ArduinoClassCppTest" project="Arduino Class Maker" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="classGenerators.ArduinoClassCppTest" time="0.001">
-    <testcase name="testCppOutput" classname="classGenerators.ArduinoClassCppTest" time="0.001"/>
-    <testcase name="testCppOutputAllBoards" classname="classGenerators.ArduinoClassCppTest" time="0.0"/>
-  </testsuite>
-</testrun>

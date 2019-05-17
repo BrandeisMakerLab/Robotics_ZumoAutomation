@@ -15,7 +15,6 @@ public class AssertMethods {
 
 	/**
 	 * Helper method to compare two arrays of strings for Junit testing
-	 * Tested in arrEquals test unit test file
 	 */
 	public static boolean arrEquals(String[] given, String[] correct) {
 		if (given == null | correct == null) {
@@ -28,13 +27,21 @@ public class AssertMethods {
 		// iterate through both arrays, if any elements aren't equal return
 		// false
 		for (int i = 0; i < correct.length; i++) {
-			if (!given[i].equals(correct[i])) {
+			//if elements are both null, do nothing
+			//avoid null pointer exception
+			if(given[i]==null&&correct[i]==null){
+			//the equals method handles other null case
+			}else if(given[i]==null &&correct[i]!=null){
+				return false;
+			//then check if given isnt equal to correct
+			}else if (!given[i].equals(correct[i])) {
 				return false;
 			}
 		}
 		// if all elements are equal, return true
 		return true;
 	}
+	
 	
 	/**
 	 *Helper method to compare two strings and assert whether they are equal

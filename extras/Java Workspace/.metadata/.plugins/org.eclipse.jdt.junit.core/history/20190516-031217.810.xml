@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="ArduinoClassHTest" project="Arduino Class Maker" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="classGenerators.ArduinoClassHTest" time="0.0">
-    <testcase name="testKeywordsOutput" classname="classGenerators.ArduinoClassHTest" time="0.0"/>
-    <testcase name="testHOutput" classname="classGenerators.ArduinoClassHTest" time="0.0"/>
-  </testsuite>
-</testrun>

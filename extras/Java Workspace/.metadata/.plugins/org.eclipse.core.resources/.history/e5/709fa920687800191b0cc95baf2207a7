@@ -1,0 +1,52 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Test the validation method of ArduinoClass example
+ *  Which is useful in validating user input
+ *  Date: May 17, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package enums;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassExampleTest {
+	//adds a newline to the example responces
+	String[]incorrectReponces;
+	
+	/**
+	 * adds the character to every element of examples to test input validator
+	 */
+	 private static String[] addCharacter(char c){
+		  ArduinoClassExample[]examples=ArduinoClassExample.values();
+		  String example;
+		  String[]incorrectResponces=new String[examples.length];
+		  for(int i=0;i<examples.length;i++){
+			  example=examples[i].toString();
+			  incorrectReponces[i]=example+c;
+		  }
+		  return incorrectResponces;
+	  } 
+	  
+	@Test
+	public void test() {
+		 System.out.println("Shows how enum can be used to validate user input");
+	        System.out.println("INPUT\tVALIDATION RESPONCE");
+	        //too many newlines
+	        String className="Timer\n";
+	        String result=ArduinoClassExample.CLASSNAME.validate(className);
+	        System.out.print(className+":"+result);
+	        //too many spaces
+	        className="Timer ";
+	        result=ArduinoClassExample.CLASSNAME.validate(className);
+	        System.out.print(className+":"+result);
+	        //too many bars
+	        className="Timer|";
+	        result=ArduinoClassExample.CLASSNAME.validate(className);
+	        System.out.print(className+":"+result);
+	        
+	}
+
+}
