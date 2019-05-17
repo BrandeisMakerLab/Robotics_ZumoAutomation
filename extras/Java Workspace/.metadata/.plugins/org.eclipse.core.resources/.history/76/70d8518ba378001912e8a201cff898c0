@@ -77,33 +77,27 @@ public class ArduinoClassClient {
 			example=examples[i];
 			//display prompt
 			System.out.println(field.prompt+"\n"+example.toString()+consoleToken);
-			userAnswers[i]=getUserResponce(reader,example);
+			boolean validated=false;
+			String message;
+			String responce=null;
+			while(!validated){
+				responce=readAndValidateUserResponce(reader);
+				message=example.validate(responce);
+				if(message==null){
+					validated=true;
+					//convert "null" to null
+					responce= processUserResponce(responce);
+				}else{
+					System.out.println(message);
+				}
+			}
+			userAnswers[i]=responce;
 			
 			
 		}
 		
 	}
 	
-	/**
-	 * executes the entire process of reading and validating the user's responce
-	 */
-	private static String getUserResponce(Scanner reader, ArduinoClassExample example){
-		boolean validated=false;
-		String message;
-		String responce=null;
-		while(!validated){
-			responce=readAndValidateUserResponce(reader);
-			message=example.validate(responce);
-			if(message==null){
-				validated=true;
-				//convert "null" to null
-				responce= processUserResponce(responce);
-			}else{
-				System.out.println(message);
-			}
-		}
-		return responce;
-	}
 	/**
 	 * handles the exit conditions of the  cient scanner demonstration by either returning
 	 * a Arduino Class Container object or catching an exception

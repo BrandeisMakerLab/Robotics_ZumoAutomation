@@ -4,12 +4,16 @@
 		<item value="640" key="dialogWidth"/>
 		<item value="480" key="dialogHeight"/>
 		<list key="orderedProviders">
+			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
+			<item value=" "/>
 		</list>
 		<list key="orderedElements">
+			<item value="org.eclipse.debug.ui.BreakpointView"/>
 		</list>
 		<list key="textEntries">
+			<item value="1"/>
 		</list>
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">

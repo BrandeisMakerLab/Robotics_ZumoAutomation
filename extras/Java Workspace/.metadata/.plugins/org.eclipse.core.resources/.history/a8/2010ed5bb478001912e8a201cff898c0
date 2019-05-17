@@ -68,15 +68,15 @@ public enum ArduinoClassPrompts {
      	String newLinePrompt="Enter DONE if DONE"; 
     	boolean done=false;
     	String input="";
-    	String line=reader.nextLine();
+    	String line;
     	while(!done){
+			line=reader.nextLine();
 			if(line.equals("DONE")){
 				done=true;
 			}else{
-				input+=line+"\n";
+				input+=line;
+				System.out.println(prompt+"\n"+newLinePrompt);
 			}
-			System.out.println(prompt+"\n"+newLinePrompt);
-			line=reader.nextLine();
 		}
 		return input;
     	
@@ -92,10 +92,8 @@ public enum ArduinoClassPrompts {
         }
         System.out.println("Displays the classes ability to prompt the user");
         Scanner reader=new Scanner(System.in);
-        String responce;
         for (ArduinoClassPrompts a : ArduinoClassPrompts.values()){
-        	responce=a.prompt(reader);
-        	System.out.println("REPONCE RECIEVED:"+responce);
+        	System.out.println(a);
         }
           
     }

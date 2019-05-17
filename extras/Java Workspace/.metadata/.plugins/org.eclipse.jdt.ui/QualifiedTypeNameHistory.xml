@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="testBackgroundCode.assertMethods"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
 <fullyQualifiedTypeName name="enums.ArduinoClassExample"/>
 <fullyQualifiedTypeName name="client.ArduinoClassClient"/>
@@ -14,4 +13,6 @@
 <fullyQualifiedTypeName name="enums.ArduinoClassHardCoded"/>
 <fullyQualifiedTypeName name="enums.SpecialChar"/>
 <fullyQualifiedTypeName name="testBackgroundCode.AssertMethods"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

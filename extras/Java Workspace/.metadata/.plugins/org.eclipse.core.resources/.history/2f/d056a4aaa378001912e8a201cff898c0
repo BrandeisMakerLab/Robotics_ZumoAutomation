@@ -77,7 +77,7 @@ public class ArduinoClassClient {
 			example=examples[i];
 			//display prompt
 			System.out.println(field.prompt+"\n"+example.toString()+consoleToken);
-			userAnswers[i]=getUserResponce(reader,example);
+			userAnswers[i]=getUserReponce(reader,example);
 			
 			
 		}

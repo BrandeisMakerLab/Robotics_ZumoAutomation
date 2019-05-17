@@ -44,6 +44,9 @@ public enum ArduinoClassPrompts {
      */
     public String prompt(Scanner reader){
     	System.out.println(prompt);
+    	
+    	boolean done=false;
+    	String newLinePrompt="Enter DONE if DONE"; 
     	//if there is no internal token and the prompt is one line
     	//then jut read one line from scanner and don't parse
     	if(internalToken=='0' && !multiLine){
@@ -56,7 +59,7 @@ public enum ArduinoClassPrompts {
     	}else if(internalToken!='0' && multiLine){
     		return readMultiLine(reader);
     	//if else if there is internal parsing and more than one line
-    	}else{ //(internalToken!='0' && !multiLine){
+    	}else if(internalToken!='0' && !multiLine){
     		return readMultiLine(reader);
     	}
     }
@@ -65,18 +68,16 @@ public enum ArduinoClassPrompts {
      * reads multi line input from the user 
      */
     private String readMultiLine(Scanner reader){
-     	String newLinePrompt="Enter DONE if DONE"; 
     	boolean done=false;
     	String input="";
-    	String line=reader.nextLine();
+    	String line;
     	while(!done){
+			line=reader.nextLine();
 			if(line.equals("DONE")){
 				done=true;
 			}else{
-				input+=line+"\n";
+				input+=line;
 			}
-			System.out.println(prompt+"\n"+newLinePrompt);
-			line=reader.nextLine();
 		}
 		return input;
     	
@@ -89,13 +90,6 @@ public enum ArduinoClassPrompts {
         System.out.println("Prints out the different enums, prompts, and formatting contained in this class");
         for (ArduinoClassPrompts a : ArduinoClassPrompts.values()){
         	System.out.println(a);
-        }
-        System.out.println("Displays the classes ability to prompt the user");
-        Scanner reader=new Scanner(System.in);
-        String responce;
-        for (ArduinoClassPrompts a : ArduinoClassPrompts.values()){
-        	responce=a.prompt(reader);
-        	System.out.println("REPONCE RECIEVED:"+responce);
         }
           
     }

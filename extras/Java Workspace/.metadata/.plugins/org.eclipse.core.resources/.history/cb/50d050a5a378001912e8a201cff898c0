@@ -77,7 +77,7 @@ public class ArduinoClassClient {
 			example=examples[i];
 			//display prompt
 			System.out.println(field.prompt+"\n"+example.toString()+consoleToken);
-			userAnswers[i]=getUserResponce(reader,example);
+			userAnswers[i]=getUserReponce();
 			
 			
 		}
@@ -87,7 +87,7 @@ public class ArduinoClassClient {
 	/**
 	 * executes the entire process of reading and validating the user's responce
 	 */
-	private static String getUserResponce(Scanner reader, ArduinoClassExample example){
+	private static String getUserResponce(){
 		boolean validated=false;
 		String message;
 		String responce=null;

@@ -5,12 +5,12 @@
 	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space.java_view.inner"/>
 	<item value="-1" key="org.eclipse.jdt.uiformatter_page.modify_dialog_tab_page.last_focus_index"/>
 	<item value="703" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_height"/>
-	<item value="/Users/SmithDesktop/Dropbox/Smith Stuff/Smith family dropbox/important documents/jacob/ZumoAutomation/extras" key="org.eclipse.jdt.ui.last.external.project"/>
 	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x"/>
-	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
-	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.last_focus"/>
-	<item value="991" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width"/>
+	<item value="/Users/SmithDesktop/Dropbox/Smith Stuff/Smith family dropbox/important documents/jacob/ZumoAutomation/extras" key="org.eclipse.jdt.ui.last.external.project"/>
 	<item value="23" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
+	<item value="991" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width"/>
+	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.last_focus"/>
+	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
@@ -26,8 +26,8 @@
 	<section name="org.eclipse.jdt.internal.ui.preferences.EditTemplateDialog_dialogBounds">
 		<item value="596" key="DIALOG_WIDTH"/>
 		<item value="178" key="DIALOG_Y_ORIGIN"/>
-		<item value="261" key="DIALOG_HEIGHT"/>
 		<item value="152" key="DIALOG_X_ORIGIN"/>
+		<item value="261" key="DIALOG_HEIGHT"/>
 		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="javadoc">
@@ -67,23 +67,23 @@
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item value="false" key="renameSubpackages"/>
-		<item value="false" key="updateQualifiedNames"/>
 		<item value="*" key="patterns"/>
+		<item value="false" key="updateQualifiedNames"/>
+		<item value="false" key="renameSubpackages"/>
 		<item value="1" key="updateSimilarElementsMatchStrategy"/>
 		<item value="false" key="updateTextualMatches"/>
 		<item value="false" key="updateSimilarElements"/>
 	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
-		<item value="true" key="create_unimplemented"/>
 		<item value="true" key="create_main"/>
+		<item value="true" key="create_unimplemented"/>
 	</section>
 	<section name="JavadocWizardDialog">
 		<item value="600" key="DIALOG_WIDTH"/>
 		<item value="-4" key="DIALOG_Y_ORIGIN"/>
-		<item value="212" key="DIALOG_X_ORIGIN"/>
 		<item value="582" key="DIALOG_HEIGHT"/>
+		<item value="212" key="DIALOG_X_ORIGIN"/>
 		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
 	</section>
 </section>

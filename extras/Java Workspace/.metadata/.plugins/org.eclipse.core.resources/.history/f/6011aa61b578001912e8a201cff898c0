@@ -68,15 +68,15 @@ public enum ArduinoClassPrompts {
      	String newLinePrompt="Enter DONE if DONE"; 
     	boolean done=false;
     	String input="";
-    	String line=reader.nextLine();
+    	String line;
     	while(!done){
+			line=reader.nextLine();
 			if(line.equals("DONE")){
 				done=true;
 			}else{
 				input+=line+"\n";
+				System.out.println(prompt+"\n"+newLinePrompt);
 			}
-			System.out.println(prompt+"\n"+newLinePrompt);
-			line=reader.nextLine();
 		}
 		return input;
     	
