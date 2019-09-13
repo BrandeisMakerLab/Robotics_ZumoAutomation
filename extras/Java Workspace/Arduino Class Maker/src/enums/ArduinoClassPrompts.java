@@ -43,7 +43,7 @@ public enum ArduinoClassPrompts {
      * returns the string the user entered
      */
     public String prompt(Scanner reader){
-    	System.out.println(prompt);
+    	System.out.print(prompt+":");
     	//if there is no internal token and the prompt is one line
     	//then jut read one line from scanner and don't parse
     	if(internalToken=='0' && !multiLine){
@@ -93,9 +93,11 @@ public enum ArduinoClassPrompts {
         System.out.println("Displays the classes ability to prompt the user");
         Scanner reader=new Scanner(System.in);
         String responce;
+    	
         for (ArduinoClassPrompts a : ArduinoClassPrompts.values()){
+        
         	responce=a.prompt(reader);
-        	System.out.println("REPONCE RECIEVED:"+responce);
+        	System.out.println("RESPONCE RECIEVED5:"+responce);
         }
           
     }

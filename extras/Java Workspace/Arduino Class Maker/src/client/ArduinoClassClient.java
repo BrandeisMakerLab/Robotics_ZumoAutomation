@@ -2,7 +2,7 @@ package client;
 import java.util.Scanner;
 
 import enums.ArduinoClassExample;
-import enums.ArduinoClassPrompts;
+import enums.ArduinoClassPrompts2;
 import enums.SpecialChar;
 
 /**Name: Jacob Smith 
@@ -50,7 +50,7 @@ public class ArduinoClassClient {
 		//initalize a new scanner to read keyboard input
 		Scanner reader=new Scanner(System.in);
 		//generate an array of field names
-		ArduinoClassPrompts []fields=ArduinoClassPrompts.values();
+		ArduinoClassPrompts2 []fields=ArduinoClassPrompts2.values();
 		ArduinoClassExample[]examples=ArduinoClassExample.values();
 		//create an array of the same length to hold the user's answers
 		String []userAnswers=new String[fields.length];
@@ -66,9 +66,9 @@ public class ArduinoClassClient {
 	 * Populates the UserNaswers array with Scanner input using promprts from given enums
 	 * no return type because arrrays are passed by reference
 	 */
-	private static void populate(ArduinoClassPrompts []fields, ArduinoClassExample[]examples,String[]userAnswers,Scanner reader){
+	private static void populate(ArduinoClassPrompts2 []fields, ArduinoClassExample[]examples,String[]userAnswers,Scanner reader){
 		//temporary variable for code readability
-		ArduinoClassPrompts field;
+		ArduinoClassPrompts2 field;
 		ArduinoClassExample example;
 		
 		//iterate through all the fields, displaying prompt, example formatting, and reading user input
