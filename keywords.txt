@@ -56,3 +56,8 @@ wifiConnect	KEYWORD2
 
 GeneralBuzzer	KEYWORD1
 playBuzzer	KEYWORD2
+
+
+MusicPlayer	KEYWORD1
+
+play	KEYWORD2
