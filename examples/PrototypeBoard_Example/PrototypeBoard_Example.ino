@@ -32,13 +32,13 @@ void loop() {
   //gets the distance from the ultrasonic sensor
   distance = distancesensor.getDistance();
   //read the position of the potentiometer 
-  dialPos = analogRead(potPin);
+  potPos = analogRead(potPin);
   //display distance to screen
   Serial.print("Distance\t");
   Serial.print(distance);
   //display pontiometer position to screen, scaled for convenience
   Serial.print("\tPotentiometer\t");
-  threshold=val/6;
+  threshold=potPos/6;
   Serial.print(threshold);
   //display light state to screen
   Serial.print("\tLED\t");

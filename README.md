@@ -13,18 +13,25 @@ Zumo Automation Project
   + [Link to install all software](https://brandeismakerlab.dozuki.com/Guide/Getting+Started+with+Zumo+Automation+Project/27?lang=en)
   +  And see example files in examples folder
 * Background information
-	+ [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
+  + [Rules of mini sumo](http://robogames.net/rules/all-sumo.php)
 * Hardware
         + [Current robot used](https://www.pololu.com/product/2504)
-	+ [previous, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
-	+ [3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
-	
+    + [previous, ZUMO32U4](https://www.pololu.com/docs/0J63/all)
+    + [3d printed robot model which we want to switch to](https://www.thingiverse.com/thing:2662828)
+
 * This project was conceived of by technical advisor Tim Hebert and is currently being implemented by the Brandeis Robotics Club
 * We are always looking for anyone who wants to contribute, email us!  
     + jsmith2021@brandeis.edu  
     + [The Brandeis University Makerlab](http://brandeismakerlab.com/people/) 
 
+# Example
+
+​	Here is an example of a sumo match that is possible with this project, the example here is *Zumo_Match_Distance*:
+
+​	![Sumo Bot Competing](distanceSumo.gif)
+
 # Pololu Wrapper Libraries
+
   +  These libraries provide added functionality to [Pololu's Zumo Shield Library](https://github.com/pololu/zumo-shield-arduino-library)
   + They take a sensor or motor and make it more user friendly and add calibration
 

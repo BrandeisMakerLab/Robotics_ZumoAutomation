@@ -11,6 +11,8 @@ turnLeft	KEYWORD2
 pivotRight	KEYWORD2
 pivotLeft	KEYWORD2
 stopDrive	KEYWORD2
+getPower	KEYWORD2
+setPower	KEYWORD2
 
 MotorsGeneral	KEYWORD1
 setMotors	KEYWORD2
