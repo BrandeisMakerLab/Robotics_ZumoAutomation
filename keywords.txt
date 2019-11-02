@@ -11,6 +11,8 @@ turnLeft	KEYWORD2
 pivotRight	KEYWORD2
 pivotLeft	KEYWORD2
 stopDrive	KEYWORD2
+getPower	KEYWORD2
+setPower	KEYWORD2
 
 MotorsGeneral	KEYWORD1
 setMotors	KEYWORD2
@@ -56,3 +58,8 @@ wifiConnect	KEYWORD2
 
 GeneralBuzzer	KEYWORD1
 playBuzzer	KEYWORD2
+
+
+MusicPlayer	KEYWORD1
+
+play	KEYWORD2

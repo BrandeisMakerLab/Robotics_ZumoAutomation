@@ -18,7 +18,7 @@
 
 //creates a new Drive object, which won't have random motor power
 DriveShield::DriveShield(){
-	power=300;
+	power=200;
 }
 
 
