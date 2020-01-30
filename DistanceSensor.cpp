@@ -38,7 +38,7 @@ int DistanceSensor::getDistance() {
     // Reads the echoPin, returns the sound wave travel time in microseconds
     int duration = pulseIn(echoPin, HIGH);
     // Calculating the distance
-    int distance = duration * 0.034 / 2;
+    int distance = duration * .034/ 2;
     // Prints the distance on the Serial Monitor
     return distance;
 
