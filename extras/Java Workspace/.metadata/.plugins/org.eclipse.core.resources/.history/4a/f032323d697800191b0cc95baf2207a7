@@ -1,0 +1,47 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Test the validation method of ArduinoClass example
+ *  Which is useful in validating user input
+ *  Date: May 17, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package enums;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassExampleTest {
+	
+	/**
+	 * adds the character to every element of examples to test input validator
+	 * and stores the validation message
+	 */
+	 private static String[] getValidationMessage(char c){
+		  ArduinoClassExample[]examples=ArduinoClassExample.values();
+		  String example;
+		  String incorrectExample;
+		  String[]validationMessages=new String[examples.length];
+		  //iterate through all possible examples
+		  for(int i=0;i<examples.length;i++){
+			  //get the example string
+			  example=examples[i].toString();
+			  //make the example invalid by adding the character to it
+			  incorrectExample=example+c;
+			  //get the validation message for that example
+			  validationMessages[i]=examples[i].validate(incorrectExample);
+		  }
+		  return validationMessages;
+	  } 
+	  
+	@Test
+	public void test() {
+		String []incorrectResponces=getValidationMessage('\n');
+		
+		for(int i=0;i<incorrectResponces.length;i++){
+			"Error Expected 0 newLines and you entered 1";
+		}
+	}
+
+}

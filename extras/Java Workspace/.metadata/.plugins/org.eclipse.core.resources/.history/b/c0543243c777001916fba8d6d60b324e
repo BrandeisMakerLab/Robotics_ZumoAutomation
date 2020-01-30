@@ -1,0 +1,13 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Personal Study, a simple client class to store the body, header, and keywords
+ *  files of the ArduinoClass generator
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package client;
+
+public class ArduinoClassContainer {
+
+}

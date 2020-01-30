@@ -1,0 +1,12 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment:  Personal Study, provides methods relevent to parsing an Arduino Class
+ *  	This is a seperate class to keep classes short and to allow client to access there server methods for input validation
+ *  Date: May 15, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+public class ArduinoParser {
+
+}

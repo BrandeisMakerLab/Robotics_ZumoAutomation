@@ -1,0 +1,81 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**
+ * Name: Jacob Smith Email:jsmith2021@brandeis.edu Assignment: Tests the correct
+ * function of the MiniScanner class, especially important because it is the
+ * basis of all parsing in the Arduino Project Date: May 15, 2019 Sources: Bugs:
+ */
+
+public class MiniScannerTest {
+
+	@Test
+	/**
+	 * Tests that the scanner can parse one string corredctly, be reset, and parse another string correctly
+	 */
+	public void testTokens() {
+		// this example iterates over a base stirng with spaces used as a token
+		MiniScanner reader = new MiniScanner();
+
+		// test prime with base string separated by spaces
+		reader.prime("This is a test", " ");
+		String[] correct = { "This", "is", "a", "test" };
+		assertReader(reader,correct);
+		
+		// test prime with base string separated by colons
+		reader.prime("This:is:a:test", ":");
+		assertReader(reader,correct);
+		
+	}
+
+	/**
+	 * asserts that a given reader that has been primed matches
+	 * the array of expected results
+	 * */
+	private void assertReader (MiniScanner reader,String[]correct){
+		//create an array to hold the parsed results
+		String[]parsed=new String[correct.length];
+		//populate an array with the returned results
+		int index=0;
+			while (reader.hasNext() && index<parsed.length) {
+				parsed[index]=reader.next();
+				index++;
+			}
+			//if there is a next token, return false
+			boolean result;
+			if(reader.hasNext()){
+				assertEquals(false,true);//there shouldn't be a next token
+			}else{
+				result=arrEquals(parsed,correct);
+				assertEquals(result,true);
+			}
+	}
+	
+	
+	
+
+	/**
+	 * Helper method to compare two arrays of strings for Junit testing
+	 * Tested in arrEquals test unit test file
+	 */
+	public static boolean arrEquals(String[] given, String[] correct) {
+		if (given == null | correct == null) {
+			throw new IllegalArgumentException("arrays can't be null");
+		}
+		// check lengths because assuming parallel arrays
+		if (given.length != correct.length) {
+			throw new IllegalArgumentException("arrays aren't same length");
+		}
+		// iterate through both arrays, if any elements aren't equal return
+		// false
+		for (int i = 0; i < correct.length; i++) {
+			if (!given[i].equals(correct[i])) {
+				return false;
+			}
+		}
+		// if all elements are equal, return true
+		return true;
+	}
+
+}

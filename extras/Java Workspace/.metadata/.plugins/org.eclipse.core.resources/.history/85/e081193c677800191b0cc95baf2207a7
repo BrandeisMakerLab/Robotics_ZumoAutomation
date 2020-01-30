@@ -1,0 +1,22 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Test the validation method of ArduinoClass example
+ *  Which is usseful in validating user input
+ *  Date: May 17, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package enums;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassExampleTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,60 @@
+package testBackgroundCode;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Tests the correct function of the MiniScanner class, especially important because 
+ *  	it is the basis of all parsing in the Arduino Project
+ *  Date: May 15, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+
+public class AssertMethodsTest {
+
+	@Test
+	/**makes sure that the arrEquals method throws an exception if either argument is null
+	 * */
+	public void arrEqualNull() {
+		String []arr={"a","b"};
+		assertExceptionArrEquals(null,null,true);
+		assertExceptionArrEquals(null,arr,true);
+		assertExceptionArrEquals(arr,null,true);
+		assertExceptionArrEquals(arr,arr,false);
+	}
+	
+	@Test
+	/**makes sure that the arrEquals method throws an exception if length of arrays is different
+	 * */
+	public void arrEqualLength() {
+		String []length3={"a","b","c"};
+		String[]length4={"a","b","c","d"};
+		assertExceptionArrEquals(length3,length3,false);
+		assertExceptionArrEquals(length4,length4,false);
+		assertExceptionArrEquals(length3,length4,true);
+		assertExceptionArrEquals(length4,length3,true);
+	}
+	
+	@Test
+	/**makes sure that the arrEquals method returns true if given matches correct and false otherwise
+	 * */
+	public void arrEqualMethods() {
+		String [] abcd={"a","b","c","d"};
+		String [] abcd2={"a","b","c","d"};
+		String [] abce={"a","b","c","e"};
+		//different last element, false
+		boolean result=AssertMethods.arrEquals(abcd, abce);
+		assertEquals(result,false);
+		//same last element true
+		result=AssertMethods.arrEquals(abcd, abcd2);
+		assertEquals(result,true);
+	
+	}
+
+
+
+
+}

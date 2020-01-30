@@ -1,0 +1,21 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 17, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package enums;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ArduinoClassExampleTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

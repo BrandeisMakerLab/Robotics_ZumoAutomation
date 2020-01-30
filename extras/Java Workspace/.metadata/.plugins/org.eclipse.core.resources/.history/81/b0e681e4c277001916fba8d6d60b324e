@@ -1,0 +1,24 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Persinal Study, verifies the behavior of the ArduinoClass Client class
+ *  which allows user input to be processed to generate arduino body, header, and keyword files
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package client;
+
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+
+import org.junit.Test;
+
+public class ArduinoClassClientTest {
+
+	@Test
+	public void test() {
+	
+	}
+
+}

@@ -1,0 +1,29 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 17, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package client;
+
+public class test {
+public static void main(String[]args){
+	String s1="a a";
+	System.out.println(containsMultiple(s1,"a"));
+	String s2="a b";
+	System.out.println(containsMultiple(s2,"a"));
+	
+}
+/**
+ * helper method to tell if a string contains multiple of a susbtring
+ * helpful for input validation
+ */
+private static boolean containsMultiple(String base, String sequence){
+	int firstIndex=base.indexOf(sequence);
+	int secondIndex= base.indexOf(base, firstIndex);
+	return secondIndex>firstIndex;
+	
+}
+
+}

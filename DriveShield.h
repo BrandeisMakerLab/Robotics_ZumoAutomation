@@ -13,6 +13,7 @@
 #include <Wire.h>
 #include <MotorsGeneral.h>
 #include <DriveShield.h>
+#include <ZumoMotors.h>
 #include <Timer.h>
 
 class DriveShield{
@@ -20,7 +21,7 @@ class DriveShield{
 		//the power the robot drives at [0,400]
 		int power;
 		//the  motors general object that will be used to interface with the robot
-		MotorsGeneral drive;	
+		ZumoMotors drive;	
 		//a timer to control how long the robot drives
 		Timer driveTimer;
 		

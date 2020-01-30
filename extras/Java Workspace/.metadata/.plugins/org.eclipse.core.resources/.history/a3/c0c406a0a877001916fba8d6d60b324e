@@ -1,0 +1,39 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Personal Study, provides helper methods that can  be used with Junit tests
+ *  to provide additional funcitonality and information
+ *  Date: May 15, 2019
+ *  Sources: 
+ *  Bugs:
+ *  Notes: I used to have custom methods to compare special characters abd line numbers of strings,
+ *  but I decided to use a hardcoded string comparison which is moer explicit and doesn''t need those tools
+ */
+package testBackgroundCode;
+
+
+public class AssertMethods {
+
+	/**
+	 * Helper method to compare two arrays of strings for Junit testing
+	 * Tested in arrEquals test unit test file
+	 */
+	public static boolean arrEquals(String[] given, String[] correct) {
+		if (given == null | correct == null) {
+			throw new IllegalArgumentException("arrays can't be null");
+		}
+		// check lengths because assuming parallel arrays
+		if (given.length != correct.length) {
+			throw new IllegalArgumentException("arrays aren't same length");
+		}
+		// iterate through both arrays, if any elements aren't equal return
+		// false
+		for (int i = 0; i < correct.length; i++) {
+			if (!given[i].equals(correct[i])) {
+				return false;
+			}
+		}
+		// if all elements are equal, return true
+		return true;
+	}
+	
+}

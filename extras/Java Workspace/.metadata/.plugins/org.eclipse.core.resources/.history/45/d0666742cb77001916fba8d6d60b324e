@@ -1,0 +1,85 @@
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+
+import testBackgroundCode.AssertMethods;
+
+import client.ArduinoClassClient;
+import client.ArduinoClassContainer;
+
+import enums.ArduinoClassExample;
+import enums.ArduinoClassHardCoded;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+
+public class test {
+	public static void main (String[] args) {
+		//save the old input and output streams
+		InputStream keyboard=System.in;
+		
+		setStream();
+		
+		//run the console printing example
+		ArduinoClassContainer cont=ArduinoClassClient.scannerExample();
+		resetStreams(keyboard);
+		
+		System.out.print("Cpp File Test Console:");
+		assertContainer(cont);
+		
+		
+	}
+	/**
+	 * asserts that the contents of the ArduinoClassContainer matches the hardcoded exmaple files
+	 * @param cont the ArduinoClassContainer to verify
+	 */
+	private static void assertContainer(ArduinoClassContainer cont){
+		System.out.println(AssertMethods.assertEqualsFeedback(ArduinoClassHardCoded.CPP_FILE.toString(), cont.getBody()));
+		assertEquals(ArduinoClassHardCoded.CPP_FILE.toString(),cont.getBody());
+		System.out.print("Header File Test Console:");
+		System.out.println(AssertMethods.assertEqualsFeedback(ArduinoClassHardCoded.H_FILE.toString(), cont.getHeader()));
+		assertEquals(ArduinoClassHardCoded.KEYWORDS_FILE.toString(),cont.getKeywords());
+		System.out.print("Keywords File Test Console:");
+		System.out.println(AssertMethods.assertEqualsFeedback(ArduinoClassHardCoded.KEYWORDS_FILE.toString(), cont.getKeywords()));
+		assertEquals(ArduinoClassHardCoded.KEYWORDS_FILE,cont.getKeywords());
+	}
+	
+	/**
+	 * Sets the input and output streams of the system for testing
+	 * System.in redirects to a predifined string of user responces
+	 * System.out redirects to 
+	 */
+	private static void setStream(){
+		//set the System.in input stream to predfined input for testing
+		System.setIn(getInputStream());
+	}
+	
+	/**
+	 * generates an input stream corresponding to what the user could enter to
+	 * automatically generate an arduino class
+	 * @return the input stream used
+	 */
+	private static ByteArrayInputStream getInputStream(){
+		//build a string of all the resopnces needed to create an arduino class
+		String allResponces="";
+		for(ArduinoClassExample example : ArduinoClassExample.values()){
+			allResponces+=example+ArduinoClassClient.consoleToken+"\n";
+		}
+		//set System.in to feed in that stream
+		ByteArrayInputStream in = new ByteArrayInputStream(allResponces.getBytes());
+		return in;
+	}
+	/**
+	 * resets the keyboard to correct input
+	 */
+	private static void resetStreams(InputStream keyboard){
+		// optionally, reset System.in and out
+		System.setIn(keyboard);
+	}
+}

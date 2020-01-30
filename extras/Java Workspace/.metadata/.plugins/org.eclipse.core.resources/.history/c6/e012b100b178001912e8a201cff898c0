@@ -1,0 +1,72 @@
+package enums;
+
+import java.util.Scanner;
+
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: Personal Study, an enum of class fields with user prompts and error messages.
+ *  	This enum allows all of the field information to be in one place, encapsulation
+ *  Date: May 15, 2019
+ *  Sources: https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+ *  Bugs:
+ *  notes: enum has nice automatic toString, naem field
+ */
+
+
+public enum ArduinoClassPrompts {
+	//the user prompt, along with the internal parsing character and whether the field is many lines
+    CLASSNAME 		("Please enter the name of the class",'0',false),
+    AUTHOR   		("Please enter the name of the author",'0',false),
+    ORGANIZATION   	("Please enter your organization",'0',false),
+    HEADERCOMMENTS 	("Please enter a description of the class",'0',true),
+    SUPPORTEDBOARDS	("Please enter the boards your class can work with/ALL if any board can be used",' ',false),
+    VARIABLES  		("Please enter the type and name of class variables separated by \\n",'|',true),
+    PRIVATEMETHODS  ("Please enter the return type, name, description, and body of the private methods,use\\n for line separation",'|',true),
+    PUBLICMETHODS 	("Please enter the return type, name, description, and body of the public methods,use\\n for line separation",'|',true);
+
+    public final String prompt;//the prompt for the user
+    private final char internalToken;
+    private final boolean multiLine;
+    
+    /** A private constructor to create an enum with prompt
+     * */
+    ArduinoClassPrompts(String prompt,char internalToken,boolean multiLine) {
+        this.prompt = prompt;
+        this.internalToken=internalToken;
+        this.multiLine=multiLine;
+
+    }
+    
+    /**
+     * prompts the user for input, necessary because
+     * some prompts can be many lines
+     * returns the string the user entered
+     */
+    public String prompt(Scanner reader){
+    	//if there is no internal token and the prompt is one line
+    	//then jut read one line from scanner and don't parse
+    	if(internalToken=='0' && !multiLine){
+    		System.out.println(prompt);
+    		return reader.nextLine();
+    	}
+    }
+
+    /**Displays capabilities of the enum
+     * */
+    public static void main(String[] args) {
+        System.out.println("Prints out the different enums, prompts, and formatting contained in this class");
+        for (ArduinoClassPrompts a : ArduinoClassPrompts.values()){
+        	System.out.println(a);
+        }
+          
+    }
+    
+    /**returns a string representation of the enum, with name, prompt, and format
+     * */
+    public String toString(){
+    	String enumString="";
+    	enumString+=this.name();
+    	enumString+="\n\t"+prompt+"\n";
+    	return enumString;
+    }
+}

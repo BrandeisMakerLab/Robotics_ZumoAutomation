@@ -1,0 +1,37 @@
+/** Name: Jacob Smith
+ *  Email:jsmith2021@brandeis.edu
+ *  Assignment: 
+ *  Date: May 16, 2019
+ *  Sources: 
+ *  Bugs:
+ */
+package client;
+
+import java.util.Scanner;
+
+/*
+ * This is a java example source code that shows how to use useDelimiter(String pattern)
+ * method of Scanner class. We use the string ; as delimiter
+ * to use in tokenizing a String input declared in Scanner constructor
+ */
+
+public class test {
+
+	public static void main(String[] args) {
+
+		// Initialize Scanner object
+		Scanner scan = new Scanner("Anna Mills!Female!18");
+		// initialize the string delimiter
+		scan.useDelimiter("!");
+		// Printing the delimiter used
+		System.out.println("The delimiter use is "+scan.delimiter());
+		// Printing the tokenized Strings
+		while(scan.hasNext()){
+			System.out.println(scan.next());
+		}
+		// closing the scanner stream
+		scan.close();
+
+	}
+
+}
